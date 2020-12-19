@@ -1,5 +1,5 @@
 import './App.css';
-import {store} from '/Users/magdascomputer/Desktop/ASU 7/Graduation/GRADUATIONPROJECT/Almerce/frontend/MainProjectFolders/FrontEndDivions/4-Redux/Store'
+import store from './FrontEndDivions/4-Redux/Store.js'
 function App() {
   return (
     <div className="App">
