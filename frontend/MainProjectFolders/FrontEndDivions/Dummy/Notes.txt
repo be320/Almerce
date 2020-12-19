@@ -1,0 +1,6 @@
+*This file for enable communication between developers on this part of the Project
+*Place here the important notes only
+
+1- To start ths project you need to place this path:
+    A- cd Almerce/frontend/MainProjectFolders/StartPoint
+    B- npm start 
