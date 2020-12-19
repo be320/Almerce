@@ -4,7 +4,6 @@
 1- To start ths project you need to place this path:
     A- cd /frontend/StartPoint
     B- npm start 
-
-
+2- Install Redux DevTools from chrome extensions
 
 
