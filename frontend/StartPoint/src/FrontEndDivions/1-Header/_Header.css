@@ -1,0 +1,27 @@
+.ButtonUnselected {
+  background-color: Transparent;
+  border: none;
+  color: white;
+  font-size: 30px;
+  margin-bottom: 10pt;
+  padding-right: 10pt;
+}
+
+.header {
+  background-color: rgb(104, 76, 165);
+  width: 100%;
+}
+
+.AlmerceText {
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 15pt;
+  margin-left: 5pt;
+}
+
+.almerceImage {
+  width: 40pt;
+  height: 40pt;
+  margin: 8pt;
+}

@@ -1,0 +1,17 @@
+import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import './_ChatBotContainer.css';
+import HeaderContainer from '../1-Header/1-HeaderGroup'
+import BodyContainer from '../2-Body/1-BodyGroup'
+//import FooterContainer from '../3-Footer/1-FooterGroup'
+const ChatBotContainer =()=>{
+    return <>
+     <div className="border rounded chatBotBorder">
+         <HeaderContainer/>
+         <BodyContainer/>
+         
+     </div>
+    </>  
+        
+    }
+    export default ChatBotContainer;
+    //     <FooterContainer/>
