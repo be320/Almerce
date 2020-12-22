@@ -14,33 +14,31 @@ const ProductCardTemplate=(props,state)=>{
 
 <div className='  productCardItemContainer'>
   <img className="productCardImage" src={T} alt="Card cap"/>
-    <h5 className="productCardItemTitle">Tower of hanoi</h5>
+    <h5>Tower of hanoi</h5>
     <p>Lorem Ipsum is simply dummy text of the printing and typesetting indus</p>
     <a href="https://www.google.com/" className="btn btn-success col-md-12 text-center ">Toy Link</a>
 </div>
 
 <div className='  productCardItemContainer'>
   <img className="productCardImage" src={T} alt="Card cap"/>
-    <h5 className="productCardItemTitle">Tower of hanoi</h5>
+    <h5 >Tower of hanoi</h5>
     <p>Lorem Ipsum is simply dummy text of the printing and typesetting indus</p>
     <a href="https://www.google.com/" className="btn btn-success col-md-12 text-center ">Toy Link</a>
 </div>
 
 <div className='  productCardItemContainer'>
   <img className="productCardImage" src={T} alt="Card cap"/>
-    <h5 className="productCardItemTitle">Tower of hanoi</h5>
+    <h5>Tower of hanoi</h5>
     <p>Lorem Ipsum is simply dummy text of the printing and typesetting indus</p>
     <a href="https://www.google.com/" className="btn btn-success col-md-12 text-center  ">Toy Link</a>
 </div>
 
 <div className='  productCardItemContainer'>
   <img className="productCardImage" src={T} alt="Card cap"/>
-    <h5 className="productCardItemTitle">Tower of hanoi</h5>
+    <h5>Tower of hanoi</h5>
     <p>Lorem Ipsum is simply dummy text of the printing and typesetting indus</p>
     <a href="https://www.google.com/" className="btn btn-success col-md-12 text-center ">Toy Link</a>
 </div>
-
-
 
 </div>
 
