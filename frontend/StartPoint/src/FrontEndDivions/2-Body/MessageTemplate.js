@@ -28,6 +28,18 @@ const MessageTemplate=(props,state)=>{
                 <img src={B}className={false? ' imageMessageTemplateLeft rounded-circle' :' imageMessageTemplateRight rounded-circle'}alt="ImageMessageTemplate"/> 
                 <div className={false? ' messageOrientationLeft ' :' messageOrientationRight '} >Hi, my name kirolos :), i am glad to see you Almerce </div>
         </div>
+        <div className={false? '' :'fixingSizeOrientationRight'} >
+                <img src={B}className={false? ' imageMessageTemplateLeft rounded-circle' :' imageMessageTemplateRight rounded-circle'}alt="ImageMessageTemplate"/> 
+                <div className={false? ' messageOrientationLeft ' :' messageOrientationRight '} >Hi, my name kirolos :), i am glad to see you Almerce </div>
+        </div>
+        <div className={false? '' :'fixingSizeOrientationRight'} >
+                <img src={B}className={false? ' imageMessageTemplateLeft rounded-circle' :' imageMessageTemplateRight rounded-circle'}alt="ImageMessageTemplate"/> 
+                <div className={false? ' messageOrientationLeft ' :' messageOrientationRight '} >Hi, my name kirolos :), i am glad to see you Almerce </div>
+        </div>
+        <div className={false? '' :'fixingSizeOrientationRight'} >
+                <img src={B}className={false? ' imageMessageTemplateLeft rounded-circle' :' imageMessageTemplateRight rounded-circle'}alt="ImageMessageTemplate"/> 
+                <div className={false? ' messageOrientationLeft ' :' messageOrientationRight '} >Hi, my name kirolos :), i am glad to see you Almerce </div>
+        </div>
 
 
 
