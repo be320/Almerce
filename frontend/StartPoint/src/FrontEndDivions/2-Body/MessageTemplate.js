@@ -5,19 +5,19 @@ import B from '../Dummy/Images/B.jpg'
 const MessageTemplate=(props,state)=>{
     return<>
     
-    <div className=" container messageTemplateContainer ">
+    <div className=" messageTemplateContainer ">
 
-    <div className= {true? 'row align-items-center ': 'row align-items-center offset-md-5' } >
-                <img src={A}className="imageMessageTemplate rounded-circle"alt="ImageMessageTemplate"/> 
-                <div className={true? ' messageOrientationLeft ' :' messageOrientationRight '} >Hi, my name is Almerce :)
+        <div >
+                <img src={A}className={true? ' imageMessageTemplateLeft rounded-circle' :' imageMessageTemplateRight rounded-circle'}alt="ImageMessageTemplate"/> 
+                <div className={true? ' messageOrientationLeft ' :' messageOrientationRight '} >Hi, my name is Almerce i am very glag to meet you:), what is your name</div>
         </div>
+        <div >
+                <img src={B}className={false? ' imageMessageTemplateLeft rounded-circle' :' imageMessageTemplateRight rounded-circle'}alt="ImageMessageTemplate"/> 
+                <div className={false? ' messageOrientationLeft ' :' messageOrientationRight '} >Hi, my name kirolos :), i am glad to see you Almerce </div>
         </div>
 
-        <div className= {false? 'row align-items-center ': 'row align-items-center offset-md-4' } >
-                <div className={false? ' messageOrientationLeft ' :' messageOrientationRight '} >Hi Almerce, my name is kirolos :) Test</div>
-                <img src={B} className="imageMessageTemplate rounded-circle"alt="ImageMessageTemplate"/> 
 
-        </div>
+
     </div>
     </>
     }

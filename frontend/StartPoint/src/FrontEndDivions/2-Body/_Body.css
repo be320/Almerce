@@ -6,38 +6,41 @@
   margin: 5pt;
 }
 
-.imageMessageTemplate {
+.imageMessageTemplateRight {
   width: 30pt;
   height: 30pt;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px 0px;
+  float: right;
+}
+.imageMessageTemplateLeft {
+  width: 30pt;
+  height: 30pt;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px 0px;
+  vertical-align: top;
 }
 
 .messageOrientationLeft {
-  animation: 0.3s ease 0s 1 normal forwards running Lmuha;
-  border-radius: 18px 18px 18px 0px;
+  border-radius: 0px 18px 18px 18px;
   background: rgb(110, 72, 170);
   box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 2px 0px;
   max-width: 50%;
   padding: 12px;
   color: white;
   margin: 0px 5px 10px;
-  display: inline-block;
-  overflow: hidden;
-  position: relative;
   text-align: left;
-  transform-origin: left bottom;
+  word-wrap: break-word;
+  display: inline-block;
 }
 
 .messageOrientationRight {
-  animation: 0.3s ease 0s 1 normal forwards running Lmuha;
+  border-radius: 18px 0px 18px 18px;
   background: rgb(255, 255, 255);
-  border-radius: 18px 18px 0px;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 2px 0px;
-  color: rgb(74, 74, 74);
-  display: inline-block;
-  max-width: 80%;
-  position: relative;
-  margin: 0px 5px 5px;
-  overflow: hidden;
+  max-width: 50%;
   padding: 12px;
+  color: rgb(74, 74, 74);
+  margin: 0px 5px 10px;
+  text-align: left;
+  float: right;
+  word-wrap: break-word;
 }
