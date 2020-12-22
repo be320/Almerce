@@ -44,3 +44,6 @@
   float: right;
   word-wrap: break-word;
 }
+.fixingSizeOrientationRight {
+  overflow: auto;
+}
