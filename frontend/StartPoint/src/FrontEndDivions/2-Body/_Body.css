@@ -1,6 +1,6 @@
 .body {
   height: 400pt;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .messageTemplateContainer {
@@ -47,4 +47,35 @@
 }
 .fixingSizeOrientationRight {
   overflow: auto;
+}
+
+.productCardContainer {
+  padding: 20px;
+  margin: 5px;
+  display: inline-flex;
+  overflow-x: auto;
+  background: rgb(203, 192, 220);
+  border-radius: 18px 18px 18px 18px;
+}
+
+.productCardItemContainer {
+  border-radius: 18px 18px 18px 18px;
+  background: rgb(110, 72, 170);
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 2px 0px;
+  max-width: 50%;
+  color: white;
+  text-align: justify;
+  padding: 12px;
+  margin: 10px;
+  flex-shrink: 0;
+}
+
+.productCardImage {
+  border-radius: 18px 18px 0px 0px;
+  padding-bottom: 20px;
+  max-width: 100%;
+  height: auto;
+}
+
+.productCardItemTitle {
 }
