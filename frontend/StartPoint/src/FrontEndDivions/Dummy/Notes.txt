@@ -6,4 +6,4 @@
     B- npm start 
 2- Install Redux DevTools from chrome extensions
 
-
+3-Small Test
