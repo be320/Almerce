@@ -13,9 +13,6 @@ return<>
 <ProductCardTemplate/>
 <MessageTemplate/>
 <ReactStars {...StarRatingTemplate}/>
-
-
-
 </div>
 
 </>

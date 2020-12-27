@@ -1,9 +1,11 @@
 import './_Footer.css'
-import SendIcon from '../Dummy/Images/SendIcon.png' 
+import SendIcon from '../Dummy/Images/SendIcon.png'
 
-const SendArrow =(props,state)=>{
-    return<>
-      <img src={SendIcon} className="sendIcon" oncalt="Click to send text"/> 
+const SendArrow = (props, state) => {
+  return <>
+    <div class="col">
+      <input type="image" id="image" alt="Login" className="sendIcon" src={SendIcon} />
+    </div>
   </>
-    }
-    export default SendArrow;
+}
+export default SendArrow;

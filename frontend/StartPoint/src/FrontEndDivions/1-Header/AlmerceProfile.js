@@ -1,14 +1,19 @@
-import A from '../Dummy/Images/A.jpg' 
+import A from '../Dummy/Images/A.jpg'
 import './_Header.css'
-const AlmerceProfile =(props,state)=>{
-    return<>
-     <div  class="row">
-            <img src={A} className="   rounded-circle almerceImage " alt="AlmerceImage"/> 
-            <div className="AlmerceText">Almerce</div>
-     </div>
+const AlmerceProfile = (props, state) => {
+    return <>
+
+        <div class="col">
+            <img src={A} className="rounded-circle almerceImage m-1" alt="AlmerceImage" />
+        </div>
+
+        <div className="col AlmerceText" >
+            Almerce
+        </div>
+
     </>
-    }
-    
-    
-    
-    export default AlmerceProfile;
+}
+
+
+
+export default AlmerceProfile;

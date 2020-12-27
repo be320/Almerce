@@ -3,22 +3,21 @@ import AlmerceProfile from './AlmerceProfile'
 import Maximize from './Maximize'
 import Minimize from './Minimize'
 import './_Header.css'
-const ChatBotContainer =(props, state)=>{
-    return<>
-    <div class="container header border rounded-top">
-        <div class="row align-items-center">
-             <div class="col">
-                 <AlmerceProfile/>
-             </div>
-    <div class="col-md-auto">
-                 <Maximize/>
-                 <Minimize/>
-    </div>
+const HeaderContainer = (props, state) => {
+    return <>
+    <div class="container">
+        <div class="row header justify-content-md-center align-items-center">
+                <AlmerceProfile />
+            <div class="col">
+                <Maximize />
+            </div>
+            <div class="col ">
+                <Minimize />
+            </div>
         </div>
-    </div>
+        </div>
     </>
-        
-    }
-    export default ChatBotContainer;
 
-   
+}
+export default HeaderContainer;
+
