@@ -1,25 +1,32 @@
-.ButtonUnselected {
+.almerceButtonUnselected {
   background-color: Transparent;
   border: none;
   color: white;
   font-size: 30px;
   margin-bottom: 10pt;
   padding-right: 10pt;
+  float: right;
 }
 
-.header {
+.almerceheader {
   background-color: rgb(104, 76, 165);
   width: 100%;
-  height: 10%;
+  height: 40%;
 }
 
-.AlmerceText {
+.almerceText {
   color: white;
   font-size: 20px;
   font-weight: 600;
 }
 
 .almerceImage {
-  width: 40pt;
-  height: 40pt;
+  border-radius: 50%;
+  width: 35pt;
+  height: 35pt;
+}
+
+.almerceImageAndTextPostion {
+  display: inline-block;
+  margin: 10px;
 }

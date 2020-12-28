@@ -3,11 +3,11 @@ import './_Header.css'
 const AlmerceProfile = (props, state) => {
     return <>
 
-        <div class="col">
-            <img src={A} className="rounded-circle almerceImage m-1" alt="AlmerceImage" />
+        <div className="almerceImageAndTextPostion">
+            <img src={A} className="almerceImage" alt="AlmerceImage" />
         </div>
 
-        <div className="col AlmerceText" >
+        <div className="almerceText almerceImageAndTextPostion" >
             Almerce
         </div>
 
