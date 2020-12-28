@@ -8,13 +8,11 @@ const ChatBotContainer =()=>{
      <div className="border rounded chatBotBorder">
        
          <BodyContainer/>
-        
+         <FooterContainer/>
      </div>
     </>  
         
     }
     export default ChatBotContainer;
-   
-   // <FooterContainer/>
-   // <HeaderContainer/>
+ 
   

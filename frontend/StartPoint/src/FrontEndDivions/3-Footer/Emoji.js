@@ -1,5 +1,5 @@
 import './_Footer.css'
-import React, { useEffect, useState } from "react"
+import React, {  useState } from "react"
 import 'emoji-mart/css/emoji-mart.css'
 import { Picker } from 'emoji-mart'
 
@@ -19,18 +19,16 @@ const Emoji = (props, state) => {
 
 
     {showEmojis && (
-      <div class="col ">
+      <div>
         <Picker
           onSelect={addEmoji}
           emojiTooltip={true}
           title="weChat" />
       </div>)}
 
-    <div class="col ">
-      <p onClick={toggle}>
+      <div  onClick={toggle}>
         {String.fromCodePoint(0x1f60a)}
-      </p>
-    </div>
+      </div>
 
   </>
 }

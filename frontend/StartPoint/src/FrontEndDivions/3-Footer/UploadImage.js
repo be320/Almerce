@@ -5,9 +5,9 @@ import ImageIcon from '../Dummy/Images/ImageIcon.png'
 
 const UploadImage =(props,state)=>{
     return<>
-    <div class="col">
- <label htmlFor="myImg">
-    <img src={ImageIcon} className="imageIcon" oncalt="Upload an image"/>
+   
+   <label htmlFor="myImg">
+    <img src={ImageIcon} className="imageIcon" alt="Upload an image"/>
  </label>
       <input
         id="myImg"
@@ -15,7 +15,7 @@ const UploadImage =(props,state)=>{
         accept="image/png, image/jpeg"
         style={{ display: "none" }}
         onChange={props.handleImageInput}
-      /> </div> </>
+      />  </>
 
     }
     export default UploadImage;

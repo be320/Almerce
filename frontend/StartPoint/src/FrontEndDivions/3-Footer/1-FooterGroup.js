@@ -8,7 +8,6 @@ import TypeArea from './TypeArea'
 import Emoji from './Emoji'
 
 
-
 const FooterContainer = (props, state) => {
 
   const InitialAudioState = {
@@ -21,7 +20,7 @@ const FooterContainer = (props, state) => {
   const [AudioState, setAudioState] = useState(InitialAudioState);
 
   useEffect(() => {
-    navigator.getUserMedia({ audio: true },
+    navigator.mediaDevices.getUserMedia({ audio: true },
       () => {
         setAudioState({ isBlocked: false });
       },
@@ -59,7 +58,6 @@ const FooterContainer = (props, state) => {
     } else {
       Mp3Recorder.start().then(() => {
         setAudioState({ isRecording: true });
-        console.log(AudioState);
       }).catch((e) => console.error(e));
     }
   };
@@ -77,14 +75,12 @@ const FooterContainer = (props, state) => {
   
 
   return <>
-  <form  onSubmit={handleSubmit}>
-    <div className="form-row">
+  <form  className="footer d-flex flex-row justify-content-between align-items-center" onSubmit={handleSubmit}>
       <UploadImage handleImageInput={handleImageInput} />
       <VoiceNote start={start} stop={stop} AudioState={AudioState} />
       <TypeArea TextField={TextField} setTextField={setTextField} handleInputChange={handleInputChange}/>
+      {/* <Emoji TextField={TextField} setTextField={setTextField}/> */}
       <SendArrow/>
-      <Emoji TextField={TextField} setTextField={setTextField}/>
-    </div>
     </form>
   </>
 
