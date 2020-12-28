@@ -7,12 +7,9 @@
 
 2- Install Redux DevTools from chrome extensions
 
-3- Install React Hook Form
-    npm install react-hook-form
-
-4- Install emoji component
-    npm i --save react-emoji-textarea
-
-5- Install mic-recorder-to-mp3 npm package
+3- Install emoji component
+    npm i emoji-mart
+    
+4- Install mic-recorder-to-mp3 npm package
     npm install --save mic-recorder-to-mp3
   

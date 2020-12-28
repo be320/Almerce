@@ -10,6 +10,10 @@
   margin: 8pt;
 }
 
+.Emoji-Submit{
+  display: "none";
+}
+
 .micOn {
   width: 30pt;
   height: 30pt;

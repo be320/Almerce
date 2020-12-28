@@ -5,8 +5,6 @@ import MicOff from '../Dummy/Images/MicOff.png'
 
 const VoiceNote =(props)=>{
     
-    const [isOn, SetisOn] = React.useState(false);
-
     return<>
     <div class="col">
     {!props.AudioState.isRecording && (

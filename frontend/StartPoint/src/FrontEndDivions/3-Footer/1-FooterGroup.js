@@ -5,6 +5,8 @@ import UploadImage from './UploadImage'
 import VoiceNote from './VoiceNote'
 import SendArrow from './SendArrow'
 import TypeArea from './TypeArea'
+import Emoji from './Emoji'
+
 
 
 const FooterContainer = (props, state) => {
@@ -72,13 +74,16 @@ const FooterContainer = (props, state) => {
       }).catch((e) => console.log(e));
   };
 
+  
+
   return <>
   <form  onSubmit={handleSubmit}>
     <div className="form-row">
       <UploadImage handleImageInput={handleImageInput} />
       <VoiceNote start={start} stop={stop} AudioState={AudioState} />
-      <TypeArea setTextField={setTextField} handleInputChange={handleInputChange}/>
+      <TypeArea TextField={TextField} setTextField={setTextField} handleInputChange={handleInputChange}/>
       <SendArrow/>
+      <Emoji TextField={TextField} setTextField={setTextField}/>
     </div>
     </form>
   </>
