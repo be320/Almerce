@@ -1,9 +1,6 @@
-
 .chatBotBorder {
   background-color: rgb(209, 217, 228);
-  width: 400px;
-  height: 600px;
-  margin: 20pt;
+  width: 100%;
   border-radius: 8px;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 12px 24px 0px;
 }

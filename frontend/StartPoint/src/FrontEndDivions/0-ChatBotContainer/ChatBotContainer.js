@@ -6,11 +6,15 @@ import FooterContainer from '../3-Footer/1-FooterGroup'
 const ChatBotContainer =()=>{
     return <>
      <div className="border rounded chatBotBorder">
-         <HeaderContainer/>
+       
          <BodyContainer/>
-         <FooterContainer/>
+        
      </div>
     </>  
         
     }
     export default ChatBotContainer;
+   
+   // <FooterContainer/>
+   // <HeaderContainer/>
+  

@@ -5,15 +5,11 @@ import Minimize from './Minimize'
 import './_Header.css'
 const HeaderContainer = (props, state) => {
     return <>
-    <div class="container">
-        <div class="row header justify-content-md-center align-items-center">
+    <div>
+        <div class=" almerceheader">
                 <AlmerceProfile />
-            <div class="col">
-                <Maximize />
-            </div>
-            <div class="col ">
+                <Maximize />  
                 <Minimize />
-            </div>
         </div>
         </div>
     </>
