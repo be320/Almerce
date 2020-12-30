@@ -5,9 +5,12 @@ import ReactStars from "react-rating-stars-component";
 import StarRatingTemplate from './StarRatingTemplate'
 
 
-const BodyContainer=(props,state)=>{
-return<>
 
+
+const BodyContainer=(props,state)=>{
+
+
+return<>
 <div className="body">
 <MessageTemplate/>
 <ProductCardTemplate/>
