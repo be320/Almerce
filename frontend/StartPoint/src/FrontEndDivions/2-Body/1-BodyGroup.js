@@ -1,24 +1,24 @@
 import './_Body.css'
-import MessageTemplate from './MessageTemplate'
-import ProductCardTemplate from './ProductCardTemplate'
-import ReactStars from "react-rating-stars-component";
-import StarRatingTemplate from './StarRatingTemplate'
+import { connect } from "react-redux";
 
-
-
-
-const BodyContainer=(props,state)=>{
-
+const BodyContainer=(props)=>{
 
 return<>
 <div className="body">
-<MessageTemplate/>
-<ProductCardTemplate/>
-<MessageTemplate/>
-<ReactStars {...StarRatingTemplate}/>
+{props.bodyContainer}
 </div>
-
 </>
 }
 
-export default  BodyContainer;
+//this function map the component with the state stored in the store
+//so this will be passed to this component via props as if the store 
+//is the parent of this component
+const mapStateToProps =(state)=>{
+    return {
+        bodyContainer: state.TypeAreaReducer
+    };
+  }
+export default connect(mapStateToProps)(BodyContainer);
+
+
+

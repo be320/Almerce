@@ -1,6 +1,4 @@
 import './_Footer.css'
-
-
 const TypeArea = (props, state) => {
 
   return <>

@@ -5,10 +5,13 @@ import UploadImage from './UploadImage'
 import VoiceNote from './VoiceNote'
 import SendArrow from './SendArrow'
 import TypeArea from './TypeArea'
-import Emoji from './Emoji'
+import * as ChatBotActions from '../4-Redux/Actions/ChatBotActions'
+import MessageTemplate from '../2-Body/MessageTemplate'
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 
 
-const FooterContainer = (props, state) => {
+const FooterContainer = (props) => {
 
   const InitialAudioState = {
     isRecording: false,
@@ -41,11 +44,13 @@ const FooterContainer = (props, state) => {
   }
 
   const handleSubmit = (event) => {
-    //console.log(event);
     event.preventDefault();
-     console.log(TextField);
-    console.log(selectedImage);
-    console.log(AudioState);
+    props.actions.clientSideActions.TypeAreaAction(
+    {
+      serverSide:false ,
+      message:{TextField},
+    }
+    );
     setTextField('');
     setSelectedImage(null);
     setAudioState(InitialAudioState);
@@ -72,18 +77,30 @@ const FooterContainer = (props, state) => {
       }).catch((e) => console.log(e));
   };
 
-  
-
   return <>
   <form  className="footer d-flex flex-row justify-content-between align-items-center" onSubmit={handleSubmit}>
       <UploadImage handleImageInput={handleImageInput} />
       <VoiceNote start={start} stop={stop} AudioState={AudioState} />
-      <TypeArea TextField={TextField} setTextField={setTextField} handleInputChange={handleInputChange}/>
+      <TypeArea 
+      TextField={TextField}
+      handleInputChange={handleInputChange}/>
       {/* <Emoji TextField={TextField} setTextField={setTextField}/> */}
       <SendArrow/>
     </form>
   </>
 
 }
-export default FooterContainer;
+
+
+// this function map the component with the actions
+//so this will be passed to this component via props as if the store 
+//is the parent of this component.
+const mapDispatchToProps=(dispatch)=>{
+  return{
+    actions: {
+      clientSideActions: bindActionCreators(ChatBotActions, dispatch),
+    },
+  };
+}
+export default connect(null, mapDispatchToProps)(FooterContainer);
 
