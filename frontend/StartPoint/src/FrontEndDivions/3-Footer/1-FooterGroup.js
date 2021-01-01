@@ -47,6 +47,7 @@ const FooterContainer = (props) => {
     event.preventDefault();
     props.actions.clientSideActions.TypeAreaAction(
     {
+      elementType: 'MessageTemplate',
       serverSide:false ,
       message:{TextField},
     }

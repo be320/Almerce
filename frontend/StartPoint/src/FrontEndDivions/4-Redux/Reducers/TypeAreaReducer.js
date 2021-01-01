@@ -5,7 +5,7 @@ import Constants from '../Actions/_ActionTypesConst'
 const TypeAreaReducer =(state = [], action)=> {
     switch(action.type){
         case Constants.SUBMIT_TEXTAREA: 
-        return state = state +action.messageTemplate;
+        return [action.messageTemplate];
          default:
         return state ;
     }

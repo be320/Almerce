@@ -1,11 +1,21 @@
 import './_Body.css'
 import { connect } from "react-redux";
+import MessageTemplate from '../2-Body/MessageTemplate'
 
 const BodyContainer=(props)=>{
-
 return<>
 <div className="body">
-{props.bodyContainer}
+{
+props.bodyContainer.map(item => { 
+  if (item.elementType ==='MessageTemplate'){
+    console.log('dddd');
+    return <MessageTemplate
+    serverSide={item.serverSide}
+    message={item.message.TextField}
+    />
+  }
+})
+}
 </div>
 </>
 }
@@ -19,6 +29,4 @@ const mapStateToProps =(state)=>{
     };
   }
 export default connect(mapStateToProps)(BodyContainer);
-
-
 
