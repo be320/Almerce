@@ -5,8 +5,7 @@ import BodyContainer from '../2-Body/1-BodyGroup'
 import FooterContainer from '../3-Footer/1-FooterGroup'
 const ChatBotContainer =()=>{
     return <>
-     <div className="border rounded chatBotBorder">
-       
+     <div className="chatBotBorder">
          <BodyContainer/>
          <FooterContainer/>
      </div>

@@ -1,6 +1,7 @@
 .body {
   height: 70%;
   overflow-y: auto;
+  background-color: rgb(246, 248, 251);
 }
 
 .messageTemplateContainer {
