@@ -52,6 +52,13 @@ const FooterContainer = (props) => {
       message:{TextField},
     }
     );
+    props.actions.clientSideActions.VoiceNoteAction(
+      {
+        elementType: 'AudioTemplate',
+        serverSide:false ,
+        audio:{AudioState},
+      }
+      );
     setTextField('');
     setSelectedImage(null);
     setAudioState(InitialAudioState);
@@ -82,9 +89,7 @@ const FooterContainer = (props) => {
   <form  className="footer d-flex flex-row justify-content-between align-items-center" onSubmit={handleSubmit}>
       <UploadImage handleImageInput={handleImageInput} />
       <VoiceNote start={start} stop={stop} AudioState={AudioState} />
-      <TypeArea 
-      TextField={TextField}
-      handleInputChange={handleInputChange}/>
+      <TypeArea TextField={TextField} handleInputChange={handleInputChange}/>
       {/* <Emoji TextField={TextField} setTextField={setTextField}/> */}
       <SendArrow/>
     </form>

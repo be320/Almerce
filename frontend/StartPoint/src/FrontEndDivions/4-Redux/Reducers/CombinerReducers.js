@@ -2,9 +2,11 @@
 // to be passed to the store
 import {combineReducers} from 'redux'
 import TypeAreaReducer from './TypeAreaReducer'
+import VoiceNoteReducer from './VoiceNoteReducer'
 
 const combineReducer = combineReducers({
-    TypeAreaReducer:TypeAreaReducer
+    TypeAreaReducer:TypeAreaReducer,
+    VoiceNoteReducer: VoiceNoteReducer
 })
 export default combineReducer;
 

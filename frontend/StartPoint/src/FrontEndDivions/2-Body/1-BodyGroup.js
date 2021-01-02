@@ -5,17 +5,25 @@ import MessageTemplate from '../2-Body/MessageTemplate'
 const BodyContainer=(props)=>{
 return<>
 <div className="body">
-{
-props.bodyContainer.map(item => { 
+
+{props.bodyContainer.map(item => { 
   if (item.elementType ==='MessageTemplate'){
-    console.log('dddd');
+    console.log('Message Received');
     return <MessageTemplate
     serverSide={item.serverSide}
     message={item.message.TextField}
     />
   }
-})
-}
+})}
+
+{props.VoiceNote.map(item => { 
+  if (item.elementType ==='AudioTemplate'){
+    console.log('Audio Received');
+    console.log('Audio Received');
+    return <audio src={item.audio.blobURL} controls="controls" />
+  }
+})}
+
 </div>
 </>
 }
@@ -25,7 +33,9 @@ props.bodyContainer.map(item => {
 //is the parent of this component
 const mapStateToProps =(state)=>{
     return {
-        bodyContainer: state.TypeAreaReducer
+       bodyContainer: state.TypeAreaReducer,
+       VoiceNote: state.VoiceNoteReducer,
+
     };
   }
 export default connect(mapStateToProps)(BodyContainer);

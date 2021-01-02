@@ -11,4 +11,12 @@ export const TypeAreaAction =(messageTemplate)=>{
     }
 }
 
+export const VoiceNoteAction =(audioTemplate)=>{
+
+    return{
+        type: Constants.SUBMIT_VOICENOTE,
+        audioTemplate: audioTemplate,
+    }
+}
+
  
