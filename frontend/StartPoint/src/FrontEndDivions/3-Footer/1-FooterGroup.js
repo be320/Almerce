@@ -39,14 +39,13 @@ const FooterContainer = (props) => {
   }
 
   const handleImageInput = (event) => {
-    setSelectedImage(event.target.files[0]);
-
+    setSelectedImage(URL.createObjectURL(event.target.files[0]));
   }
 
   const handleSubmit = (event) => {
     event.preventDefault();
    
-    if (TextField != '')
+    if (TextField !== '')
     {
       props.actions.clientSideActions.Action(
         {
@@ -56,13 +55,22 @@ const FooterContainer = (props) => {
         }
         );
     }
-    if (AudioState.blobURL != '')
+    if (AudioState.blobURL !== '')
     {
       props.actions.clientSideActions.Action(
         {
           elementType: 'AudioTemplate',
-          serverSide:false ,
           audio:{AudioState},
+        }
+        );
+    }
+
+    if (selectedImage !== null)
+    {
+      props.actions.clientSideActions.Action(
+        {
+          elementType: 'ImageTemplate',
+          image:{selectedImage},
         }
         );
     }

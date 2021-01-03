@@ -18,6 +18,11 @@ const InitialAudioState = {
         {state = InitialAudioState}
         return [...state,action.audioTemplate];
 
+        case Constants.SUBMIT_IMAGE:
+          if (typeof state == "undefined" )
+          {state = []}
+        return [...state,action.imageTemplate];
+
         default:
         if (typeof state == "undefined" )
         {state = []}

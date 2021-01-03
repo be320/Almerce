@@ -1,7 +1,9 @@
 import './_Body.css'
 import { connect } from "react-redux";
 import MessageTemplate from '../2-Body/MessageTemplate'
-import VoiceNoteTemplate from './VoiceNoteTemplate';
+import VoiceNoteTemplate from '../2-Body/VoiceNoteTemplate';
+import ImageTemplate from '../2-Body/ImageTemplate';
+
 
 const BodyContainer=(props)=>{
 return<>
@@ -14,12 +16,15 @@ return<>
     serverSide={item.serverSide}
     message={item.message.TextField}
     />}
-    else if (item.elementType =='AudioTemplate'){
+    else if (item.elementType ==='AudioTemplate'){
       console.log('Audio Received');
       return <VoiceNoteTemplate
-       serverSide={item.serverSide}
       Audio={item.audio.AudioState}/>
-      // <audio src={item.audio.AudioState.blobURL} style={{float :'right'}} controls="controls" />
+    }
+    else if (item.elementType ==='ImageTemplate'){
+      console.log('Image Received');
+      return <ImageTemplate
+      image={item.image.selectedImage}/>
     }
 })}
 

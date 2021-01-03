@@ -19,5 +19,12 @@ export const Action =(Template)=>{
             audioTemplate: Template,
         }
     }
+    else if (Template.elementType === "ImageTemplate")
+    {
+        return{
+            type: Constants.SUBMIT_IMAGE,
+            imageTemplate: Template,
+        }
+    }
 }
  

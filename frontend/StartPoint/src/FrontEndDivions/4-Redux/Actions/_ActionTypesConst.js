@@ -1,6 +1,8 @@
 const Constants = {
   SUBMIT_TEXTAREA: "SUBMIT_TEXTAREA",
   SUBMIT_VOICENOTE: "SUBMIT_VOICENOTE",
+  SUBMIT_IMAGE: "SUBMIT_IMAGE",
+
 };
 
 export default Constants;

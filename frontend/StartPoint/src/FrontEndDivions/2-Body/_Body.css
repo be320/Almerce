@@ -49,29 +49,6 @@
   font-size: 15px;
 }
 
-.VoiceNoteOrientationLeft {
-  border-radius: 0px 18px 18px 18px;
-  background: rgb(110, 72, 170);
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 2px 0px;
-  max-width: 70%;
-  padding: 12px;
-  color: white;
-  margin: 0px 5px 10px;
-  word-wrap: break-word;
-  display: inline-block;
-
-}
-
-.VoiceNoteOrientationRight {
-  border-radius: 18px 0px 18px 18px;
-  background: rgb(255, 255, 255);
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 2px 0px;
-  max-width: 70%;
-  padding: 12px;
-  color: rgb(74, 74, 74);
-  margin: 0px 5px 10px;
-  float: right;
-}
 
 .fixingSizeOrientationRight {
   overflow: auto;
