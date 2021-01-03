@@ -128,6 +128,7 @@ https://cliply.co/wp-content/uploads/2019/05/371905140_MEET_ROBOT_400px.gif
 			right:70px;
 			bottom:0;
 			width:320px;
+			z-index: 5;
 			box-shadow: rgba(0, 0, 0, 0.15) 0px 12px 24px 0px;" >
 	<div id="header" style="background-color: rgb(104, 76, 165); border-radius: 10px 10px 0px 0px; ">
 		<div style="display: inline-block; padding: 5pt; "  >
