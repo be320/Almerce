@@ -1,12 +1,10 @@
 // combine reducer used to coombines different reducers together into one single reducer
 // to be passed to the store
 import {combineReducers} from 'redux'
-import TypeAreaReducer from './TypeAreaReducer'
-import VoiceNoteReducer from './VoiceNoteReducer'
+import Reducer from './Reducer'
 
 const combineReducer = combineReducers({
-    TypeAreaReducer:TypeAreaReducer,
-    VoiceNoteReducer: VoiceNoteReducer
+        Reducer:Reducer
 })
 export default combineReducer;
 

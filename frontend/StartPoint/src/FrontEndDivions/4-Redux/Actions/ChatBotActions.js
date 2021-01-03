@@ -3,20 +3,21 @@
 import Constants from './_ActionTypesConst'
 
 // use this format in case you will use bindActionCreators
-export const TypeAreaAction =(messageTemplate)=>{
+export const Action =(Template)=>{
 
-    return{
+    if(Template.elementType === "MessageTemplate")
+    {
+        return{
         type: Constants.SUBMIT_TEXTAREA,
-        messageTemplate: messageTemplate,
+        messageTemplate: Template,
+        }
+    }
+    else if (Template.elementType === "AudioTemplate")
+    {
+        return{
+            type: Constants.SUBMIT_VOICENOTE,
+            audioTemplate: Template,
+        }
     }
 }
-
-export const VoiceNoteAction =(audioTemplate)=>{
-
-    return{
-        type: Constants.SUBMIT_VOICENOTE,
-        audioTemplate: audioTemplate,
-    }
-}
-
  

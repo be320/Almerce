@@ -45,20 +45,28 @@ const FooterContainer = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.actions.clientSideActions.TypeAreaAction(
+   
+    if (TextField != '')
     {
-      elementType: 'MessageTemplate',
-      serverSide:false ,
-      message:{TextField},
+      props.actions.clientSideActions.Action(
+        {
+          elementType: 'MessageTemplate',
+          serverSide:false ,
+          message:{TextField},
+        }
+        );
     }
-    );
-    props.actions.clientSideActions.VoiceNoteAction(
-      {
-        elementType: 'AudioTemplate',
-        serverSide:false ,
-        audio:{AudioState},
-      }
-      );
+    if (AudioState.blobURL != '')
+    {
+      props.actions.clientSideActions.Action(
+        {
+          elementType: 'AudioTemplate',
+          serverSide:false ,
+          audio:{AudioState},
+        }
+        );
+    }
+    
     setTextField('');
     setSelectedImage(null);
     setAudioState(InitialAudioState);
