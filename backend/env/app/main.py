@@ -20,7 +20,7 @@ def index():
 
 
 # Testing Endpoint for frontend
-@app.route('/test', methods=["POST"])
+@app.route('/test', methods=["PUT"])
 def test():
     if request.method == "PUT":
         request_data = request.get_json()
