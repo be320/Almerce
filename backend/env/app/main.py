@@ -17,12 +17,19 @@ def track():
 def test():
         print("hello")
         request_data = request.get_json()
-        return jsonify(request_data)        
+        return jsonify(request_data)    
+
+# A welcome message to test our server
+@app.route('/kiro')
+def kiro():
+    return "<h1>Welcome to kiro !!</h1>"    
 
 # A welcome message to test our server
 @app.route('/')
 def index():
     return "<h1>Welcome to our server !!</h1>"
+
+
 
 
 
