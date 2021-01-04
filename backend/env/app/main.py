@@ -20,8 +20,8 @@ def index():
 
 
 # Testing Endpoint for frontend
-@app.route('/test')
-def index():
+@app.route('/test', methods=["POST"])
+def test():
     if request.method == "PUT":
         request_data = request.get_json()
         return jsonify(request_data)
