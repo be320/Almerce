@@ -23,6 +23,11 @@ const InitialAudioState = {
           {state = []}
         return [...state,action.imageTemplate];
 
+        case Constants.RECEIVED_OLD_MESSAGES: 
+        if (typeof state == "undefined" )
+        {state = []}
+        return [...state,...action.messageTemplates];
+
         default:
         if (typeof state == "undefined" )
         {state = []}

@@ -1,10 +1,11 @@
 import axios from "axios";
 
  // This is the instance that Almerce will use for sending and receving from the backend 
-const AxiosSendInstance = axios.create({
+const AxiosInstance = axios.create({
     // This is the base URL for Almerce API that we will send our data to
     // for now this is dummy 
-    baseURL: 'https://jsonplaceholder.typicode.com',
+    baseURL: 'https://api.mocki.io',
 })
 
-export default AxiosSendInstance;
+export default AxiosInstance;
+

@@ -8,6 +8,7 @@ const InitialAudioState = {
   }
 
 const VoiceNoteReducer =(state = [InitialAudioState], action)=> {
+    debugger
     switch(action.type){
         case Constants.SUBMIT_VOICENOTE: 
         return [...state,action.audioTemplate];

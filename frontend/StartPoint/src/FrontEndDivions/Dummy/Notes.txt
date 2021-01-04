@@ -16,4 +16,9 @@
 5- Install Axios library for RestApi
     npm install axios
     Good Documentation source : https://www.npmjs.com/package/axios
+
+6- Install redux-thunk for Async/sync operations
+    npm install redux-thunk
+  
+
   

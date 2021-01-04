@@ -161,3 +161,15 @@ https://cliply.co/wp-content/uploads/2019/05/371905140_MEET_ROBOT_400px.gif
 		</iframe>
 	</div>
 </div>
+
+
+
+
+
+export const SendMultipleRequestToBackEnd=   AxiosSendInstance
+    .all([
+        AxiosSendInstance.get('https://jsonplaceholder.typicode.com/todos?_limit=5'),
+        AxiosSendInstance.get('https://jsonplaceholder.typicode.com/posts?_limit=5')
+    ])
+    .then(AxiosSendInstance.spread((firstReq, secondReq) => {}))
+    .catch(errorMessage => console.error(errorMessage));

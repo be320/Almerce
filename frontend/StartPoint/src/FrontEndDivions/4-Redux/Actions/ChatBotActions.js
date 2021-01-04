@@ -1,9 +1,10 @@
 // The type of action or the intent needs to be implemented 
 
 import Constants from './_ActionTypesConst'
+import AxiosInstance from '../../5-Axios/AxiosConfiguration'
 
 // use this format in case you will use bindActionCreators
-export const Action =(Template)=>{
+ export const Action =(Template)=>{
 
     if(Template.elementType === "MessageTemplate")
     {
@@ -27,4 +28,31 @@ export const Action =(Template)=>{
         }
     }
 }
+
+const apiCallAction=()=> {
+    return {
+      type: Constants.BEGIN_API_CALL,
+    };
+  }
+
+const loadOldMessageSuccess =(Templates)=>{
+    return{
+    type: Constants.RECEIVED_OLD_MESSAGES,
+    messageTemplates: Templates,
+}
+
+}
+export const loadOldMessage=()=> {
+    return (dispatch) => {
+      dispatch(apiCallAction());
+      return  AxiosInstance.post('/v1/301df99f')
+      .then((Templates)=>{
+        dispatch(loadOldMessageSuccess(Templates.data));
+    }).catch((errorMessage)=>{
+        throw errorMessage;
+    });
+    };
+}
+  
+
  

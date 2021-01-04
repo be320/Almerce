@@ -9,6 +9,7 @@ import * as ChatBotActions from '../4-Redux/Actions/ChatBotActions'
 import MessageTemplate from '../2-Body/MessageTemplate'
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+import AxiosSendInstance from '../5-Axios/AxiosConfiguration'
 
 
 const FooterContainer = (props) => {
@@ -28,6 +29,9 @@ const FooterContainer = (props) => {
         setAudioState({ isBlocked: false });
       },
       () => { setAudioState({ isBlocked: true }); });
+
+      //API Call 
+      props.actions.clientSideActions.loadOldMessage();
   }, []);
 
   const Mp3Recorder = React.useMemo(() => new MicRecorder({
