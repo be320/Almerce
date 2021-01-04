@@ -37,7 +37,7 @@ return<>
 //is the parent of this component
 const mapStateToProps =(state)=>{
     return {
-       bodyContainer: state.Reducer
+       bodyContainer: state
     };
   }
 export default connect(mapStateToProps)(BodyContainer);

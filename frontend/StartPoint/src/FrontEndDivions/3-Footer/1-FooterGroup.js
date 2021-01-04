@@ -38,7 +38,7 @@ const FooterContainer = (props) => {
     bitRate: 128
   }), []);
 
-  const handleInputChange = (event) => {
+  const handleTextChange = (event) => {
     setTextField(event.target.value);
   }
 
@@ -46,9 +46,7 @@ const FooterContainer = (props) => {
     setSelectedImage(URL.createObjectURL(event.target.files[0]));
   }
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-   
+  const CallFormActions = () => {
     if (TextField !== '')
     {
       props.actions.clientSideActions.Action(
@@ -78,7 +76,12 @@ const FooterContainer = (props) => {
         }
         );
     }
-    
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    CallFormActions();
+   //Resetting Form  
     setTextField('');
     setSelectedImage(null);
     setAudioState(InitialAudioState);
@@ -109,7 +112,7 @@ const FooterContainer = (props) => {
   <form  className="footer d-flex flex-row justify-content-between align-items-center" onSubmit={handleSubmit}>
       <UploadImage handleImageInput={handleImageInput} />
       <VoiceNote start={start} stop={stop} AudioState={AudioState} />
-      <TypeArea TextField={TextField} handleInputChange={handleInputChange}/>
+      <TypeArea TextField={TextField} handleTextChange={handleTextChange}/>
       {/* <Emoji TextField={TextField} setTextField={setTextField}/> */}
       <SendArrow/>
     </form>
