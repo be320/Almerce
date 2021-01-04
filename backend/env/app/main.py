@@ -15,7 +15,7 @@ def track():
 # Testing Endpoint for frontend
 @app.route('/test', methods=["PUT"])
 def test():
-    if request.method == "PUT":
+        print("hello")
         request_data = request.get_json()
         return jsonify(request_data)        
 
