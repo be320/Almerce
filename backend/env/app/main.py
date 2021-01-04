@@ -12,6 +12,12 @@ def track():
         data["status"] = 'success'
         return jsonify(data)
 
+# Testing Endpoint for frontend
+@app.route('/test', methods=["PUT"])
+def test():
+    if request.method == "PUT":
+        request_data = request.get_json()
+        return jsonify(request_data)        
 
 # A welcome message to test our server
 @app.route('/')
@@ -19,10 +25,5 @@ def index():
     return "<h1>Welcome to our server !!</h1>"
 
 
-# Testing Endpoint for frontend
-@app.route('/test', methods=["PUT"])
-def test():
-    if request.method == "PUT":
-        request_data = request.get_json()
-        return jsonify(request_data)
+
 
