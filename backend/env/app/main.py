@@ -18,3 +18,11 @@ def track():
 def index():
     return "<h1>Welcome to our server !!</h1>"
 
+
+# Testing Endpoint for frontend
+@app.route('/test')
+def index():
+    if request.method == "PUT":
+        request_data = request.get_json()
+        return jsonify(request_data)
+
