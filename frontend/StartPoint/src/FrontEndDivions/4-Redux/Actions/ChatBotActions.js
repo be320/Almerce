@@ -4,8 +4,14 @@ import Constants from './_ActionTypesConst'
 import AxiosInstance from '../../5-Axios/AxiosConfiguration'
 
 // use this format in case you will use bindActionCreators
- export const Action =(Template)=>{
 
+const apiCallAction=()=> {
+    return {
+      type: Constants.BEGIN_API_CALL,
+    };
+  }
+
+const sendTemplateSuccess =(Template)=>{
     if(Template.elementType === "MessageTemplate")
     {
         return{
@@ -29,11 +35,6 @@ import AxiosInstance from '../../5-Axios/AxiosConfiguration'
     }
 }
 
-const apiCallAction=()=> {
-    return {
-      type: Constants.BEGIN_API_CALL,
-    };
-  }
 
 const loadOldMessageSuccess =(Templates)=>{
     return{
@@ -54,5 +55,19 @@ export const loadOldMessage=()=> {
     };
 }
   
+export const sendTemplate=(Template)=>{
+    return((dispatch)=>{
+        dispatch(apiCallAction());
+        return  AxiosInstance.put('/v1/1cc744c0',{
+            // place here your object 
+            Template
+        }).then((response)=>{
+            console.log(response);
+            dispatch(sendTemplateSuccess(Template))
+        }).catch((errorMessage)=>{
+            console.log('Bad Request');
+        });
 
- 
+    });
+}
+

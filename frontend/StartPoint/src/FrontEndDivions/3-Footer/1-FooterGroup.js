@@ -9,7 +9,6 @@ import * as ChatBotActions from '../4-Redux/Actions/ChatBotActions'
 import MessageTemplate from '../2-Body/MessageTemplate'
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import AxiosSendInstance from '../5-Axios/AxiosConfiguration'
 
 
 const FooterContainer = (props) => {
@@ -31,7 +30,7 @@ const FooterContainer = (props) => {
       () => { setAudioState({ isBlocked: true }); });
 
       //API Call 
-      props.actions.clientSideActions.loadOldMessage();
+     props.actions.clientSideActions.loadOldMessage();
   }, []);
 
   const Mp3Recorder = React.useMemo(() => new MicRecorder({
@@ -49,30 +48,29 @@ const FooterContainer = (props) => {
   const CallFormActions = () => {
     if (TextField !== '')
     {
-      props.actions.clientSideActions.Action(
+      props.actions.clientSideActions.sendTemplate(
         {
           elementType: 'MessageTemplate',
           serverSide:false ,
-          message:{TextField},
+          message:{TextField}
         }
         );
     }
     if (AudioState.blobURL !== '')
     {
-      props.actions.clientSideActions.Action(
+      props.actions.clientSideActions.sendTemplate(
         {
           elementType: 'AudioTemplate',
-          audio:{AudioState},
+          audio:{AudioState}
         }
         );
     }
-
     if (selectedImage !== null)
     {
-      props.actions.clientSideActions.Action(
+      props.actions.clientSideActions.sendTemplate(
         {
           elementType: 'ImageTemplate',
-          image:{selectedImage},
+          image:{selectedImage}
         }
         );
     }
@@ -86,7 +84,6 @@ const FooterContainer = (props) => {
     setSelectedImage(null);
     setAudioState(InitialAudioState);
   }
-
   const start = () => {
 
     if (AudioState.isBlocked) {
@@ -97,7 +94,6 @@ const FooterContainer = (props) => {
       }).catch((e) => console.error(e));
     }
   };
-
   const stop = () => {
     Mp3Recorder
       .stop()
