@@ -35,7 +35,6 @@ const sendTemplateSuccess =(Template)=>{
     }
 }
 
-
 const loadOldMessageSuccess =(Templates)=>{
     return{
     type: Constants.RECEIVED_OLD_MESSAGES,
@@ -57,15 +56,17 @@ export const loadOldMessage=()=> {
   
 export const sendTemplate=(Template)=>{
     return((dispatch)=>{
+        console.log(Template);
         dispatch(apiCallAction());
-        return  AxiosInstance.put('/v1/1cc744c0',{
+        return  AxiosInstance.put('/test',{
             // place here your object 
             Template
         }).then((response)=>{
-            console.log(response);
+            console.log(response.data);
+            dispatch(sendTemplateSuccess(response.data.Template))
             dispatch(sendTemplateSuccess(Template))
         }).catch((errorMessage)=>{
-            console.log('Bad Request');
+            console.log(errorMessage);
         });
 
     });
