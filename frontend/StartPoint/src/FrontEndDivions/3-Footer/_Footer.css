@@ -38,6 +38,15 @@ textarea:focus{
   height: 20pt;
 }
 
+.Close {
+  width: 10pt;
+  height: 10pt;
+  display:block;
+  margin-right:auto;
+  margin-left:auto;
+
+}
+
 .micOff{
   width: 15pt;
   height: 20pt;

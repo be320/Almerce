@@ -3,8 +3,8 @@ import ImageIcon from '../Dummy/Images/ImageIcon.png'
 
 const UploadImage =(props,state)=>{
     return<>
-   <label htmlFor="myImg" className="ml-2 mt-1" >
-    <img  src={ImageIcon} className="imageIcon" alt="Upload"/>
+   <label htmlFor="myImg"  className="ml-2 m-1 mb-2 "  >
+    <img  src={ImageIcon} className="imageIcon " alt="Upload"/>
  </label>
       <input
         id="myImg"

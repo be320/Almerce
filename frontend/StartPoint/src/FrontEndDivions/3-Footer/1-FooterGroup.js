@@ -109,13 +109,26 @@ const FooterContainer = (props) => {
       }).catch((e) => console.log(e));
   };
 
+  const DeleteVN =() => //user clicked X button
+  {
+    Mp3Recorder.stop()
+    setAudioState(InitialAudioState);
+  };
+  const StopRecord = () => { //user clicked send while mic is recording
+
+    if (AudioState.isRecording)
+  {
+    stop();
+  }
+  }
+  
   return <>
-  <form  className="footer d-flex flex-row justify-content-between align-items-center" onSubmit={handleSubmit}>
+  <form  className="footer d-flex flex-row justify-content-between align-items-end" onSubmit={handleSubmit}>
       <UploadImage handleImageInput={handleImageInput} />
-      <VoiceNote start={start} stop={stop} AudioState={AudioState} />
+      <VoiceNote start={start} stop={stop} DeleteVN={DeleteVN} AudioState={AudioState} />
       <TypeArea  inputRef={inputRef} TextField={TextField} handleTextChange={handleTextChange}/>
       {/* <Emoji TextField={TextField} setTextField={setTextField}/> */}
-      <SendArrow/>
+      <SendArrow StopRecord={StopRecord}/>
     </form>
   </>
 
