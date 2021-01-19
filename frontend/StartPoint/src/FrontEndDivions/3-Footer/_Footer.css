@@ -1,10 +1,9 @@
-
-.footer{
+.footer {
   background-color: #ecedf1;
-  height: auto ;
-  width:100%;
-  bottom:0;
-  position:fixed;
+  height: auto;
+  width: 100%;
+  position: sticky;
+  bottom: 0;
 }
 
 .imageIcon {
@@ -12,22 +11,21 @@
   height: 15pt;
 }
 
-.myTextArea{
+.myTextArea {
   resize: none;
-  border-color: rgb(104, 76, 165) ;
+  border-color: rgb(104, 76, 165);
 }
-textarea:focus{ 
+textarea:focus {
   outline: none;
-  box-shadow:0.5px 0.5px 2px 2px  rgb(104, 76, 165);
-  }
+  box-shadow: 0.5px 0.5px 2px 2px rgb(104, 76, 165);
+}
 
-
-.Emoji-Submit{
+.Emoji-Submit {
   display: "none";
 }
 
-.getEmojiButton{
-  Float: "right";
+.getEmojiButton {
+  float: "right";
   border: "none";
   margin: 0;
   cursor: "pointer";
@@ -47,9 +45,9 @@ textarea:focus{
 
 }
 
-.micOff{
+.micOff {
   width: 15pt;
-  height: 20pt;
+  height: 22pt;
 }
 
 .sendIcon {
