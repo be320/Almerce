@@ -3,8 +3,8 @@ import ImageIcon from '../Dummy/Images/ImageIcon.png'
 
 const UploadImage =(props,state)=>{
     return<>
-   <label htmlFor="myImg" className="ml-2 my-auto align-self-end" >
-    <img  src={ImageIcon} className="imageIcon" alt="Upload an image"/>
+   <label htmlFor="myImg" className="ml-2 mt-1" >
+    <img  src={ImageIcon} className="imageIcon" alt="Upload"/>
  </label>
       <input
         id="myImg"
@@ -12,7 +12,7 @@ const UploadImage =(props,state)=>{
         accept="image/png, image/jpeg"
         style={{ display: "none" }}
         onChange={props.handleImageInput}
-      /> </>
-
+      />
+       </>
     }
     export default UploadImage;

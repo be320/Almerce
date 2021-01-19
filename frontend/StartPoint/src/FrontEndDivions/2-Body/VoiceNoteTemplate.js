@@ -1,13 +1,11 @@
 import './_Body.css'
-import B from '../Dummy/Images/B.jpg'
-
 
 const VoiceNoteTemplate = (props) => {
     return <>
         <div className=" messageTemplateContainer ">
             <div className='fixingSizeOrientationRight' >
-                <div className='p-1 messageOrientationRight ' >
-                    <audio src={props.Audio.blobURL} style={{width: "180px"}}controls controlslist="nodownload" />
+                <div className='pt-1 pb-0 px-1 w-100 messageOrientationRight ' >
+                    <audio src={props.Audio.blobURL} className="w-100 m-auto"controls controlslist="nodownload" />
                 </div>
             </div>
         </div>

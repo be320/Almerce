@@ -48,6 +48,7 @@ const FooterContainer = (props) => {
   const CallFormActions = () => {
     if (TextField !== '')
     {
+      
       props.actions.clientSideActions.sendTemplate(
         {
           elementType: 'MessageTemplate',

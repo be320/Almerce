@@ -1,15 +1,15 @@
 
 .footer{
   background-color: #ecedf1;
-  height: 18% ;
+  height: auto ;
   width:100%;
   bottom:0;
   position:fixed;
 }
 
 .imageIcon {
-  width: 25pt;
-  height: 25pt;
+  width: 15pt;
+  height: 15pt;
 }
 
 .myTextArea{
@@ -34,16 +34,16 @@ textarea:focus{
 }
 
 .micOn {
-  width: 25pt;
-  height: 35pt;
+  width: 15pt;
+  height: 20pt;
 }
 
 .micOff{
-  width: 25pt;
-  height: 35pt;
+  width: 15pt;
+  height: 20pt;
 }
 
 .sendIcon {
-  width: 25pt;
-  height: 25pt;
+  width: 15pt;
+  height: 15pt;
 }

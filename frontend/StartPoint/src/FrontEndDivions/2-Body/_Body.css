@@ -2,18 +2,18 @@
   height: 70%;
   overflow-y: auto;
   background-color: rgb(246, 248, 251);
-margin-bottom: 20%;}
+}
 
 .messageTemplateContainer {
   margin: 5pt;
 }
 
-.imageMessageTemplateRight {
+/* .imageMessageTemplateRight {
   width: 30pt;
   height: 30pt;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px 0px;
   float: right;
-}
+} */
 .imageMessageTemplateLeft {
   width: 30pt;
   height: 30pt;

@@ -19,6 +19,9 @@
 
 6- Install redux-thunk for Async/sync operations
     npm install redux-thunk
+
+7- Install auto-sized textarea
+    npm install react-textarea-autosize
   
 
   

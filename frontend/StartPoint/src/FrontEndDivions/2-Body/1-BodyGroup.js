@@ -7,6 +7,7 @@ import ImageTemplate from '../2-Body/ImageTemplate';
 
 const BodyContainer=(props)=>{
 return<>
+
 <div className="body">
 
 {props.bodyContainer.map(item => { 
@@ -27,8 +28,8 @@ return<>
       image={item.image.selectedImage}/>
     }
 })}
-
 </div>
+
 </>
 }
 
