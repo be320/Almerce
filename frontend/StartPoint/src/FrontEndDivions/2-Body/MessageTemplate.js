@@ -6,8 +6,8 @@ const MessageTemplate = (props) => {
     return <>
         <div className=" messageTemplateContainer ">
             <div className='fixingSizeOrientationRight' >
-                <img src={B} className={props.serverSide ? ' imageMessageTemplateLeft rounded-circle' : ' imageMessageTemplateRight rounded-circle'} alt="ImageMessageTemplate" />
-                <div className={props.serverSide ? ' messageOrientationLeft ' : ' messageOrientationRight '} >{props.message}</div>
+                {props.serverSide && <img src={B} className="imageMessageTemplateLeft rounded-circle"  alt="ImageMessageTemplate" />}
+                <div className={props.serverSide ? ' messageOrientationLeft ' : ' messageOrientationRight '} style ={props.serverSide ? {backgroundColor : "#E5CCFF"}:{}} >{props.message}</div>
             </div>
         </div>
     </>

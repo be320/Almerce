@@ -1,6 +1,6 @@
 import React from 'react';
 import './_Footer.css'
-import MicOn from '../Dummy/Images/MicOn.png' 
+import MicOn from '../Dummy/Images/MicOn.gif' 
 import MicOff from '../Dummy/Images/MicOff.png' 
 
 const VoiceNote =(props)=>{

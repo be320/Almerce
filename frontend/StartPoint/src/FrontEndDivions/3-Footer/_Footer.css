@@ -1,20 +1,27 @@
 
 .footer{
   background-color: #ecedf1;
-  height: auto ;
+  height: 18% ;
   width:100%;
   bottom:0;
   position:fixed;
 }
 
 .imageIcon {
-  width: 20pt;
-  height: 20pt;
+  width: 25pt;
+  height: 25pt;
 }
 
 .myTextArea{
   resize: none;
+  border-color: rgb(104, 76, 165) ;
 }
+textarea:focus{ 
+  outline: none;
+  box-shadow:0.5px 0.5px 2px 2px  rgb(104, 76, 165);
+  }
+
+
 .Emoji-Submit{
   display: "none";
 }
@@ -27,16 +34,16 @@
 }
 
 .micOn {
-  width: 20pt;
-  height: 20pt;
+  width: 25pt;
+  height: 35pt;
 }
 
 .micOff{
-  width: 20pt;
-  height: 20pt
+  width: 25pt;
+  height: 35pt;
 }
 
 .sendIcon {
-  width: 15pt;
-  height: 15pt;
+  width: 25pt;
+  height: 25pt;
 }

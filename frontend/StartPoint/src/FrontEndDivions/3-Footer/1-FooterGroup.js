@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState,useRef} from "react"
 import MicRecorder from 'mic-recorder-to-mp3'
 import './_Footer.css'
 import UploadImage from './UploadImage'
@@ -11,8 +11,8 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
 
-const FooterContainer = (props) => {
-
+const FooterContainer = (props) => {  
+  const inputRef = useRef();
   const InitialAudioState = {
     isRecording: false,
     blobURL: '',
@@ -74,6 +74,10 @@ const FooterContainer = (props) => {
         }
         );
     }
+    if (TextField === '' && AudioState.blobURL === '' && selectedImage === null){
+      //focus type area when all user inputs are empty
+      inputRef.current.focus();
+    }
   }
 
   const handleSubmit = (event) => {
@@ -108,7 +112,7 @@ const FooterContainer = (props) => {
   <form  className="footer d-flex flex-row justify-content-between align-items-center" onSubmit={handleSubmit}>
       <UploadImage handleImageInput={handleImageInput} />
       <VoiceNote start={start} stop={stop} AudioState={AudioState} />
-      <TypeArea TextField={TextField} handleTextChange={handleTextChange}/>
+      <TypeArea  inputRef={inputRef} TextField={TextField} handleTextChange={handleTextChange}/>
       {/* <Emoji TextField={TextField} setTextField={setTextField}/> */}
       <SendArrow/>
     </form>
