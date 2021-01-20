@@ -6,7 +6,7 @@ const InitialAudioState = {
     isBlocked: false,
   }
 
-  const Reducer =(state = [], action)=> {
+  const Reducer =(state = [{height:"38"}], action)=> {
     switch(action.type){
         case Constants.SUBMIT_TEXTAREA: 
         return [...state,action.messageTemplate];
@@ -21,6 +21,11 @@ const InitialAudioState = {
 
         case Constants.RECEIVED_OLD_MESSAGES: 
         return [...state,...action.messageTemplates];
+
+        case Constants.CHANGE_WINDOW_SIZE:
+          state[0]=action.height
+          state=[...state]
+          return state
 
         default:
         return state ;
