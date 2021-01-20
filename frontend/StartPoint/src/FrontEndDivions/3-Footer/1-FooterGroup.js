@@ -30,7 +30,7 @@ const FooterContainer = (props) => {
       () => { setAudioState({ isBlocked: true }); });
 
       //API Call 
-     props.actions.clientSideActions.loadOldMessage();
+    // props.actions.clientSideActions.loadOldMessage();
      
   }, []);
 
