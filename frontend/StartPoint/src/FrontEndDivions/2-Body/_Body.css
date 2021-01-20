@@ -1,0 +1,86 @@
+.body {
+  overflow-y: auto;
+  background-color: rgb(246, 248, 251);
+  position: absolute;
+  left: 0px;
+  right: 0px;
+}
+
+.messageTemplateContainer {
+  margin: 5pt;
+}
+
+/* .imageMessageTemplateRight {
+  width: 30pt;
+  height: 30pt;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px 0px;
+  float: right;
+} */
+.imageMessageTemplateLeft {
+  width: 30pt;
+  height: 30pt;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px 0px;
+  vertical-align: top;
+}
+
+.messageOrientationLeft {
+  border-radius: 0px 18px 18px 18px;
+  background: rgb(110, 72, 170);
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 2px 0px;
+  max-width: 70%;
+  padding: 12px;
+  color: white;
+  margin: 0px 5px 10px;
+  text-align: left;
+  word-wrap: break-word;
+  display: inline-block;
+  font-size: 15px;
+}
+
+.messageOrientationRight {
+  border-radius: 18px 0px 18px 18px;
+  background: rgb(255, 255, 255);
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 2px 0px;
+  max-width: 70%;
+  padding: 12px;
+  color: rgb(74, 74, 74);
+  margin: 0px 5px 10px;
+  text-align: left;
+  float: right;
+  word-wrap: break-word;
+  font-size: 15px;
+}
+
+.fixingSizeOrientationRight {
+  overflow: auto;
+}
+
+.productCardContainer {
+  padding: 20px;
+  width: 100%;
+  display: inline-flex;
+  overflow-x: auto;
+  background: rgb(203, 192, 220);
+  border-radius: 18px 18px 18px 18px;
+  font-size: 13px;
+}
+
+.productCardItemContainer {
+  border-radius: 18px 18px 18px 18px;
+  background: rgb(110, 72, 170);
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 2px 0px;
+  max-width: 50%;
+  color: white;
+  text-align: justify;
+  padding: 12px;
+  margin: 10px;
+  flex-shrink: 0;
+}
+
+.productCardImage {
+  border-radius: 18px 18px 18px 18px;
+  background-color: rgb(255, 255, 255);
+  padding-bottom: 20px;
+  max-width: 100%;
+  height: auto;
+}
