@@ -65,8 +65,7 @@ export const sendTemplate=(Template)=>{
     return((dispatch)=>{
         console.log(Template);
         dispatch(apiCallAction());
-        dispatch(sendTemplateSuccess(Template))
-        return  AxiosInstance.put('/test',{
+        return  AxiosInstance.put('/sendText',{
             // place here your object 
             Template
         }).then((response)=>{
