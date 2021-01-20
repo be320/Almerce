@@ -5,7 +5,7 @@ const ImageTemplate = (props) => {
         <div className=" messageTemplateContainer ">
             <div className='fixingSizeOrientationRight' >
                 <div className='w-100 messageOrientationRight '>
-                    <img src={props.image} style={{display: "block", width: "100%", height: "auto"}}/>
+                    <img src={props.image} style={{display: "block", width: "100%", height: "auto"}} alt="uploaded"/>
                 </div>
             </div>
         </div>

@@ -39,6 +39,9 @@ return<>
       return <ImageTemplate
       image={item.image.selectedImage}/>
     }
+    else 
+   {return<>
+    </>} 
 })}
    <div ref={messagesEndRef} />
 </div>

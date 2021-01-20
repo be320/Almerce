@@ -6,7 +6,6 @@ import VoiceNote from './VoiceNote'
 import SendArrow from './SendArrow'
 import TypeArea from './TypeArea'
 import * as ChatBotActions from '../4-Redux/Actions/ChatBotActions'
-import MessageTemplate from '../2-Body/MessageTemplate'
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 

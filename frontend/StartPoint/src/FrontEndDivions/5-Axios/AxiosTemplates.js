@@ -11,7 +11,7 @@ AxiosInstance.post('/').then((response)=>{
 
 // Put Request Template
 // used when you need to send data to Almerce 
-AxiosInstance.put('/',{
+AxiosInstance.put('/test',{
         // place here your object 
     }).then((response)=>{
         console.log(response);

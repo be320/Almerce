@@ -16,7 +16,7 @@ const VoiceNote =(props)=>{
  
       {props.AudioState.isRecording && (
         <div className=" mt-1  ">
-              <img src={Close} onClick={props.DeleteVN} className="Close"/> 
+              <img src={Close} onClick={props.DeleteVN} className="Close" alt="click to delete record"/> 
               <img className="micOn m-1" onClick={props.stop}  src={MicOn} alt="click to save record"/>
 
         </div>

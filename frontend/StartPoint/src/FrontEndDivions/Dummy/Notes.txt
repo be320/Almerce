@@ -7,20 +7,17 @@
 
 2- Install Redux DevTools from chrome extensions
 
-3- Install emoji component
-    npm i emoji-mart
-    
-4- Install mic-recorder-to-mp3 npm package
+3- Install mic-recorder-to-mp3 npm package
     npm install --save mic-recorder-to-mp3
   
-5- Install Axios library for RestApi
+4- Install Axios library for RestApi
     npm install axios
     Good Documentation source : https://www.npmjs.com/package/axios
 
-6- Install redux-thunk for Async/sync operations
+5- Install redux-thunk for Async/sync operations
     npm install redux-thunk
 
-7- Install auto-sized textarea
+6- Install auto-sized textarea
     npm install react-textarea-autosize
   
 
