@@ -1,5 +1,4 @@
 .body {
-  overflow-y: auto;
   background-color: rgb(246, 248, 251);
   height: calc(100vh - 38px);
 }

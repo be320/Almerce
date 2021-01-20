@@ -44,7 +44,12 @@ const FooterContainer = (props) => {
   const handleImageInput = (event) => {
     setSelectedImage(URL.createObjectURL(event.target.files[0]));
   }
-
+  const stop = () => {
+    Mp3Recorder.stop().getMp3().then(([buffer, blob]) => {
+        const bu = URL.createObjectURL(blob)
+        setAudioState({ blobURL: bu, isRecording: false });
+      }).catch((e) => console.log(e));
+  };
   const CallFormActions = () => {
     if (TextField !== '')
     {
@@ -99,36 +104,28 @@ const FooterContainer = (props) => {
       }).catch((e) => console.error(e));
     }
   };
-  const stop = () => {
-    Mp3Recorder
-      .stop()
-      .getMp3()
-      .then(([buffer, blob]) => {
-        const bu = URL.createObjectURL(blob)
-        setAudioState({ blobURL: bu, isRecording: false });
-      }).catch((e) => console.log(e));
-  };
+  
 
   const DeleteVN =() => //user clicked X button
   {
     Mp3Recorder.stop()
     setAudioState(InitialAudioState);
   };
-  const StopRecord = () => { //user clicked send while mic is recording
 
-    if (AudioState.isRecording)
+  const OnSendIconClick = () => { //handle states before submission
+    if (AudioState.isRecording) //user clicked send while mic is recording
   {
     stop();
   }
-  }
+  };
   
   return <>
   <form  className="footer d-flex flex-row justify-content-between align-items-end" onSubmit={handleSubmit}>
-      <UploadImage handleImageInput={handleImageInput} />
-      <VoiceNote start={start} stop={stop} DeleteVN={DeleteVN} AudioState={AudioState} />
+      <UploadImage ImgInputState={selectedImage} handleImageInput={handleImageInput} />
+      <VoiceNote start={start} stop={stop}  DeleteVN={DeleteVN} AudioState={AudioState} />
       <TypeArea  inputRef={inputRef} TextField={TextField} handleTextChange={handleTextChange}/>
       {/* <Emoji TextField={TextField} setTextField={setTextField}/> */}
-      <SendArrow StopRecord={StopRecord}/>
+      <SendArrow OnSendIconClick={OnSendIconClick}/>
     </form>
   </>
 
