@@ -5,12 +5,14 @@ import VoiceNoteTemplate from '../2-Body/VoiceNoteTemplate';
 import ImageTemplate from '../2-Body/ImageTemplate';
 
 
+
 const BodyContainer=(props)=>{
 return<>
-
-<div className="body">
-
+<div className="body" style={{
+   height:"calc(100vh - "+props.bodyWindowSize.height+"px)"
+    }}>
 {props.bodyContainer.map(item => { 
+
   if (item.elementType ==='MessageTemplate'){
     console.log('Message Received');
     return <MessageTemplate
@@ -38,8 +40,10 @@ return<>
 //is the parent of this component
 const mapStateToProps =(state)=>{
     return {
-       bodyContainer: state
+       bodyContainer: state,
+       bodyWindowSize: state[0]
     };
   }
+  
 export default connect(mapStateToProps)(BodyContainer);
 
