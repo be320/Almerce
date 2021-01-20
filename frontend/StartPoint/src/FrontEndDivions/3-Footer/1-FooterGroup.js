@@ -135,7 +135,7 @@ const FooterContainer = (props) => {
 
   return <>
   <form  className="footer d-flex flex-row justify-content-between align-items-end" onSubmit={handleSubmit}>
-      <UploadImage handleImageInput={handleImageInput} />
+  <UploadImage ImgInputState={selectedImage} handleImageInput={handleImageInput} />
       <VoiceNote start={start} stop={stop} DeleteVN={DeleteVN} AudioState={AudioState} />
       <TypeArea  inputRef={inputRef} TextField={TextField} handleTextChange={handleTextChange}
       onHeightChange={onHeightChange}/>
