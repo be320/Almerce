@@ -42,13 +42,6 @@ const loadOldMessageSuccess =(Templates)=>{
 }
 
 }
-export const sendWindowHeight=(height)=>{
-    return{
-        type: Constants.CHANGE_WINDOW_SIZE,
-        height: height,
-    }
-
-}
 export const loadOldMessage=()=> {
     return (dispatch) => {
       dispatch(apiCallAction());
@@ -66,6 +59,7 @@ export const sendTemplate=(Template)=>{
         console.log(Template);
         dispatch(apiCallAction());
         dispatch(sendTemplateSuccess(Template))
+
         return  AxiosInstance.put('/test',{
             // place here your object 
             Template

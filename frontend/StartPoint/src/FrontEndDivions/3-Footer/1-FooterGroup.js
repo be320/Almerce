@@ -31,7 +31,6 @@ const FooterContainer = (props) => {
 
       //API Call 
      props.actions.clientSideActions.loadOldMessage();
-     
   }, []);
 
   const Mp3Recorder = React.useMemo(() => new MicRecorder({
@@ -120,25 +119,11 @@ const FooterContainer = (props) => {
   }
   };
   
-
-  const onHeightChange = (height)=>{
-    props.actions.clientSideActions.sendWindowHeight(
-      {
-        height: height
-      }
-      );
-
-  }
-
   return <>
   <form  className="footer d-flex flex-row justify-content-between align-items-end" onSubmit={handleSubmit}>
       <UploadImage ImgInputState={selectedImage} handleImageInput={handleImageInput} />
       <VoiceNote start={start} stop={stop}  DeleteVN={DeleteVN} AudioState={AudioState} />
       <TypeArea  inputRef={inputRef} TextField={TextField} handleTextChange={handleTextChange}/>
-      <UploadImage handleImageInput={handleImageInput} />
-      <VoiceNote start={start} stop={stop} DeleteVN={DeleteVN} AudioState={AudioState} />
-      <TypeArea  inputRef={inputRef} TextField={TextField} handleTextChange={handleTextChange}
-      onHeightChange={onHeightChange}/>
       {/* <Emoji TextField={TextField} setTextField={setTextField}/> */}
       <SendArrow OnSendIconClick={OnSendIconClick}/>
     </form>

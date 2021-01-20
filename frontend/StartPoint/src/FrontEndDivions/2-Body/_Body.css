@@ -1,8 +1,6 @@
 .body {
   background-color: rgb(246, 248, 251);
-  position: absolute;
-  left: 0px;
-  right: 0px;
+  height: calc(100vh - 38px);
 }
 
 .messageTemplateContainer {
