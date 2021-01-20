@@ -2,8 +2,11 @@
   background-color: #ecedf1;
   height: auto;
   width: 100%;
-  position: sticky;
+  position: absolute;
   bottom: 0;
+  overflow: hidden;
+  left: 0px;
+  right: 0px;
 }
 
 .imageIcon {
@@ -39,10 +42,9 @@ textarea:focus {
 .Close {
   width: 10pt;
   height: 10pt;
-  display:block;
-  margin-right:auto;
-  margin-left:auto;
-
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .micOff {
