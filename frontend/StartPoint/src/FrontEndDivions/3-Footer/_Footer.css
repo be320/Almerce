@@ -1,0 +1,58 @@
+.footer {
+  background-color: #ecedf1;
+  height: auto;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  overflow: hidden;
+  left: 0px;
+  right: 0px;
+}
+
+.imageIcon {
+  width: 15pt;
+  height: 15pt;
+}
+
+.myTextArea {
+  resize: none;
+  border-color: rgb(104, 76, 165);
+}
+textarea:focus {
+  outline: none;
+  box-shadow: 0.5px 0.5px 2px 2px rgb(104, 76, 165);
+}
+
+.Emoji-Submit {
+  display: "none";
+}
+
+.getEmojiButton {
+  float: "right";
+  border: "none";
+  margin: 0;
+  cursor: "pointer";
+}
+
+.micOn {
+  width: 15pt;
+  height: 20pt;
+}
+
+.Close {
+  width: 10pt;
+  height: 10pt;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.micOff {
+  width: 15pt;
+  height: 22pt;
+}
+
+.sendIcon {
+  width: 15pt;
+  height: 15pt;
+}
