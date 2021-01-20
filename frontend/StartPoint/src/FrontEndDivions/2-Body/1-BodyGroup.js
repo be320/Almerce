@@ -10,13 +10,11 @@ import { useEffect, useRef } from 'react'
 
 const BodyContainer=(props)=>{
 
-
   const messagesEndRef = useRef(null)
 
-  const scrollToBottom = () => {
+  useEffect(() => {
     messagesEndRef.current.scrollIntoView({ behavior: "smooth" })
-  }
-  useEffect(scrollToBottom, [props.bodyContainer]);
+  }, [props.bodyContainer]);
 
 
 return<>
@@ -53,7 +51,7 @@ return<>
 //is the parent of this component
 const mapStateToProps =(state)=>{
     return {
-       bodyContainer: state,
+       bodyContainer: state.slice(1),
        bodyWindowSize: state[0]
     };
   }
