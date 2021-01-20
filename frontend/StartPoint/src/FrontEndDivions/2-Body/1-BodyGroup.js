@@ -3,10 +3,22 @@ import { connect } from "react-redux";
 import MessageTemplate from '../2-Body/MessageTemplate'
 import VoiceNoteTemplate from '../2-Body/VoiceNoteTemplate';
 import ImageTemplate from '../2-Body/ImageTemplate';
+import { useEffect, useRef } from 'react'
+
 
 
 
 const BodyContainer=(props)=>{
+
+
+  const messagesEndRef = useRef(null)
+
+  const scrollToBottom = () => {
+    messagesEndRef.current.scrollIntoView({ behavior: "smooth" })
+  }
+  useEffect(scrollToBottom, [props.bodyContainer]);
+
+
 return<>
 <div className="body" style={{
    height:"calc(100vh - "+props.bodyWindowSize.height+"px)"
@@ -30,6 +42,7 @@ return<>
       image={item.image.selectedImage}/>
     }
 })}
+   <div ref={messagesEndRef} />
 </div>
 
 </>
@@ -46,4 +59,7 @@ const mapStateToProps =(state)=>{
   }
   
 export default connect(mapStateToProps)(BodyContainer);
+
+
+
 
