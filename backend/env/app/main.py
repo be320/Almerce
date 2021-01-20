@@ -1,7 +1,22 @@
 from flask import Flask, request, jsonify
 app = Flask(__name__)
 
+ 
 
+# Text Messages
+@app.route('/sendText', methods=["POST"])
+def sendText():
+        request_data = request.get_json()
+        print(request_data)
+        data = {}
+        data["reply"] = "Data Received"
+        data["status"] = 'success'
+        return jsonify(data)
+
+
+
+
+# Click Events 
 @app.route('/productClicked', methods=["POST"])
 def track():
     if request.method == "POST":
@@ -12,17 +27,6 @@ def track():
         data["status"] = 'success'
         return jsonify(data)
 
-# Testing Endpoint for frontend
-@app.route('/test', methods=["PUT"])
-def test():
-        print("hello")
-        request_data = request.get_json()
-        return jsonify(request_data)    
-
-# A welcome message to test our server
-@app.route('/kiro')
-def kiro():
-    return "<h1>Welcome to kiro !!</h1>"    
 
 # A welcome message to test our server
 @app.route('/')
