@@ -21,4 +21,20 @@
     npm install react-textarea-autosize
   
 
+//Git Ignore problem solution
+WARNING: First commit or stash your current changes, or you will lose them.
+Then run the following commands from the top folder of your Git repository:
+git rm -r --cached .
+git add .
+git commit -m "fixed untracked files"
+
+//Steps to connect local host on your mobile
+1 resolve all warnings in your code
+2 make sure laptop and mobile connected to same wifi which is private
+3 Add fire wall inbound rule 
+4 get your laptop loacl Ipv4
+5 open (your ipv4: React port) from mobile browser
+ex: 127.25.3.1:300
+
+//
   

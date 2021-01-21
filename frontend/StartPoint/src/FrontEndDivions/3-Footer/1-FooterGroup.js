@@ -22,12 +22,19 @@ const FooterContainer = (props) => {
   const [AudioState, setAudioState] = useState(InitialAudioState);
 
   useEffect(() => {
-    navigator.mediaDevices.getUserMedia({ audio: true },
-      () => {
-        setAudioState({ isBlocked: false });
-      },
-      () => { setAudioState({ isBlocked: true }); });
-
+    if (navigator.mediaDevices)
+    {
+      navigator.mediaDevices.getUserMedia({ audio: true },
+            () => {
+              setAudioState({ isBlocked: false });
+            },
+            () => { 
+              setAudioState({ isBlocked: true });
+            });
+        }
+    else
+     { alert("Voice Record isn't supported"); } 
+     
       //API Call 
     // props.actions.clientSideActions.loadOldMessage();
      
@@ -48,7 +55,6 @@ const FooterContainer = (props) => {
   const CallFormActions = () => {
     if (TextField !== '')
     {
-      
       props.actions.clientSideActions.sendTemplate(
         {
           elementType: 'MessageTemplate',
@@ -92,7 +98,7 @@ const FooterContainer = (props) => {
   const start = () => {
 
     if (AudioState.isBlocked) {
-      console.log('Permission Denied');
+      alert('Microphone Permission Denied');
     } else {
       Mp3Recorder.start().then(() => {
         setAudioState({ isRecording: true });
@@ -139,7 +145,7 @@ const FooterContainer = (props) => {
       <TypeArea  inputRef={inputRef} TextField={TextField} handleTextChange={handleTextChange}
       onHeightChange={onHeightChange}/>
       {/* <Emoji TextField={TextField} setTextField={setTextField}/> */}
-      <SendArrow StopRecord={StopRecord}/>
+      <SendArrow TextField={TextField}  StopRecord={StopRecord}/>
     </form>
   </>
 
