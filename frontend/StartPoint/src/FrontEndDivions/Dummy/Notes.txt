@@ -36,5 +36,10 @@ git commit -m "fixed untracked files"
 5 open (your ipv4: React port) from mobile browser
 ex: 127.25.3.1:300
 
-//
+//ngrok "To share local host with anyone"
+download and unzip negrok and run exe then write this command
+ ngrok authtoken 1nNxvat5ubfiU3MRx0Z56ULNch8_2qAzaMoPph84tymQ7oGPM
+ open new terminal in vscode, then write this command
+ ./ngrok http 3000 (3000 is react port) (Make sure you are standing where ngrok.exe is put)
+
   

@@ -21,19 +21,22 @@ const FooterContainer = (props) => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [AudioState, setAudioState] = useState(InitialAudioState);
 
+  // const AskMicPermission = () => {
+  //   if (navigator.mediaDevices)
+  //   {
+  //     navigator.mediaDevices.getUserMedia({ audio: true },
+  //           () => {
+  //             setAudioState({ isBlocked: false });
+  //           },
+  //           () => { 
+  //             setAudioState({ isBlocked: true });
+  //           });
+  //       }
+  //   else
+  //    { alert("Voice Record isn't supported"); } 
+  // }
   useEffect(() => {
-    if (navigator.mediaDevices)
-    {
-      navigator.mediaDevices.getUserMedia({ audio: true },
-            () => {
-              setAudioState({ isBlocked: false });
-            },
-            () => { 
-              setAudioState({ isBlocked: true });
-            });
-        }
-    else
-     { alert("Voice Record isn't supported"); } 
+    
      
       //API Call 
     // props.actions.clientSideActions.loadOldMessage();
