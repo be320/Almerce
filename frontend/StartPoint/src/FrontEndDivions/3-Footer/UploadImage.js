@@ -5,7 +5,7 @@ import ImageIconPressed from '../Dummy/Images/ImageIconPressed.png'
 const UploadImage =(props,state)=>{
     return<>
    <label htmlFor="myImg"  className="ml-2 m-1 mb-2 "  >
-    <img  src={props.ImgInputState?ImageIconPressed:ImageIcon} className="imageIcon " alt="Upload"/>
+    <img  src={props.selectedImage?ImageIconPressed:ImageIcon} className="imageIcon " alt="Upload"/>
  </label>
       <input
         id="myImg"

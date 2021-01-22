@@ -32,7 +32,7 @@ return<>
     else if (item.elementType ==='AudioTemplate'){
       console.log('Audio Received');
       return <VoiceNoteTemplate
-      Audio={item.audio.AudioState}/>
+      Audio={item.audio}/>
     }
     else if (item.elementType ==='ImageTemplate'){
       console.log('Image Received');
