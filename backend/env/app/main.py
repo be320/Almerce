@@ -23,7 +23,6 @@ def sendText():
 
 #Track Click Events 
 @app.route('/track', methods=["POST"])
-@cross_origin()
 def track():
     if request.method == "POST":
         request_data = request.get_json()
