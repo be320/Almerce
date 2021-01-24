@@ -11,6 +11,8 @@ import { bindActionCreators } from "redux";
 import UploadImageTab from './UploadImageTab'
 
 
+
+
 const FooterContainer = (props) => {
   const inputRef = useRef();
   const InitialAudioState = {
@@ -26,16 +28,26 @@ const FooterContainer = (props) => {
 
 //---------------------------------Image--------------------------------------
   const handleImageSubmit = (event) => {
-    event.preventDefault();
+    props.actions.clientSideActions.sendSelectedImages(
+      {
+        
+          elementType: 'ImageTemplate',
+          serverSide: false,
+          imageList: props.selectedImages
+        
+      }
+      )
   }
   
   const handleImageInput = (event) => {
     var listOfImages=[]
-    var count = 0
+    var count = props.selectedImages.length 
+
     Array.from(event.target.files).forEach(item => {
       listOfImages.push( {imageURL:URL.createObjectURL(item),
         idValue:count++}) });
-    props.actions.clientSideActions.sendSelectedImages(
+
+    props.actions.clientSideActions.updateImagesList(
           {
             listOfImages: listOfImages
           }
@@ -43,15 +55,14 @@ const FooterContainer = (props) => {
     event.target.value='';  
   }
 
-  const removeSelectedImage=(idValue)=>{
-    console.log(idValue)
+  const removeSelectedImage=(event)=>{
     props.actions.clientSideActions.removeImages(
       {
-        idValue: idValue
-
+        idValue: event.target.getAttribute("idValue")
       }
     )
   }
+
 
   //---------------------------------Audio--------------------------------------
   const start = () => {
@@ -124,10 +135,15 @@ const FooterContainer = (props) => {
   }
   
   return <>
-  {props.selectedImages.length!==0?  <UploadImageTab removeSelectedImage={removeSelectedImage}/>:''}
+  {console.log('dddddddddd')}
+  {props.selectedImages.length!==0 ? 
+   <UploadImageTab
+    handleImageSubmit={handleImageSubmit} 
+    removeSelectedImage={removeSelectedImage}/>:''
+  }
   <div className="footer d-flex flex-row justify-content-start align-items-end">
-      <form onSubmit={handleImageSubmit}>
-        <UploadImage  handleImageInput={handleImageInput} />
+      <form>
+        <UploadImage imagesLength={props.selectedImages.length} handleImageInput={handleImageInput} />
       </form>
 
       <form onSubmit={handleAudioSubmit} >

@@ -34,18 +34,16 @@ textarea:focus {
   cursor: "pointer";
 } */
 
-.iconBtn
-{
+.iconBtn {
   outline: none;
   border: none;
-  background-Color:transparent;
+  background-color: transparent;
 }
 
-.iconBtn:focus
-{
+.iconBtn:focus {
   outline: none;
   border: none;
-  background-Color:transparent;
+  background-color: transparent;
   cursor: pointer;
 }
 
@@ -60,33 +58,33 @@ textarea:focus {
   display: inline-flex;
   overflow-y: hidden;
   overflow-x: auto;
-  background: rgb(28, 192, 7);
+  background: rgb(221, 225, 220);
   border-radius: 18px 18px 0px 0px;
+  box-shadow: 0.5px 0.5px 2px 2px rgb(215, 210, 210);
   position: absolute;
 }
 
 .uploadImageTabAddButton {
-  width: 45px;
-  height: 45px;
-  min-width: 45px;
-  text-align: center;
-  font-size: 25px;
-  font-weight: 700;
-  box-shadow: 0.5px 0.5px 2px 2px rgb(184, 183, 187);
-  color: #ecedf1;
-  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  min-width: 35px;
   margin: 5px;
-  align-items: center;
+  margin-top: 140%;
 }
 .uploadImageTemplate {
   width: 150px;
   height: 100%;
   padding: 10px;
   border-radius: 14px 14px 14px 14px;
+  vertical-align: middle;
 }
 
 .CloseImage {
   width: 25pt;
   height: 25pt;
   position: absolute;
+}
+
+.uploadImageTabAddButtonContainer {
+  height: 100%;
 }

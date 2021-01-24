@@ -7,6 +7,7 @@ const InitialAudioState = {
   }
 
   const Reducer =(state = [{height:"35"},[],[]], action)=> {
+
     switch(action.type){
         case Constants.SUBMIT_TEXTAREA: 
         state[2].push(action.messageTemplate);
@@ -21,7 +22,10 @@ const InitialAudioState = {
         return state
 
         case Constants.SUBMIT_IMAGE:
-        return [...state,action.imageTemplate];
+        state[2].push(action.imageTemplate);
+        state[1]=[]
+        state=JSON.parse(JSON.stringify(state));
+        return state
 
         case Constants.RECEIVED_OLD_MESSAGES: 
         return [...state,...action.messageTemplates];
@@ -32,15 +36,9 @@ const InitialAudioState = {
         return state
 
         case Constants.REMOVE_IMAGES: 
-     debugger
-        state[1]= [
-          ...state[1].slice(0, action.idValue),
-          ...state[1].slice(action.idValue + 1)
-        ]
-
+        state[1]= state[1].filter(element => element.idValue !== parseInt(action.idValue.idValue));
         state=JSON.parse(JSON.stringify(state));
         return state
-       
         
         case Constants.CHANGE_WINDOW_SIZE:
         state[0]=action.height

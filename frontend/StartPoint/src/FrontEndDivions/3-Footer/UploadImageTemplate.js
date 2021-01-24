@@ -1,6 +1,7 @@
 import './_Footer.css'
 import Close from '../Dummy/Images/Close.png'
 
+
 const UploadImageTemplate =(props)=>{
     return<>
     <div>
@@ -9,7 +10,8 @@ const UploadImageTemplate =(props)=>{
         className="CloseImage" 
         src={Close} 
         alt="Card cap" 
-        onClick = {()=>props.removeSelectedImage(props.idValue)}></input>
+        idValue={props.idValue}
+        onClick = {props.removeSelectedImage}></input>
 
         <img className="uploadImageTemplate" src={props.itemName} alt="Card cap"/>
     </div>

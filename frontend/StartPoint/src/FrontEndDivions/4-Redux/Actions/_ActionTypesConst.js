@@ -7,7 +7,6 @@ const Constants = {
   SELECT_IMAGES: "SELECT_IMAGES",
   BEGIN_API_CALL:"BEGIN_API_CALL",
   REMOVE_IMAGES:"REMOVE_IMAGES"
-
 };
 
 export default Constants;
