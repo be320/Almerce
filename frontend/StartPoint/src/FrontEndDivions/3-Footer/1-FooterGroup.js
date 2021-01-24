@@ -8,46 +8,60 @@ import TypeArea from './TypeArea'
 import * as ChatBotActions from '../4-Redux/Actions/ChatBotActions'
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+import UploadImageTab from './UploadImageTab'
 
 
 const FooterContainer = (props) => {
   const inputRef = useRef();
-
-
   const InitialAudioState = {
     isRecording: false,
     blobURL: ''
     };
   const [TextField, setTextField] = useState('');
-  const [selectedImage, setSelectedImage] = useState(null);
   const [AudioState, setAudioState] = useState(InitialAudioState);
 
- 
   useEffect(() => {
   }, []);
 
+//---------------------------------Image--------------------------------------
+
   const handleImageSubmit = (event) => {
     event.preventDefault();
-    if (selectedImage !== null) {
-      props.actions.clientSideActions.sendTemplate(
-        {
-          elementType: 'ImageTemplate',
-          image: { selectedImage }
-        }
-      );
-    }
-    setSelectedImage(null);
+  
   }
+
+  const handleImageInput = (event) => {
+    var listOfImages=[]
+    var count = 0
+    Array.from(event.target.files).forEach(item => {
+      listOfImages.push( {imageURL:URL.createObjectURL(item),
+        idValue:count++}) });
+    props.actions.clientSideActions.sendSelectedImages(
+          {
+            listOfImages: listOfImages
+  
+          }
+    )
+    event.target.value='';  
+   
+  }
+
+  const removeSelectedImage=(idValue)=>{
+    console.log(idValue)
+    props.actions.clientSideActions.removeImages(
+      {
+        idValue: idValue
+
+      }
+    )
+
+  }
+
+  //---------------------------------Audio--------------------------------------
   const Mp3Recorder = React.useMemo(() => new MicRecorder({
     bitRate: 128
   }), []);
 
- 
-
-  const handleImageInput = (event) => {
-    setSelectedImage(URL.createObjectURL(event.target.files[0]));
-  }
-  //---------------------------------Audio--------------------------------------
   const start = () => {
        Mp3Recorder.start().then(() => {
        setAudioState({isRecording : true , blobURL : ''});
@@ -58,7 +72,7 @@ const FooterContainer = (props) => {
   {
     Mp3Recorder.stop()
     setAudioState(InitialAudioState);
-    
+
   };
 
   const handleAudioSubmit = (event) => {
@@ -112,16 +126,17 @@ const FooterContainer = (props) => {
   const onHeightChange = (height) => {
     props.actions.clientSideActions.sendWindowHeight(
       {
-        height: height
+        height: height+8
       }
     );
   }
  
   return <>
+  {props.selectedImages.length!==0?  <UploadImageTab removeSelectedImage={removeSelectedImage}/>:''}
     <div className="footer d-flex flex-row justify-content-between align-items-end">
 
       <form onSubmit={handleImageSubmit}>
-        <UploadImage selectedImage={selectedImage} handleImageInput={handleImageInput} />
+        <UploadImage  handleImageInput={handleImageInput} />
       </form>
 
       <form onSubmit={handleAudioSubmit} >
@@ -134,8 +149,8 @@ const FooterContainer = (props) => {
         {/* <Emoji TextField={TextField} setTextField={setTextField}/> */}
         <SendArrow TextField={TextField} />
       </form>
-
     </div>
+ 
   </>
 }
 
@@ -149,5 +164,13 @@ const mapDispatchToProps = (dispatch) => {
     },
   };
 }
-export default connect(null, mapDispatchToProps)(FooterContainer);
+
+const mapStateToProps =(state)=>{
+  return {
+    selectedImages: state[1],
+       footerHeight: state[0],
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FooterContainer);
 

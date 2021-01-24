@@ -6,8 +6,6 @@ import ImageTemplate from '../2-Body/ImageTemplate';
 import { useEffect, useRef } from 'react'
 
 
-
-
 const BodyContainer=(props)=>{
 
   const messagesEndRef = useRef(null)
@@ -18,9 +16,7 @@ const BodyContainer=(props)=>{
 
 
 return<>
-<div className="body" style={{
-   height:"calc(100vh - "+props.bodyWindowSize.height+"px)"
-    }}>
+<div className="body" style={{height: `calc(100vh - ${props.footerSize.height}px)`}}>
 {props.bodyContainer.map(item => { 
 
   if (item.elementType ==='MessageTemplate'){
@@ -54,8 +50,8 @@ return<>
 //is the parent of this component
 const mapStateToProps =(state)=>{
     return {
-       bodyContainer: state.slice(1),
-       bodyWindowSize: state[0]
+       bodyContainer: state[2],
+       footerSize: state[0]
     };
   }
   
