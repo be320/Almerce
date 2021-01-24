@@ -38,7 +38,6 @@ const FooterContainer = (props) => {
     props.actions.clientSideActions.sendSelectedImages(
           {
             listOfImages: listOfImages
-  
           }
     )
     event.target.value='';  
@@ -55,10 +54,6 @@ const FooterContainer = (props) => {
   }
 
   //---------------------------------Audio--------------------------------------
-  const Mp3Recorder = React.useMemo(() => new MicRecorder({
-    bitRate: 128
-  }), []);
-
   const start = () => {
        Mp3Recorder.start().then(() => {
        setAudioState({isRecording : true , blobURL : ''});
@@ -112,6 +107,7 @@ const FooterContainer = (props) => {
   const handleTextSubmit = (event) => {
     event.preventDefault();
     if (TextField !== '') {
+      debugger
       props.actions.clientSideActions.sendTemplate(
         {
           elementType: 'MessageTemplate',
@@ -163,7 +159,7 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps =(state)=>{
   return {
     selectedImages: state[1],
-       footerHeight: state[0],
+    footerHeight: state[0],
   };
 }
 

@@ -76,29 +76,17 @@ export const loadOldMessage=()=> {
   
 export const sendTemplate=(Template)=>{
     return((dispatch)=>{
-        debugger
         console.log(Template);
         dispatch(apiCallAction());
+        dispatch(sendTemplateSuccess(Template))
+        debugger
         return  AxiosInstance.post('/sendText',{
-    
             // place here your object 
             Template
         }).then((response)=>{ 
-         {if(response.data.responseType=="choice")
-            {
                 console.log(response.data);
                 dispatch(sendTemplateSuccess(Template))
-                dispatch(sendTemplateSuccess(response.data.Template))
-            }
-        else
-            {
-                console.log(response.data);
-                dispatch(sendTemplateSuccess(Template))
-                dispatch(sendTemplateSuccess(response.data.Template))
-            }
-        
-        }     
-
+                dispatch(sendTemplateSuccess(response.data.Template))  
         }).catch((errorMessage)=>{
             console.log(errorMessage);
         });

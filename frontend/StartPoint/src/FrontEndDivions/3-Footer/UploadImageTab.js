@@ -1,7 +1,6 @@
 import './_Footer.css'
 import { connect } from "react-redux";
 import UploadImageTemplate from './UploadImageTemplate'
-import SendIcon from '../Dummy/Images/SendIcon.png'
 
 
 const UploadImageTab=(props)=>{

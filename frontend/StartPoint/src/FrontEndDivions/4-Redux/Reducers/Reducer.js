@@ -9,7 +9,6 @@ const InitialAudioState = {
   const Reducer =(state = [{height:"35"},[],[]], action)=> {
     switch(action.type){
         case Constants.SUBMIT_TEXTAREA: 
-
         state[2].push(action.messageTemplate);
         state=JSON.parse(JSON.stringify(state));
         return state
@@ -17,7 +16,9 @@ const InitialAudioState = {
         case Constants.SUBMIT_VOICENOTE: 
         if (state === [] )
         {state = InitialAudioState}
-        return [...state,action.audioTemplate];
+        state[2].push(action.audioTemplate);
+        state=JSON.parse(JSON.stringify(state));
+        return state
 
         case Constants.SUBMIT_IMAGE:
         return [...state,action.imageTemplate];
