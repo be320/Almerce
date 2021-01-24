@@ -6,10 +6,13 @@ const InitialAudioState = {
     isBlocked: false,
   }
 
-  const Reducer =(state = [{height:"38"}], action)=> {
+  const Reducer =(state = [{height:"35"},[],[]], action)=> {
     switch(action.type){
         case Constants.SUBMIT_TEXTAREA: 
-        return [...state,action.messageTemplate];
+
+        state[2].push(action.messageTemplate);
+        state=JSON.parse(JSON.stringify(state));
+        return state
 
         case Constants.SUBMIT_VOICENOTE: 
         if (state === [] )
@@ -21,14 +24,30 @@ const InitialAudioState = {
 
         case Constants.RECEIVED_OLD_MESSAGES: 
         return [...state,...action.messageTemplates];
+        
+        case Constants.SELECT_IMAGES: 
+        state[1]=action.selectedImages.listOfImages.concat(state[1]);
+        state=JSON.parse(JSON.stringify(state));
+        return state
 
+        case Constants.REMOVE_IMAGES: 
+     debugger
+        state[1]= [
+          ...state[1].slice(0, action.idValue),
+          ...state[1].slice(action.idValue + 1)
+        ]
+
+        state=JSON.parse(JSON.stringify(state));
+        return state
+       
+        
         case Constants.CHANGE_WINDOW_SIZE:
-          state[0]=action.height
-          state=[...state]
-          return state
+        state[0]=action.height
+        state=[...state]
+        return state
 
         default:
-        return state ;
+          return state ;
     }
   }
   export default Reducer;

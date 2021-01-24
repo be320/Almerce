@@ -4,7 +4,7 @@ import MessageTemplate from '../2-Body/MessageTemplate'
 import VoiceNoteTemplate from '../2-Body/VoiceNoteTemplate';
 import ImageTemplate from '../2-Body/ImageTemplate';
 import { useEffect, useRef } from 'react'
-import ChoiceTemplate from './ChoiceTemplate';
+
 
 const BodyContainer=(props)=>{
 
@@ -24,11 +24,7 @@ return<>
     serverSide={true}
     message="مساء الخير يا فندم اخبارك ايه اتشرف بالاسم"/>
 
-<ChoiceTemplate
-    serverSide={false}
-    message="ولد"
-    />
-
+<div className="body" style={{height: `calc(100vh - ${props.footerSize.height}px)`}}>
 {props.bodyContainer.map(item => { 
 
   if (item.elementType ==='MessageTemplate'){
@@ -60,9 +56,8 @@ return<>
    {return<>
     </>} 
 })}
-   <div ref={messagesEndRef} />
+<div ref={messagesEndRef} /></div>
 </div>
-
 </>
 }
 
@@ -71,11 +66,10 @@ return<>
 //is the parent of this component
 const mapStateToProps =(state)=>{
     return {
-       bodyContainer: state.slice(1),
-       bodyWindowSize: state[0]
+       bodyContainer: state[2],
+       footerSize: state[0]
     };
   }
-  
 export default connect(mapStateToProps)(BodyContainer);
 
 

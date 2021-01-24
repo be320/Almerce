@@ -49,6 +49,19 @@ export const sendWindowHeight=(height)=>{
         height: height,
     }
 }
+export const sendSelectedImages=(selectedImages)=>{
+    return{
+        type: Constants.SELECT_IMAGES,
+        selectedImages: selectedImages,
+    }
+}
+export const removeImages=(idValue)=>{
+    return{
+        type: Constants.REMOVE_IMAGES,
+        idValue: idValue,
+    }
+}
+
 export const loadOldMessage=()=> {
     return (dispatch) => {
       dispatch(apiCallAction());
@@ -63,9 +76,11 @@ export const loadOldMessage=()=> {
   
 export const sendTemplate=(Template)=>{
     return((dispatch)=>{
+        debugger
         console.log(Template);
         dispatch(apiCallAction());
         return  AxiosInstance.post('/sendText',{
+    
             // place here your object 
             Template
         }).then((response)=>{ 
