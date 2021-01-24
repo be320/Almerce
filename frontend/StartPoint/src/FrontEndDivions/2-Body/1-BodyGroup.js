@@ -27,7 +27,11 @@ const handleChoiceClick =(event)=>
   );
  }
 return<>
-<div className="body" style={{height: `calc(100vh - ${props.footerSize.height}px)`}}>
+<div className="body" style={{height: `calc(100vh - ${
+  props.footerSize.height + (props.selectedImages.length===0
+    ?0
+    :150)
+  }px)`}}>
   
 <MessageTemplate
     serverSide={true}
@@ -47,8 +51,9 @@ return<>
  }
  else if (item.elementType ==='ImageTemplate'){
  console.log('Image Received');
- return <ImageTemplate
- image={item.image.selectedImage}/>
+ return  item.imageList.map(subitem =>
+ <ImageTemplate
+  image={subitem.imageURL}/>)
  }
  else if (item.elementType ==='ChoiceTemplate'){
   console.log('Choices Received');
@@ -85,7 +90,8 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps =(state)=>{
  return {
  bodyContainer: state[2],
- footerSize: state[0]
+ footerSize: state[0],
+ selectedImages: state[1],
  };
  }
  export default connect(mapStateToProps,mapDispatchToProps)(BodyContainer);

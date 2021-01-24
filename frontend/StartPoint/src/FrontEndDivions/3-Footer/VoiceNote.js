@@ -37,7 +37,6 @@ const VoiceNote = (props) => {
         
       </div>
     )}
-
   </>
 }
 export default VoiceNote;
