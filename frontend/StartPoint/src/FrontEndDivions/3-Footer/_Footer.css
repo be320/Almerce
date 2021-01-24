@@ -23,7 +23,7 @@ textarea:focus {
   box-shadow: 0.5px 0.5px 2px 2px rgb(104, 76, 165);
 }
 
-.Emoji-Submit {
+/* .Emoji-Submit {
   display: "none";
 }
 
@@ -32,27 +32,20 @@ textarea:focus {
   border: "none";
   margin: 0;
   cursor: "pointer";
+} */
+
+.iconBtn
+{
+  outline: none;
+  border: none;
+  background-Color:transparent;
 }
 
-.micOn {
-  width: 15pt;
-  height: 20pt;
+.iconBtn:focus
+{
+  outline: none;
+  border: none;
+  background-Color:transparent;
+  cursor: pointer;
 }
 
-.Close {
-  width: 10pt;
-  height: 10pt;
-  display: block;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-.micOff {
-  width: 15pt;
-  height: 22pt;
-}
-
-.sendIcon {
-  width: 15pt;
-  height: 15pt;
-}

@@ -4,9 +4,7 @@ import MessageTemplate from '../2-Body/MessageTemplate'
 import VoiceNoteTemplate from '../2-Body/VoiceNoteTemplate';
 import ImageTemplate from '../2-Body/ImageTemplate';
 import { useEffect, useRef } from 'react'
-
-
-
+import ChoiceTemplate from './ChoiceTemplate';
 
 const BodyContainer=(props)=>{
 
@@ -21,6 +19,16 @@ return<>
 <div className="body" style={{
    height:"calc(100vh - "+props.bodyWindowSize.height+"px)"
     }}>
+
+<MessageTemplate
+    serverSide={true}
+    message="مساء الخير يا فندم اخبارك ايه اتشرف بالاسم"/>
+
+<ChoiceTemplate
+    serverSide={false}
+    message="ولد"
+    />
+
 {props.bodyContainer.map(item => { 
 
   if (item.elementType ==='MessageTemplate'){
@@ -29,15 +37,24 @@ return<>
     serverSide={item.serverSide}
     message={item.message.TextField}
     />}
+
     else if (item.elementType ==='AudioTemplate'){
       console.log('Audio Received');
       return <VoiceNoteTemplate
       Audio={item.audio}/>
     }
+
     else if (item.elementType ==='ImageTemplate'){
       console.log('Image Received');
       return <ImageTemplate
       image={item.image.selectedImage}/>
+    }
+
+    else if (item.elementType ==='ChoiceTemplate'){
+      console.log('choice Received');
+      return <ChoiceTemplate
+      serverSide="false"
+      message={item.message}/>
     }
     else 
    {return<>

@@ -1,25 +1,43 @@
 import './_Footer.css'
-import MicOn from '../Dummy/Images/MicOn.gif' 
-import MicOff from '../Dummy/Images/MicOff.png' 
-import Close from '../Dummy/Images/Close.png' 
+import MicIcon from '@material-ui/icons/Mic';
+import HighlightOffIcon from '@material-ui/icons/HighlightOff';
+import IconButton from "@material-ui/core/IconButton";
+import { useState, useEffect } from 'react'
 
-const VoiceNote =(props)=>{
-    
-  return<>
-  
-  {!props.AudioState.isRecording && (
-    <div>
-    <img className="micOff m-1" onClick={props.start} src={MicOff} alt="Click to record"/>  
-    </div>
+const VoiceNote = (props) => {
+
+  const [ToggleVar, setToggleVar] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setToggleVar(!ToggleVar);
+    }, 500);
+  }, [ToggleVar]);
+
+  return <>
+    {!props.AudioState.isRecording && (
+      <div>
+        <IconButton className="iconBtn mb-1" size="small" onClick={props.start} alt="Record">
+          <MicIcon style={{ color: "rgb(110, 72, 170)" }} />
+        </IconButton>
+      </div>
     )}
 
     {props.AudioState.isRecording && (
-      <div className="mt-1">
-            <img src={Close} onClick={props.DeleteVN} className="Close" alt="click to delete record"/> 
-            <input type="image" className="micOn m-1" id="vn" alt="click to send record"src={MicOn} />
+      <div className="d-flex flex-column mt-1 align-items-center">
+
+        <IconButton className="iconBtn" size="small" color="secondary" onClick={props.DeleteVN} alt="Delete record">
+          <HighlightOffIcon style={{ color: "fushia" }} fontSize="small" alt="click to delete record" />
+        </IconButton>
+
+        <IconButton type="submit" className="iconBtn mb-1" size="small" alt="Send record">
+          {ToggleVar && (<MicIcon style={{ color: "gray" }} /> )}
+          {!ToggleVar && (<MicIcon style={{ color: "red" }} /> )}
+        </IconButton>
+        
       </div>
-    )}  
+    )}
 
   </>
-    }
-    export default VoiceNote;
+}
+export default VoiceNote;

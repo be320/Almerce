@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react"
+import React, { useState, useRef } from "react"
 import MicRecorder from 'mic-recorder-to-mp3'
 import './_Footer.css'
 import UploadImage from './UploadImage'
@@ -12,8 +12,6 @@ import { bindActionCreators } from "redux";
 
 const FooterContainer = (props) => {
   const inputRef = useRef();
-
-
   const InitialAudioState = {
     isRecording: false,
     blobURL: ''
@@ -21,10 +19,6 @@ const FooterContainer = (props) => {
   const [TextField, setTextField] = useState('');
   const [selectedImage, setSelectedImage] = useState(null);
   const [AudioState, setAudioState] = useState(InitialAudioState);
-
- 
-  useEffect(() => {
-  }, []);
 
   const handleImageSubmit = (event) => {
     event.preventDefault();
@@ -42,7 +36,7 @@ const FooterContainer = (props) => {
     bitRate: 128
   }), []);
 
- 
+  //---------------------------------Image-------------------------------------
 
   const handleImageInput = (event) => {
     setSelectedImage(URL.createObjectURL(event.target.files[0]));
@@ -57,13 +51,11 @@ const FooterContainer = (props) => {
   const DeleteVN = () => //user clicked X button
   {
     Mp3Recorder.stop()
-    setAudioState(InitialAudioState);
-    
+    setAudioState(InitialAudioState); 
   };
 
   const handleAudioSubmit = (event) => {
     event.preventDefault();
-
     Mp3Recorder
     .stop()
     .getMp3()
@@ -81,6 +73,18 @@ const FooterContainer = (props) => {
     });  
     }
   //---------------------------------Text--------------------------------------
+  const handleTextChange = (event) => {
+    setTextField(event.target.value);
+  }
+
+  const onHeightChange = (height) => {
+    props.actions.clientSideActions.sendWindowHeight(
+      {
+        height: height
+      }
+    );
+  }
+  
   const onEnterPress = (e) => {
     if(e.key === "Enter") {
       handleTextSubmit(e);
@@ -105,20 +109,8 @@ const FooterContainer = (props) => {
     setTextField('');
   }
 
-  const handleTextChange = (event) => {
-    setTextField(event.target.value);
-  }
-
-  const onHeightChange = (height) => {
-    props.actions.clientSideActions.sendWindowHeight(
-      {
-        height: height
-      }
-    );
-  }
- 
   return <>
-    <div className="footer d-flex flex-row justify-content-between align-items-end">
+    <div className="footer d-flex flex-row justify-content-start align-items-end">
 
       <form onSubmit={handleImageSubmit}>
         <UploadImage selectedImage={selectedImage} handleImageInput={handleImageInput} />

@@ -19,6 +19,9 @@
 
 6- Install auto-sized textarea
     npm install react-textarea-autosize
+
+7- Install Material Icons
+    npm install @material-ui/icons
   
 
 //Git Ignore problem solution

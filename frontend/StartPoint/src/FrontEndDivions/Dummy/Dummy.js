@@ -163,64 +163,69 @@
 // </div>
 
 // //Final version
-// <script>
-// 	var state = 0;
-// 	function minimizeMaximize(){	
-// 		if(state===0){
-// 			document.getElementById("iframe").style.display = "unset";
-// 			document.getElementById("miniMaxButtonn").innerHTML = "-";
-// 			state=state+1;
-// 		}
-// 		else{
-// 			document.getElementById("iframe").style.display = "none";
-// 			document.getElementById("miniMaxButtonn").innerHTML = "+";
-// 			state=state-1;
-// 		}
-// 	}
-// </script>
-// <div style="
-// 			position: fixed;
-// 			right:70px;
-// 			bottom:0;
-// 			width:320px;
-// 			z-index: 5;
-// 			box-shadow: rgba(0, 0, 0, 0.15) 0px 12px 24px 0px;" >
-// 	<div id="header" style="background-color: rgb(104, 76, 165); border-radius: 10px 10px 0px 0px; ">
-// 		<div style="display: inline-block; padding: 5pt; "  >
-// 			<img src="https://cliply.co/wp-content/uploads/2019/05/371905140_MEET_ROBOT_400px.gif" style="
-// 						  border-radius: 50%; 														  width: 35pt; 
-// 						  height: 35pt;"
-// 			alt="AlmerceImage"/>
-// 		</div >
-// 		<div  style="  display: inline-block; color: white; padding-top: 15pt;  vertical-align: top">    	
-// 				Almerce
-// 		</div>
-// 		<div id="miniMaxButtonn" style="background-color: Transparent;
-//   							border: none;
-//  							color: white;
-//   							float: right;
-// 							font-size: 20px;
-// 					 		padding-right: 15pt;
-//  							padding-top:15pt;
-// 							cursor: pointer;"
-// 			 onclick='minimizeMaximize()'
-// 			 > +
-// 		</div>
-// 	</div>
-// <div>
-// 		<iframe id="iframe"  style="
-// 					height: 55vh;
-// 						display:none;"
-// 				    src="http://localhost:3000"
-// 				allow="microphone"
-// 				frameborder="0" >
-// 		</iframe>
-// 	</div>
-// </div>
-
-
-
-
+{/* <script>
+	var state = 0;
+	function minimizeMaximize(){	
+		if(state===0){
+			document.getElementById("iframe").style.display = "unset";
+			document.getElementById("miniMaxButtonn").innerHTML = "-";
+			state=state+1;
+		}
+		else{
+			document.getElementById("iframe").style.display = "none";
+			document.getElementById("miniMaxButtonn").innerHTML = "+";
+			state=state-1;
+		}
+	}
+	function mouseOver() {document.getElementById("miniMaxButtonn").style.backgroundColor = "rgba(224,224,224,0.25)";}
+	function mouseOut() {document.getElementById("miniMaxButtonn").style.backgroundColor = "transparent";}
+</script>
+<div style="
+			position: fixed;
+			right:70px;
+			bottom:0;
+			width:320px;
+			z-index: 5;
+			box-shadow: rgba(0, 0, 0, 0.15) 0px 12px 24px 0px;" >
+	<div id="header" style="background-color: rgb(104, 76, 165); border-radius: 10px 10px 0px 0px; ">
+		<div style="display: inline-block; padding: 5pt; "  >
+			<img src="https://cliply.co/wp-content/uploads/2019/05/371905140_MEET_ROBOT_400px.gif" style="
+						  border-radius: 70%; 														  width: 35pt; 
+						  height: 35pt;"
+			alt="AlmerceImage"/>
+		</div >
+		<div  style="  display: inline-block; color: white; padding-top: 15pt;  vertical-align: top">    	
+				Almerce
+		</div>
+		<div id="miniMaxButtonn" style="background-color: transparent;
+  							border: none;
+ 							color: white;
+  							float: right;
+							font-size: 20px;
+					 		margin-right: 10pt;
+ 							margin-top:10pt;
+							display: flex;
+  							justify-content: center;
+  							align-items: center;
+							cursor: pointer;
+							border-radius: 50%;
+    						behavior: url(PIE.htc);
+							width: 30px;
+    						height: 30px"
+			 onclick='minimizeMaximize()'
+			onmouseover="mouseOver()" onmouseout="mouseOut()"> +
+		</div>
+	</div>
+<div>
+		<iframe id="iframe"  style="
+					height: 55vh;
+						display:none;"
+				    src="http://localhost:3000/"
+				allow="microphone"
+				frameborder="0" >
+		</iframe>
+	</div>
+</div> */}
 export const SendMultipleRequestToBackEnd=   AxiosSendInstance
     .all([
         AxiosSendInstance.get('https://jsonplaceholder.typicode.com/todos?_limit=5'),

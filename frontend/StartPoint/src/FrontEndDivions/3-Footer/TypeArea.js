@@ -4,8 +4,8 @@ import TextareaAutosize from 'react-textarea-autosize';
 const TypeArea = (props, state) => {
 
   return <>
- <TextareaAutosize minRows="1" maxRows="2" cols="27"  onHeightChange={props.onHeightChange} 
-    ref={props.inputRef} className="-webkit-appearance:none rounded m-1 myTextArea"  
+ <TextareaAutosize className="-webkit-appearance:none rounded my-1 myTextArea w-100" minRows="1" maxRows="2"  
+    ref={props.inputRef} onHeightChange={props.onHeightChange} 
     maxLength ="250"  wrap="soft" type="text" 
     value={props.TextField} onChange={props.handleTextChange} />
   </>

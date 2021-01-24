@@ -11,7 +11,7 @@ const apiCallAction=()=> {
     };
   }
 
-const sendTemplateSuccess =(Template)=>{
+const sendTemplateSuccess = (Template)=>{
     if(Template.elementType === "MessageTemplate")
     {
         return{
@@ -33,6 +33,7 @@ const sendTemplateSuccess =(Template)=>{
             imageTemplate: Template,
         }
     }
+    
 }
 
 const loadOldMessageSuccess =(Templates)=>{
@@ -64,14 +65,25 @@ export const sendTemplate=(Template)=>{
     return((dispatch)=>{
         console.log(Template);
         dispatch(apiCallAction());
-        dispatch(sendTemplateSuccess(Template))
         return  AxiosInstance.post('/sendText',{
             // place here your object 
             Template
-        }).then((response)=>{
-            console.log(response.data);
-            dispatch(sendTemplateSuccess(response.data.Template))
-            dispatch(sendTemplateSuccess(Template))
+        }).then((response)=>{ 
+         {if(response.data.responseType=="choice")
+            {
+                console.log(response.data);
+                dispatch(sendTemplateSuccess(Template))
+                dispatch(sendTemplateSuccess(response.data.Template))
+            }
+        else
+            {
+                console.log(response.data);
+                dispatch(sendTemplateSuccess(Template))
+                dispatch(sendTemplateSuccess(response.data.Template))
+            }
+        
+        }     
+
         }).catch((errorMessage)=>{
             console.log(errorMessage);
         });
