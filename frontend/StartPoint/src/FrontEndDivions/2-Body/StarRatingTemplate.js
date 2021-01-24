@@ -6,9 +6,9 @@ const StarRatingTemplate = {
     value: 7.5,
     a11y: true,
     isHalf: true,
-    onChange: newValue => {
-      console.log(`Example 2: new value is ${newValue}`);
-    }
+    // onChange: newValue => {
+    //   console.log(`Example 2: new value is ${newValue}`);
+    // }
   };
   
 

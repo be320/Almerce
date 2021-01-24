@@ -33,6 +33,21 @@ const sendTemplateSuccess = (Template)=>{
             imageTemplate: Template,
         }
     }
+    else if (Template.elementType === "ChoiceTemplate")
+    {
+        return{
+            type: Constants.DISPLAY_CHOICE,
+            choiceTemplate: Template,
+        }
+    }
+
+    else if (Template.elementType === "ProductCardTemplate")
+    {
+        return{
+            type: Constants.DISPLAY_CARD,
+            cardTemplate: Template,
+        }
+    }
     
 }
 
@@ -73,19 +88,36 @@ export const loadOldMessage=()=> {
     });
     };
 }
-  
+ 
+//ai Template gaia mn FooterGroup (will show on body)
 export const sendTemplate=(Template)=>{
     return((dispatch)=>{
         console.log(Template);
         dispatch(apiCallAction());
         dispatch(sendTemplateSuccess(Template))
-        debugger
         return  AxiosInstance.post('/sendText',{
             // place here your object 
             Template
         }).then((response)=>{ 
                 console.log(response.data);
                 dispatch(sendTemplateSuccess(Template))
+                dispatch(sendTemplateSuccess(response.data.Template))  
+        }).catch((errorMessage)=>{
+            console.log(errorMessage);
+        });
+    });
+}
+
+//ai Template gaia mn bodyGroup (won't show on body)
+export const sendOneWayTemplate=(Template)=>{
+    return((dispatch)=>{
+        console.log(Template);
+        dispatch(apiCallAction());
+        return  AxiosInstance.post('/sendText',{
+            // place here your object 
+            Template
+        }).then((response)=>{ 
+                console.log(response.data);
                 dispatch(sendTemplateSuccess(response.data.Template))  
         }).catch((errorMessage)=>{
             console.log(errorMessage);

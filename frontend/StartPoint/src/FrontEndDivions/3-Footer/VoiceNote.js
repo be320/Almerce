@@ -5,7 +5,7 @@ import IconButton from "@material-ui/core/IconButton";
 import { useState, useEffect } from 'react'
 
 const VoiceNote = (props) => {
-
+  
   const [ToggleVar, setToggleVar] = useState(true);
 
   useEffect(() => {

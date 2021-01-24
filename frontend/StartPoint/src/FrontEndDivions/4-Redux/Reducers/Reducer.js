@@ -20,6 +20,16 @@ const InitialAudioState = {
         state=JSON.parse(JSON.stringify(state));
         return state
 
+        case Constants.DISPLAY_CHOICE: 
+        state[2].push(action.choiceTemplate);
+        state=JSON.parse(JSON.stringify(state));
+        return state
+
+        case Constants.DISPLAY_CARD: 
+        state[2].push(action.cardTemplate);
+        state=JSON.parse(JSON.stringify(state));
+        return state
+
         case Constants.SUBMIT_IMAGE:
         return [...state,action.imageTemplate];
 
