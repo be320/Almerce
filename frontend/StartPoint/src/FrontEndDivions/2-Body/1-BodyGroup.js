@@ -20,9 +20,6 @@ const BodyContainer=(props)=>{
 
 const handleChoiceClick =(event)=>
  {
- 
-  console.log(event.currentTarget.parentNode);
-  //debugger
   props.actions.clientSideActions.sendOneWayTemplate(
  
     {
@@ -30,12 +27,10 @@ const handleChoiceClick =(event)=>
       serverSide: false,
       message: {TextField :event.target.innerText},
       index:props.refIndex.current.index+=1
-
+      
     }
-
   );
   event.currentTarget.parentNode.parentNode.style.display = "none";
-
  }
 
  const changeRating =(ratingVal)=>{
