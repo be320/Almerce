@@ -11,7 +11,7 @@ const StarRatingTemplate =(props)=> {
           changeRating={props.changeRating}
           numberOfStars={6}
           name='rating'
-          starDimension="30px"
+          starDimension="20px"
         />
       </div>
   </div>

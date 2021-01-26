@@ -125,6 +125,7 @@ export const sendOneWayTemplate=(Template)=>{
             Template
         }).then((response)=>{ 
                 console.log(response.data);
+                dispatch(sendTemplateSuccess(Template))  
                 dispatch(sendTemplateSuccess(response.data))  
         }).catch((errorMessage)=>{
             console.log(errorMessage);
