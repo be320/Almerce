@@ -48,6 +48,13 @@ const sendTemplateSuccess = (Template)=>{
             cardTemplate: Template,
         }
     }
+    else if (Template.elementType === "StarRatingTemplate")
+    {
+        return{
+            type: Constants.SUBMIT_RATING,
+            rating: Template,
+        }
+    }
     
     
 }
@@ -95,14 +102,13 @@ export const sendTemplate=(Template)=>{
     return((dispatch)=>{
         console.log(Template);
         dispatch(apiCallAction());
-        dispatch(sendTemplateSuccess(Template))
         return  AxiosInstance.post('/sendText',{
             // place here your object 
             Template
         }).then((response)=>{ 
-                console.log(response.data);
-                dispatch(sendTemplateSuccess(Template))
-                dispatch(sendTemplateSuccess(response.data.Template))  
+            console.log(response.data);
+            dispatch(sendTemplateSuccess(Template))
+            dispatch(sendTemplateSuccess(response.data))  
         }).catch((errorMessage)=>{
             console.log(errorMessage);
         });
@@ -119,7 +125,7 @@ export const sendOneWayTemplate=(Template)=>{
             Template
         }).then((response)=>{ 
                 console.log(response.data);
-                dispatch(sendTemplateSuccess(response.data.Template))  
+                dispatch(sendTemplateSuccess(response.data))  
         }).catch((errorMessage)=>{
             console.log(errorMessage);
         });
@@ -131,14 +137,45 @@ export const sendSelectedImages=(Template)=>{
     return((dispatch)=>{
         console.log(Template);
         dispatch(apiCallAction());
-        dispatch(sendTemplateSuccess(Template))
         return  AxiosInstance.post('/sendImagesList',{
             // place here your object 
             Template
         }).then((response)=>{ 
-                console.log(response.data);
-                dispatch(sendTemplateSuccess(Template))
-                dispatch(sendTemplateSuccess(response.data.Template))  
+            dispatch(sendTemplateSuccess(Template))
+            dispatch(sendTemplateSuccess(response.data))  
+        }).catch((errorMessage)=>{
+            console.log(errorMessage);
+        });
+
+    });
+}
+
+export const sendAudioMessage=(Template)=>{
+    return((dispatch)=>{
+        console.log(Template);
+        dispatch(apiCallAction());
+        return  AxiosInstance.post('/sendAudioMessage',{
+            // place here your object 
+            Template
+        }).then((response)=>{ 
+            dispatch(sendTemplateSuccess(Template))
+            dispatch(sendTemplateSuccess(response.data))  
+        }).catch((errorMessage)=>{
+            console.log(errorMessage);
+        });
+
+    });
+}
+
+export const sendchangeRating=(Template)=>{
+    return((dispatch)=>{
+        console.log(Template);
+        dispatch(apiCallAction());
+        return  AxiosInstance.post('/sendchangeRating',{
+            // place here your object 
+            Template
+        }).then((response)=>{ 
+            dispatch(sendTemplateSuccess(response.data))  
         }).catch((errorMessage)=>{
             console.log(errorMessage);
         });

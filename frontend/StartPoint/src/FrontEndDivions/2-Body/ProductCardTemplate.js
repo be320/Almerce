@@ -7,7 +7,7 @@ const ProductCardTemplate=(props)=>{
    
 <div className=" messageTemplateContainer  ">
 <img src={A}className=' imageMessageTemplateLeft rounded-circle'alt="ImageMessageTemplate"/> 
-<div className=' messageOrientationLeft ' >Nice, Check what may suit you below...</div>
+<div className=' messageOrientationLeft ' >بص كدا</div>
 </div>
 
 <div className='  productCardContainer'>

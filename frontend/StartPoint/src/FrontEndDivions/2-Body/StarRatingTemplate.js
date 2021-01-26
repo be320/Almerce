@@ -1,18 +1,26 @@
-const StarRatingTemplate = {
-    size: 50,
-    count: 5,
-    color: "black",
-    activeColor: "gold",
-    value: 7.5,
-    a11y: true,
-    isHalf: true,
-    // onChange: newValue => {
-    //   console.log(`Example 2: new value is ${newValue}`);
-    // }
+import StarRatings from 'react-star-ratings';
+
+const StarRatingTemplate =(props)=> {
+ 
+  return<>
+  <div className=" messageTemplateContainer ">
+  <div className='fixingSizeOrientationRight' >
+      <div className="messageOrientationRight d-flex justify-content-center flex-wrap" style={{backgroundColor : "rgb(110, 72, 170)"}} >
+      <StarRatings
+          starRatedColor="rgb(209, 209, 224)"
+          changeRating={props.changeRating}
+          numberOfStars={6}
+          name='rating'
+          starDimension="30px"
+        />
+      </div>
+  </div>
+</div>
+  </>
   };
+
+
+
   
 
 export default StarRatingTemplate;
-
-
-
