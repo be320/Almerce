@@ -21,10 +21,29 @@ const BodyContainer=(props)=>{
 const handleChoiceClick =(event)=>
  {
   props.actions.clientSideActions.sendOneWayTemplate(
+ 
     {
-    choice: event.target.innerText
+      elementType: 'MessageTemplate',
+      serverSide: false,
+      message: {TextField :event.target.innerText},
+      index:props.refIndex.current.index+=1
+      
     }
   );
+  event.currentTarget.parentNode.parentNode.style.display = "none";
+ }
+
+ const changeRating =(ratingVal)=>{
+  props.actions.clientSideActions.sendchangeRating(
+    {
+      elementType: 'StarRatingTemplate',
+      serverSide: false,
+      rating: ratingVal,
+      index:props.refIndex.current.index+=1
+
+    }
+  );
+
  }
 return<>
 <div className="body" style={{height: `calc(100vh - ${
@@ -39,7 +58,7 @@ return<>
 {props.bodyContainer.map(item => { 
  console.log("eh kol dh")
  if (item.elementType ==='MessageTemplate'){
- console.log('Message Received');
+ console.log(item);
  return <MessageTemplate
  serverSide={item.serverSide}
  message={item.message.TextField}
@@ -66,6 +85,16 @@ return<>
     return<>
      <ProductCardTemplate cards={item.cards}/>
     </>}
+       else if (item.elementType ==='ProductCardTemplate'){
+    console.log('Product card Received');
+    return<>
+     <ProductCardTemplate cards={item.cards}/>
+    </>}
+     else if (item.elementType ==='StarRatingTemplate'){
+      console.log('StarRatingTemplate card Received');
+      return<>
+       <StarRatingTemplate changeRating={changeRating} />
+      </>}
  else 
  {return<>
  </>} 
@@ -75,6 +104,7 @@ return<>
  
 </>
 }
+
 
 const mapDispatchToProps = (dispatch) => {
   return {

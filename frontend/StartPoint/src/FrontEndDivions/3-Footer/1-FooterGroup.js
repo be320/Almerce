@@ -15,8 +15,8 @@ const FooterContainer = (props) => {
   const InitialAudioState = {
     isRecording: false,
     blobURL: '',
-    mp3:''
     };
+
   const [TextField, setTextField] = useState('');
   const [AudioState, setAudioState] = useState(InitialAudioState);
 
@@ -24,14 +24,18 @@ const FooterContainer = (props) => {
     bitRate: 128
   }), []);
 
+ 
+
 //---------------------------------Image--------------------------------------
   const handleImageSubmit = (event) => {
+   
     props.actions.clientSideActions.sendSelectedImages(
       {
         
           elementType: 'ImageTemplate',
           serverSide: false,
-          imageList: props.selectedImages
+          imageList: props.selectedImages,
+          index:props.refIndex.current.index+=1
         
       }
       )
@@ -47,7 +51,7 @@ const FooterContainer = (props) => {
 
     props.actions.clientSideActions.updateImagesList(
           {
-            listOfImages: listOfImages
+            listOfImages: listOfImages,
           }
     )
     event.target.value='';  
@@ -84,10 +88,11 @@ const FooterContainer = (props) => {
     .then(([buffer, blob]) => {
       debugger
       const bu = URL.createObjectURL(blob);
-        props.actions.clientSideActions.sendTemplate(
+        props.actions.clientSideActions.sendAudioMessage(
           {
             elementType: 'AudioTemplate', 
-            audio: { isRecording: false, blobURL :bu,mp3: buffer}
+            audio: { isRecording: false, blobURL :bu },
+            index:props.refIndex.current.index+=1
           }
         );  
       setAudioState(InitialAudioState);
@@ -138,11 +143,14 @@ const FooterContainer = (props) => {
     // );
 
     if (TextField !== '') {
+    
       props.actions.clientSideActions.sendTemplate(
         {
           elementType: 'MessageTemplate',
           serverSide: false,
-          message: { TextField }
+          message: { TextField },
+          index:props.refIndex.current.index+=1
+
         }
       );
     }

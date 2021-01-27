@@ -23,6 +23,8 @@
 7- Install Material Icons
     npm install @material-ui/icons
   
+8- Instal Star Rating 
+    npm i react-star-ratings
 
 //Git Ignore problem solution
 WARNING: First commit or stash your current changes, or you will lose them.
