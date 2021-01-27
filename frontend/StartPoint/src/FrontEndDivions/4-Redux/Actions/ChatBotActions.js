@@ -94,18 +94,18 @@ export const loadOldMessage=()=> {
 export const sendTemplate=(Template)=>{
     return((dispatch)=>{
         console.log(Template);
-        dispatch(apiCallAction());
+       // dispatch(apiCallAction());
         dispatch(sendTemplateSuccess(Template))
-        return  AxiosInstance.post('/sendText',{
-            // place here your object 
-            Template
-        }).then((response)=>{ 
-                console.log(response.data);
-                dispatch(sendTemplateSuccess(Template))
-                dispatch(sendTemplateSuccess(response.data.Template))  
-        }).catch((errorMessage)=>{
-            console.log(errorMessage);
-        });
+        // return  AxiosInstance.post('/sendText',{
+        //     // place here your object 
+        //     Template
+        // }).then((response)=>{ 
+        //         console.log(response.data);
+        //         dispatch(sendTemplateSuccess(Template))
+        //         dispatch(sendTemplateSuccess(response.data.Template))  
+        // }).catch((errorMessage)=>{
+        //     console.log(errorMessage);
+        // });
     });
 }
 
@@ -130,7 +130,7 @@ export const sendOneWayTemplate=(Template)=>{
 export const sendSelectedImages=(Template)=>{
     return((dispatch)=>{
         console.log(Template);
-        dispatch(apiCallAction());
+       dispatch(apiCallAction());
         dispatch(sendTemplateSuccess(Template))
         return  AxiosInstance.post('/sendImagesList',{
             // place here your object 

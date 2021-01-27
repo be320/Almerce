@@ -45,4 +45,16 @@ download and unzip negrok and run exe then write this command
  open new terminal in vscode, then write this command
  ./ngrok http 3000 (3000 is react port) (Make sure you are standing where ngrok.exe is put)
 
+// for BE
+function saveToFile(fname, buffer) {
+
+  const arr = [];
+
+  for (i = 0; i < buffer.length; i++) {
+    arr.push(Buffer.from(buffer[i]));
+  }
+
+  fs.writeFileSync(fname, Buffer.concat(arr), 'binary');
+
+}
   

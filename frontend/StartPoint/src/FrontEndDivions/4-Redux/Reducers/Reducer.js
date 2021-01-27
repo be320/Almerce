@@ -10,6 +10,7 @@ const InitialAudioState = {
 
     switch(action.type){
         case Constants.SUBMIT_TEXTAREA: 
+        console.log(action)
         state[2].push(action.messageTemplate);
         state=JSON.parse(JSON.stringify(state));
         return state
@@ -56,7 +57,7 @@ const InitialAudioState = {
         return state
 
         default:
-          return state ;
+          return state 
     }
   }
   export default Reducer;

@@ -37,7 +37,7 @@ return<>
     serverSide={true}
     message="مساء الخير يا فندم اخبارك ايه اتشرف بالاسم" />
 {props.bodyContainer.map(item => { 
- 
+ console.log("eh kol dh")
  if (item.elementType ==='MessageTemplate'){
  console.log('Message Received');
  return <MessageTemplate

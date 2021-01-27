@@ -10,14 +10,12 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import UploadImageTab from './UploadImageTab'
 
-
-
-
 const FooterContainer = (props) => {
   const inputRef = useRef();
   const InitialAudioState = {
     isRecording: false,
-    blobURL: ''
+    blobURL: '',
+    mp3:''
     };
   const [TextField, setTextField] = useState('');
   const [AudioState, setAudioState] = useState(InitialAudioState);
@@ -70,7 +68,7 @@ const FooterContainer = (props) => {
        setAudioState({isRecording : true , blobURL : ''});
       }).catch((e) => console.error(e)); 
   };
-
+  
   const DeleteVN = () => //user clicked X button
   {
     Mp3Recorder.stop()
@@ -84,11 +82,12 @@ const FooterContainer = (props) => {
     .stop()
     .getMp3()
     .then(([buffer, blob]) => {
+      debugger
       const bu = URL.createObjectURL(blob);
         props.actions.clientSideActions.sendTemplate(
           {
             elementType: 'AudioTemplate', 
-            audio: { isRecording: false, blobURL :bu }
+            audio: { isRecording: false, blobURL :bu,mp3: buffer}
           }
         );  
       setAudioState(InitialAudioState);
@@ -118,25 +117,25 @@ const FooterContainer = (props) => {
   const handleTextSubmit = (event) => {
     event.preventDefault();
 
-    props.actions.clientSideActions.sendTemplate(
-      {
-        elementType:"ProductCardTemplate",
-        cards:[{ imgSrc :"https://safwatoys.com/image/cache/catalog/W50-2/x122c5919-e115-43fc-a6c8-d283ce0ffb72-230x230.jpg.pagespeed.ic.ZrBiS-lubg.webp",ProductUrl:"https://safwatoys.com/index.php?route=product/product&product_id=1049",productHeader:"لوحة تلوين بالرمل W50-2",productParagraph:"لوحة معها رمل ملون يقوم الطفل بلصقها ف مكانها المناسب حسب الصورة الملونة لتتحول الي صوره ملونه بشكل مميز ينمي العضلات الدقيقة واصابع اليد ومهارات التحكم تزيد ثقة الطفل بنفسه متاح عدة اشكال تساعد في تمييز الطفل للالوان وتنميه مهاره المطابقة مناسبه للاطفال فرط الحركه مناسب لسن 4 سنين"
-    ,id:"78"},{ imgSrc :"https://safwatoys.com/image/cache/catalog/W50-2/x122c5919-e115-43fc-a6c8-d283ce0ffb72-230x230.jpg.pagespeed.ic.ZrBiS-lubg.webp",ProductUrl:"https://safwatoys.com/index.php?route=product/product&product_id=1049",productHeader:"لوحة تلوين بالرمل W50-2",productParagraph:"لوحة معها رمل ملون يقوم الطفل بلصقها ف مكانها المناسب حسب الصورة الملونة لتتحول الي صوره ملونه بشكل مميز ينمي العضلات الدقيقة واصابع اليد ومهارات التحكم تزيد ثقة الطفل بنفسه متاح عدة اشكال تساعد في تمييز الطفل للالوان وتنميه مهاره المطابقة مناسبه للاطفال فرط الحركه مناسب لسن 4 سنين"
-    ,id:"78"},{ imgSrc :"https://safwatoys.com/image/cache/catalog/W50-2/x122c5919-e115-43fc-a6c8-d283ce0ffb72-230x230.jpg.pagespeed.ic.ZrBiS-lubg.webp",ProductUrl:"https://safwatoys.com/index.php?route=product/product&product_id=1049",productHeader:"لوحة تلوين بالرمل W50-2",productParagraph:"لوحة معها رمل ملون يقوم الطفل بلصقها ف مكانها المناسب حسب الصورة الملونة لتتحول الي صوره ملونه بشكل مميز ينمي العضلات الدقيقة واصابع اليد ومهارات التحكم تزيد ثقة الطفل بنفسه متاح عدة اشكال تساعد في تمييز الطفل للالوان وتنميه مهاره المطابقة مناسبه للاطفال فرط الحركه مناسب لسن 4 سنين"
-    ,id:"78"},{ imgSrc :"https://safwatoys.com/image/cache/catalog/W50-2/x122c5919-e115-43fc-a6c8-d283ce0ffb72-230x230.jpg.pagespeed.ic.ZrBiS-lubg.webp",ProductUrl:"https://safwatoys.com/index.php?route=product/product&product_id=1049",productHeader:"لوحة تلوين بالرمل W50-2",productParagraph:"لوحة معها رمل ملون يقوم الطفل بلصقها ف مكانها المناسب حسب الصورة الملونة لتتحول الي صوره ملونه بشكل مميز ينمي العضلات الدقيقة واصابع اليد ومهارات التحكم تزيد ثقة الطفل بنفسه متاح عدة اشكال تساعد في تمييز الطفل للالوان وتنميه مهاره المطابقة مناسبه للاطفال فرط الحركه مناسب لسن 4 سنين"
-    ,id:"78"},{ imgSrc :"https://safwatoys.com/image/cache/catalog/W50-2/x122c5919-e115-43fc-a6c8-d283ce0ffb72-230x230.jpg.pagespeed.ic.ZrBiS-lubg.webp",ProductUrl:"https://safwatoys.com/index.php?route=product/product&product_id=1049",productHeader:"لوحة تلوين بالرمل W50-2",productParagraph:"لوحة معها رمل ملون يقوم الطفل بلصقها ف مكانها المناسب حسب الصورة الملونة لتتحول الي صوره ملونه بشكل مميز ينمي العضلات الدقيقة واصابع اليد ومهارات التحكم تزيد ثقة الطفل بنفسه متاح عدة اشكال تساعد في تمييز الطفل للالوان وتنميه مهاره المطابقة مناسبه للاطفال فرط الحركه مناسب لسن 4 سنين"
-    ,id:"78"}]		
-    }
-      );
+    // props.actions.clientSideActions.sendTemplate(
+    //   {
+    //     elementType:"ProductCardTemplate",
+    //     cards:[{ imgSrc :"https://safwatoys.com/image/cache/catalog/W50-2/x122c5919-e115-43fc-a6c8-d283ce0ffb72-230x230.jpg.pagespeed.ic.ZrBiS-lubg.webp",ProductUrl:"https://safwatoys.com/index.php?route=product/product&product_id=1049",productHeader:"لوحة تلوين بالرمل W50-2",productParagraph:"لوحة معها رمل ملون يقوم الطفل بلصقها ف مكانها المناسب حسب الصورة الملونة لتتحول الي صوره ملونه بشكل مميز ينمي العضلات الدقيقة واصابع اليد ومهارات التحكم تزيد ثقة الطفل بنفسه متاح عدة اشكال تساعد في تمييز الطفل للالوان وتنميه مهاره المطابقة مناسبه للاطفال فرط الحركه مناسب لسن 4 سنين"
+    // ,id:"78"},{ imgSrc :"https://safwatoys.com/image/cache/catalog/W50-2/x122c5919-e115-43fc-a6c8-d283ce0ffb72-230x230.jpg.pagespeed.ic.ZrBiS-lubg.webp",ProductUrl:"https://safwatoys.com/index.php?route=product/product&product_id=1049",productHeader:"لوحة تلوين بالرمل W50-2",productParagraph:"لوحة معها رمل ملون يقوم الطفل بلصقها ف مكانها المناسب حسب الصورة الملونة لتتحول الي صوره ملونه بشكل مميز ينمي العضلات الدقيقة واصابع اليد ومهارات التحكم تزيد ثقة الطفل بنفسه متاح عدة اشكال تساعد في تمييز الطفل للالوان وتنميه مهاره المطابقة مناسبه للاطفال فرط الحركه مناسب لسن 4 سنين"
+    // ,id:"78"},{ imgSrc :"https://safwatoys.com/image/cache/catalog/W50-2/x122c5919-e115-43fc-a6c8-d283ce0ffb72-230x230.jpg.pagespeed.ic.ZrBiS-lubg.webp",ProductUrl:"https://safwatoys.com/index.php?route=product/product&product_id=1049",productHeader:"لوحة تلوين بالرمل W50-2",productParagraph:"لوحة معها رمل ملون يقوم الطفل بلصقها ف مكانها المناسب حسب الصورة الملونة لتتحول الي صوره ملونه بشكل مميز ينمي العضلات الدقيقة واصابع اليد ومهارات التحكم تزيد ثقة الطفل بنفسه متاح عدة اشكال تساعد في تمييز الطفل للالوان وتنميه مهاره المطابقة مناسبه للاطفال فرط الحركه مناسب لسن 4 سنين"
+    // ,id:"78"},{ imgSrc :"https://safwatoys.com/image/cache/catalog/W50-2/x122c5919-e115-43fc-a6c8-d283ce0ffb72-230x230.jpg.pagespeed.ic.ZrBiS-lubg.webp",ProductUrl:"https://safwatoys.com/index.php?route=product/product&product_id=1049",productHeader:"لوحة تلوين بالرمل W50-2",productParagraph:"لوحة معها رمل ملون يقوم الطفل بلصقها ف مكانها المناسب حسب الصورة الملونة لتتحول الي صوره ملونه بشكل مميز ينمي العضلات الدقيقة واصابع اليد ومهارات التحكم تزيد ثقة الطفل بنفسه متاح عدة اشكال تساعد في تمييز الطفل للالوان وتنميه مهاره المطابقة مناسبه للاطفال فرط الحركه مناسب لسن 4 سنين"
+    // ,id:"78"},{ imgSrc :"https://safwatoys.com/image/cache/catalog/W50-2/x122c5919-e115-43fc-a6c8-d283ce0ffb72-230x230.jpg.pagespeed.ic.ZrBiS-lubg.webp",ProductUrl:"https://safwatoys.com/index.php?route=product/product&product_id=1049",productHeader:"لوحة تلوين بالرمل W50-2",productParagraph:"لوحة معها رمل ملون يقوم الطفل بلصقها ف مكانها المناسب حسب الصورة الملونة لتتحول الي صوره ملونه بشكل مميز ينمي العضلات الدقيقة واصابع اليد ومهارات التحكم تزيد ثقة الطفل بنفسه متاح عدة اشكال تساعد في تمييز الطفل للالوان وتنميه مهاره المطابقة مناسبه للاطفال فرط الحركه مناسب لسن 4 سنين"
+    // ,id:"78"}]		
+    // }
+    //   );
 
-    props.actions.clientSideActions.sendTemplate(
-      {
-      message:{TextField:"اللعبة ديه لولد ولا بنت؟"},
-      elementType:'ChoiceTemplate',
-      choices:["بنت","ولد","نتالا","للااتى","gvh","بنت","ولد","نتالا","للااتى","gvh"]
-      }
-    );
+    // props.actions.clientSideActions.sendTemplate(
+    //   {
+    //   message:{TextField:"اللعبة ديه لولد ولا بنت؟"},
+    //   elementType:'ChoiceTemplate',
+    //   choices:["بنت","ولد","نتالا","للااتى","gvh","بنت","ولد","نتالا","للااتى","gvh"]
+    //   }
+    // );
 
     if (TextField !== '') {
       props.actions.clientSideActions.sendTemplate(
@@ -155,7 +154,6 @@ const FooterContainer = (props) => {
   }
   
   return <>
-  {console.log('dddddddddd')}
   {props.selectedImages.length!==0 ? 
    <UploadImageTab
     handleImageSubmit={handleImageSubmit} 
@@ -200,4 +198,3 @@ const mapStateToProps =(state)=>{
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(FooterContainer);
-
