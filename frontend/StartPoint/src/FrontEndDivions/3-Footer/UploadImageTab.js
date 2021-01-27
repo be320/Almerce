@@ -5,6 +5,7 @@ import SendIconPressed from '../Dummy/Images/SendIconPressed.png'
 
 
 const UploadImageTab=(props)=>{
+    console.log(props.selectedImages)
     return<>
     
     <div className='uploadImageTab' style={{bottom: props.footerHeight.height+"px"}}>

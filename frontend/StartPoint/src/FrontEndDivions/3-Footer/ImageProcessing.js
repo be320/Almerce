@@ -1,13 +1,11 @@
 import imageCompression from 'browser-image-compression';
-const image2base64 = require('image-to-base64')
 
-export function imageCompress (picture) {
-
-
-	var imageFile = picture;
+export function imageProcessor (file) {
+    return new Promise((resolve, reject) => {
+    var imageFile = file;
 	console.log('originalFile instanceof Blob', imageFile instanceof Blob); // true
-	console.log(`originalFile size ${imageFile.size / 1024 / 1024} MB`);
-   
+    console.log(`originalFile size ${imageFile.size / 1024 / 1024} MB`);
+
 	var options = {
 	  maxSizeMB: 1,
 	  maxWidthOrHeight: 1920,
@@ -18,31 +16,19 @@ export function imageCompress (picture) {
 	  .then(function (compressedFile) {
 		console.log('compressedFile instanceof Blob', compressedFile instanceof Blob); // true
 		console.log(`compressedFile size ${compressedFile.size / 1024 / 1024} MB`); // smaller than maxSizeMB
-        
-        console.log("TEST")
-        console.log(imageFile)
-
-        return imageEncoder(URL.createObjectURL(imageFile))
-       
+   
+        console.log(compressedFile)
+        let reader = new FileReader();
+        reader.onload = () => {
+          resolve(reader.result);
+        };
+        reader.onerror = reject;
+        //reader.readAsArrayBuffer(file);
+        reader.readAsDataURL(compressedFile);
 	  })
 	  .catch(function (error) {
 		console.log(error.message);
 	  });
-  }
 
-  function imageEncoder (picture)
-{
-    debugger
-    image2base64(picture) // you can also to use url
-    .then(
-        (response) => {
-            console.log(response); //cGF0aC90by9maWxlLmpwZw==
-			return response
-        }
-    )
-    .catch(
-        (error) => {
-            console.log(error); //Exepection error....
-        }
-    )
+    })
 }

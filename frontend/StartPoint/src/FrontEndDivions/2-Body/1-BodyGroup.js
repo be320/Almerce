@@ -85,11 +85,6 @@ return<>
     return<>
      <ProductCardTemplate cards={item.cards}/>
     </>}
-       else if (item.elementType ==='ProductCardTemplate'){
-    console.log('Product card Received');
-    return<>
-     <ProductCardTemplate cards={item.cards}/>
-    </>}
      else if (item.elementType ==='StarRatingTemplate'){
       console.log('StarRatingTemplate card Received');
       return<>

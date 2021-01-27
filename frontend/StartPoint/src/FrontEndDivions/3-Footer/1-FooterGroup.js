@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react"
+import React, { useState,useEffect, useRef } from "react"
 import MicRecorder from 'mic-recorder-to-mp3'
 import './_Footer.css'
 import UploadImage from './UploadImage'
@@ -9,6 +9,9 @@ import * as ChatBotActions from '../4-Redux/Actions/ChatBotActions'
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import UploadImageTab from './UploadImageTab'
+import {imageProcessor} from './ImageProcessing'
+import {audioProcessor} from './AudioProcessing'
+
 
 const FooterContainer = (props) => {
   const inputRef = useRef();
@@ -18,18 +21,27 @@ const FooterContainer = (props) => {
     };
 
   const [TextField, setTextField] = useState('');
+  const [ImgTest, setImgTest] = useState('');
   const [AudioState, setAudioState] = useState(InitialAudioState);
 
   const Mp3Recorder = React.useMemo(() => new MicRecorder({
     bitRate: 128
   }), []);
 
+  useEffect(() => {
+    if (ImgTest!=='')
+    props.actions.clientSideActions.updateImagesList(
+      {
+        listOfImages: ImgTest,
+      }
+)
+  },[ImgTest]);
+  
  
 
 //---------------------------------Image--------------------------------------
   const handleImageSubmit = (event) => {
-   
-    props.actions.clientSideActions.sendSelectedImages(
+       props.actions.clientSideActions.sendSelectedImages(
       {
         
           elementType: 'ImageTemplate',
@@ -41,21 +53,20 @@ const FooterContainer = (props) => {
       )
   }
   
+
   const handleImageInput = (event) => {
     var listOfImages=[]
     var count = props.selectedImages.length 
 
-    Array.from(event.target.files).forEach(item => {
-      listOfImages.push( {imageURL:URL.createObjectURL(item),
-        idValue:count++}) });
+     Array.from(event.target.files).forEach(async item => {
+    listOfImages.push(  {imageURL:await imageProcessor(item),
+          idValue:count++})
+          setImgTest(listOfImages);
+      });
 
-    props.actions.clientSideActions.updateImagesList(
-          {
-            listOfImages: listOfImages,
-          }
-    )
     event.target.value='';  
   }
+
 
   const removeSelectedImage=(event)=>{
     props.actions.clientSideActions.removeImages(
@@ -80,18 +91,17 @@ const FooterContainer = (props) => {
 
   };
 
-  const handleAudioSubmit = (event) => {
+  const handleAudioSubmit =  (event) => {
     event.preventDefault();
     Mp3Recorder
     .stop()
     .getMp3()
-    .then(([buffer, blob]) => {
-      debugger
-      const bu = URL.createObjectURL(blob);
+    .then(async([buffer, blob]) => {
+      const bu = await audioProcessor(blob);
         props.actions.clientSideActions.sendAudioMessage(
           {
             elementType: 'AudioTemplate', 
-            audio: { isRecording: false, blobURL :bu },
+            audio: { isRecording: false, blobURL :bu},
             index:props.refIndex.current.index+=1
           }
         );  

@@ -101,18 +101,17 @@ export const loadOldMessage=()=> {
 export const sendTemplate=(Template)=>{
     return((dispatch)=>{
         console.log(Template);
-       // dispatch(apiCallAction());
-        dispatch(sendTemplateSuccess(Template))
-    //     return  AxiosInstance.post('/sendText',{
-    //         // place here your object 
-    //         Template
-    //     }).then((response)=>{ 
-    //             console.log(response.data);
-    //             dispatch(sendTemplateSuccess(Template))
-    //             dispatch(sendTemplateSuccess(response.data.Template))  
-    //     }).catch((errorMessage)=>{
-    //         console.log(errorMessage);
-    //     });
+        dispatch(apiCallAction());
+        return  AxiosInstance.post('/sendText',{
+            // place here your object 
+            Template
+        }).then((response)=>{ 
+            console.log(response.data);
+            dispatch(sendTemplateSuccess(Template))
+            dispatch(sendTemplateSuccess(response.data))  
+        }).catch((errorMessage)=>{
+            console.log(errorMessage);
+        });
     });
 }
 
@@ -138,8 +137,7 @@ export const sendOneWayTemplate=(Template)=>{
 export const sendSelectedImages=(Template)=>{
     return((dispatch)=>{
         console.log(Template);
-       dispatch(apiCallAction());
-        dispatch(sendTemplateSuccess(Template))
+        dispatch(apiCallAction());
         return  AxiosInstance.post('/sendImagesList',{
             // place here your object 
             Template
@@ -157,16 +155,15 @@ export const sendAudioMessage=(Template)=>{
     return((dispatch)=>{
         console.log(Template);
         dispatch(apiCallAction());
-        dispatch(sendTemplateSuccess(Template))
-        // return  AxiosInstance.post('/sendAudioMessage',{
-        //     // place here your object 
-        //     Template
-        // }).then((response)=>{ 
-        //     dispatch(sendTemplateSuccess(Template))
-        //     dispatch(sendTemplateSuccess(response.data))  
-        // }).catch((errorMessage)=>{
-        //     console.log(errorMessage);
-        // });
+        return  AxiosInstance.post('/sendAudioMessage',{
+            // place here your object 
+            Template
+        }).then((response)=>{ 
+            dispatch(sendTemplateSuccess(Template))
+            dispatch(sendTemplateSuccess(response.data))  
+        }).catch((errorMessage)=>{
+            console.log(errorMessage);
+        });
 
     });
 }
