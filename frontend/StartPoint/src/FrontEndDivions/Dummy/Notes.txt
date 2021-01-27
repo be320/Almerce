@@ -26,6 +26,11 @@
 8- Instal Star Rating 
     npm i react-star-ratings
 
+9- For Image Processing 
+    npm install browser-image-compression
+    npm install  image-to-base64
+
+
 //Git Ignore problem solution
 WARNING: First commit or stash your current changes, or you will lose them.
 Then run the following commands from the top folder of your Git repository:
