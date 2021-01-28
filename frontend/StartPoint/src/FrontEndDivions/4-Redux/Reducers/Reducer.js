@@ -50,6 +50,11 @@ const InitialAudioState = {
         state[1]= state[1].filter(element => element.idValue !== parseInt(action.idValue.idValue));
         state=JSON.parse(JSON.stringify(state));
         return state
+
+        case Constants.TEMPLATE_TO_DELETE: 
+        state[2]= state[2].filter((_,i) => i !== state[2].length-1);
+        state=JSON.parse(JSON.stringify(state));
+        return state
         
         case Constants.CHANGE_WINDOW_SIZE:
         state[0]=action.height
