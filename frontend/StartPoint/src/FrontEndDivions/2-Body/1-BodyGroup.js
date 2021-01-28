@@ -31,7 +31,6 @@ const handleChoiceClick =(event)=>
       
     }
   );
-  event.currentTarget.parentNode.parentNode.style.display = "none";
  }
 
  function changeRating (event , ratingVal){
@@ -46,7 +45,7 @@ const handleChoiceClick =(event)=>
     }
   );
   event.currentTarget.parentNode.parentNode.parentNode.parentNode.style.display = "none";
-
+  
  }
 return<>
 <div className="body" style={{height: `calc(100vh - ${

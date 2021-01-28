@@ -132,10 +132,9 @@ export const sendOneWayTemplate=(Template)=>{
             Template
         }).then((response)=>{ 
                 console.log(response.data);
-                var TemplateToDelete=JSON.parse(JSON.stringify(Template))
-                TemplateToDelete ={elementType:"TemplateToDelete"}
+                var TemplateToDelete ={elementType:"TemplateToDelete"}
                 dispatch(sendTemplateSuccess(TemplateToDelete))  
-                dispatch(sendTemplateSuccess(Template))  
+                dispatch(sendTemplateSuccess(Template))
                 dispatch(sendTemplateSuccess(response.data))  
         }).catch((errorMessage)=>{
             console.log(errorMessage);
@@ -186,6 +185,9 @@ export const sendchangeRating=(Template)=>{
             // place here your object 
             Template
         }).then((response)=>{ 
+            var TemplateToDelete=JSON.parse(JSON.stringify(Template))
+            TemplateToDelete ={elementType:"TemplateToDelete"}
+            dispatch(sendTemplateSuccess(TemplateToDelete))  
             dispatch(sendTemplateSuccess(response.data))  
         }).catch((errorMessage)=>{
             console.log(errorMessage);
