@@ -52,7 +52,21 @@ const InitialAudioState = {
         return state
 
         case Constants.TEMPLATE_TO_DELETE: 
+        var lastItem=state[2];
+        lastItem=lastItem[lastItem.length-1];
+        if (action.TemplateToDelete.elementName!=="starRating"){
+          lastItem={...lastItem,choices:[], elementType: "MessageTemplate" }
+        }
+        else{
+          lastItem={...lastItem,choices:[], 
+            elementType: "MessageTemplate" ,
+            serverSide: false,
+            message: {TextField:action.TemplateToDelete.rating}
+          }
+        }
+       
         state[2]= state[2].filter((_,i) => i !== state[2].length-1);
+        state[2].push(lastItem);
         state=JSON.parse(JSON.stringify(state));
         return state
         
