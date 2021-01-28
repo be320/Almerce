@@ -16,11 +16,12 @@
 
 .myTextArea {
   resize: none;
-  border-color: rgb(165, 76, 76);
+  border: 2px solid rgb(157, 128, 202);
+  
 }
 textarea:focus {
   outline: none;
-  box-shadow: 0.5px 0.5px 2px 2px rgb(104, 76, 165);
+  box-shadow: 0.75px 0.75px 2.5px 2.5px rgb(104, 76, 165);
 }
 
 /* .Emoji-Submit {

@@ -33,7 +33,8 @@ const handleChoiceClick =(event)=>
   event.currentTarget.parentNode.parentNode.style.display = "none";
  }
 
- const changeRating =(ratingVal)=>{
+ function changeRating (event , ratingVal){
+
   props.actions.clientSideActions.sendchangeRating(
     {
       elementType: 'StarRatingTemplate',
@@ -43,6 +44,7 @@ const handleChoiceClick =(event)=>
 
     }
   );
+  event.currentTarget.parentNode.parentNode.parentNode.parentNode.style.display = "none";
 
  }
 return<>
@@ -56,7 +58,6 @@ return<>
     serverSide={true}
     message="مساء الخير يا فندم اخبارك ايه اتشرف بالاسم" />
 {props.bodyContainer.map(item => { 
- console.log("eh kol dh")
  if (item.elementType ==='MessageTemplate'){
  console.log(item);
  return <MessageTemplate
@@ -86,9 +87,10 @@ return<>
      <ProductCardTemplate cards={item.cards}/>
     </>}
      else if (item.elementType ==='StarRatingTemplate'){
-      console.log('StarRatingTemplate card Received');
+      console.log('Star Rating Received');
+      console.log(item);
       return<>
-       <StarRatingTemplate changeRating={changeRating} />
+       <StarRatingTemplate val={(item.rating)?item.rating:0} serverSide={item.serverSide} changeRating={changeRating} />
       </>}
  else 
  {return<>

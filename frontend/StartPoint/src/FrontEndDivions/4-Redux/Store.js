@@ -3,17 +3,18 @@
 import { createStore, applyMiddleware, compose } from "redux";
 import Reducer from '../4-Redux/Reducers/Reducer'
 import thunk from "redux-thunk";
-
 const saveToLocalStorage = () => {
   try {
     const state = store.getState()
     const serializedState = JSON.stringify(state)
     //Done to prevent setting the local storage with reducer initial state at page refresh
-    //reducer initial state is: state = [{height:"35"},[],[]] 
-    //for an unknown reason 35 becomes 38 when it reach here
-    // (propably due to the first messagetemplate we display initially in BodyGroup.js <MessageTemplate serverSide={true} message="مساء الخير يا فندم اخبارك ايه اتشرف بالاسم" /> )
-    if (serializedState !== '[{"height":38},[],[]]') {
+    //reducer initial state is: state = [{height:"32"},[],[]] 
+    if (serializedState !== '[{"height":32},[],[]]') {
       localStorage.setItem('storedState', serializedState)
+    }
+    else 
+    {
+      localStorage.setItem('index', -1)
     }
   }
   catch (e) {

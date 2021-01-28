@@ -56,7 +56,6 @@ const sendTemplateSuccess = (Template)=>{
         }
     }
     
-    
 }
 
 const loadOldMessageSuccess =(Templates)=>{
@@ -97,7 +96,7 @@ export const loadOldMessage=()=> {
     };
 }
  
-//ai Template gaia mn FooterGroup (will show on body)
+//Used for Templates from FooterGroup (will show on body)
 export const sendTemplate=(Template)=>{
     return((dispatch)=>{
         console.log(Template);
@@ -115,7 +114,7 @@ export const sendTemplate=(Template)=>{
     });
 }
 
-//ai Template gaia mn bodyGroup (won't show on body)
+//Used for Templates from bodyGroup (won't show on body)
 export const sendOneWayTemplate=(Template)=>{
     return((dispatch)=>{
         console.log(Template);
@@ -176,6 +175,7 @@ export const sendchangeRating=(Template)=>{
             // place here your object 
             Template
         }).then((response)=>{ 
+            dispatch(sendTemplateSuccess(Template))  
             dispatch(sendTemplateSuccess(response.data))  
         }).catch((errorMessage)=>{
             console.log(errorMessage);

@@ -57,7 +57,6 @@ const FooterContainer = (props) => {
   const handleImageInput = (event) => {
     var listOfImages=[]
     var count = props.selectedImages.length 
-
      Array.from(event.target.files).forEach(async item => {
     listOfImages.push(  {imageURL:await imageProcessor(item),
           idValue:count++})
@@ -66,7 +65,6 @@ const FooterContainer = (props) => {
 
     event.target.value='';  
   }
-
 
   const removeSelectedImage=(event)=>{
     props.actions.clientSideActions.removeImages(
@@ -118,7 +116,7 @@ const FooterContainer = (props) => {
   const onHeightChange = (height) => {
     props.actions.clientSideActions.sendWindowHeight(
       {
-        height: height+8
+        height: height
       }
     );
   }
@@ -177,7 +175,7 @@ const FooterContainer = (props) => {
     handleImageSubmit={handleImageSubmit} 
     removeSelectedImage={removeSelectedImage}/>:''
   }
-  <div className="footer d-flex flex-row justify-content-start align-items-end">
+  <div className="footer d-flex flex-row justify-content-between align-items-end">
       <form>
         <UploadImage imagesLength={props.selectedImages.length} handleImageInput={handleImageInput} />
       </form>
@@ -186,7 +184,7 @@ const FooterContainer = (props) => {
         <VoiceNote AudioState={AudioState} start={start} DeleteVN={DeleteVN}/>
       </form>
 
-      <form onKeyDown={onEnterPress} className="d-flex flex-row align-items-end" onSubmit={handleTextSubmit}>
+      <form onKeyDown={onEnterPress} className="d-flex flex-row flex-grow-1 flex-shrink-0 align-items-end" onSubmit={handleTextSubmit}>
         <TypeArea inputRef={inputRef} TextField={TextField} handleTextChange={handleTextChange}
           onHeightChange={onHeightChange} />
         {/* <Emoji TextField={TextField} setTextField={setTextField}/> */}

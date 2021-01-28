@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "^4.11.2",
+    "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "^4.0.0-alpha.57",
     "@material-ui/utils": "^4.11.2",
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
@@ -16,6 +17,7 @@
     "emoji-mart-picker": "^0.2.3",
     "image-to-base64": "^2.1.1",
     "lamejs": "^1.2.0",
+    "material-ui": "^0.20.2",
     "mic-recorder-to-mp3": "^2.2.2",
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.0",

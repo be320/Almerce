@@ -75,6 +75,9 @@
   margin: 10px;
   flex-shrink: 0;
 }
+a.productCardItemContainer:hover{
+  color:black
+}
 
 .productCardImage {
   border-radius: 18px 18px 18px 18px;
@@ -83,3 +86,4 @@
   max-width: 100%;
   height: auto;
 }
+

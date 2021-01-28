@@ -1,9 +1,11 @@
 *This file for enable communication between developers on this part of the Project
 *Place here the important notes only
+npm install 
 
 1- To start ths project you need to place this path:
     A- cd frontend/StartPoint
-    B- npm start 
+    B- npm install 
+    C- npm start 
 
 2- Install Redux DevTools from chrome extensions
 
@@ -24,7 +26,7 @@
     npm install @material-ui/icons
   
 8- Instal Star Rating 
-    npm i react-star-ratings
+    npm install @material-ui/lab
 
 9- For Image Processing 
     npm install browser-image-compression
