@@ -1,5 +1,5 @@
 import './_Body.css'
-import A from '../Dummy/Images/AA.png'
+import A from '../Dummy/Images/AA.jpg'
 // import T from '../Dummy/Images/T.jpg' 
 
 const ProductCardTemplate = (props) => {

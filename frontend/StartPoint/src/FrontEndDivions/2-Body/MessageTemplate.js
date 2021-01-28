@@ -1,5 +1,5 @@
 import './_Body.css'
-import AA from '../Dummy/Images/AA.png'
+import AA from '../Dummy/Images/AA.jpg'
 
 const MessageTemplate = (props) => {
     return <>
