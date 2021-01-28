@@ -20,6 +20,7 @@ const BodyContainer=(props)=>{
 
 const handleChoiceClick =(event)=>
  {
+
   props.actions.clientSideActions.sendOneWayTemplate(
  
     {

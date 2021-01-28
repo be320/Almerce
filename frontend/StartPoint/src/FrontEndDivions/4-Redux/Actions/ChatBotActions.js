@@ -55,6 +55,14 @@ const sendTemplateSuccess = (Template)=>{
             rating: Template,
         }
     }
+    else if (Template.elementType === "TemplateToDelete")
+    {
+        return{
+            type: Constants.TEMPLATE_TO_DELETE,
+            TemplateToDelete: Template,
+        }
+    }
+    
     
 }
 
@@ -96,7 +104,7 @@ export const loadOldMessage=()=> {
     };
 }
  
-//Used for Templates from FooterGroup (will show on body)
+//ai Template gaia mn FooterGroup (will show on body)
 export const sendTemplate=(Template)=>{
     return((dispatch)=>{
         console.log(Template);
@@ -114,7 +122,7 @@ export const sendTemplate=(Template)=>{
     });
 }
 
-//Used for Templates from bodyGroup (won't show on body)
+//ai Template gaia mn bodyGroup (won't show on body)
 export const sendOneWayTemplate=(Template)=>{
     return((dispatch)=>{
         console.log(Template);
@@ -124,6 +132,9 @@ export const sendOneWayTemplate=(Template)=>{
             Template
         }).then((response)=>{ 
                 console.log(response.data);
+                var TemplateToDelete=JSON.parse(JSON.stringify(Template))
+                TemplateToDelete ={elementType:"TemplateToDelete"}
+                dispatch(sendTemplateSuccess(TemplateToDelete))  
                 dispatch(sendTemplateSuccess(Template))  
                 dispatch(sendTemplateSuccess(response.data))  
         }).catch((errorMessage)=>{
@@ -175,7 +186,6 @@ export const sendchangeRating=(Template)=>{
             // place here your object 
             Template
         }).then((response)=>{ 
-            dispatch(sendTemplateSuccess(Template))  
             dispatch(sendTemplateSuccess(response.data))  
         }).catch((errorMessage)=>{
             console.log(errorMessage);
