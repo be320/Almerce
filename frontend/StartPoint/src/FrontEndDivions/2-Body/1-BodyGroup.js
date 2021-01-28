@@ -37,14 +37,14 @@ const handleChoiceClick =(event)=>
 
   props.actions.clientSideActions.sendchangeRating(
     {
-      elementType: 'StarRatingTemplate',
+      elementType: 'MessageTemplate',
       serverSide: false,
-      rating: ratingVal,
+      message: {TextField :ratingVal},
       index:props.refIndex.current.index+=1
 
     }
   );
-  event.currentTarget.parentNode.parentNode.parentNode.parentNode.style.display = "none";
+  //event.currentTarget.parentNode.parentNode.parentNode.parentNode.style.display = "none";
   
  }
 return<>

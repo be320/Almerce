@@ -132,7 +132,8 @@ export const sendOneWayTemplate=(Template)=>{
             Template
         }).then((response)=>{ 
                 console.log(response.data);
-                var TemplateToDelete ={elementType:"TemplateToDelete"}
+                var TemplateToDelete ={elementType:"TemplateToDelete",
+                elementName:"choices"}
                 dispatch(sendTemplateSuccess(TemplateToDelete))  
                 dispatch(sendTemplateSuccess(Template))
                 dispatch(sendTemplateSuccess(response.data))  
@@ -186,7 +187,8 @@ export const sendchangeRating=(Template)=>{
             Template
         }).then((response)=>{ 
             var TemplateToDelete=JSON.parse(JSON.stringify(Template))
-            TemplateToDelete ={elementType:"TemplateToDelete"}
+            TemplateToDelete ={elementType:"TemplateToDelete",
+            elementName:"starRating",rating:Template.message.TextField}
             dispatch(sendTemplateSuccess(TemplateToDelete))  
             dispatch(sendTemplateSuccess(response.data))  
         }).catch((errorMessage)=>{
