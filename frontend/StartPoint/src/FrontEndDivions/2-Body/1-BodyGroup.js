@@ -18,6 +18,16 @@ const BodyContainer=(props)=>{
  messagesEndRef.current.scrollIntoView({ behavior: "smooth" })
  }, [props.bodyContainer]);
 
+ useEffect(() => {
+  props.actions.clientSideActions.showFirstMessage(
+    { 
+      elementType: 'MessageTemplate',
+      serverSide: true,
+      message: {TextField : "مساء الخير يا فندم اخبارك ايه اتشرف بالاسم"},
+    }
+  );
+}, []);
+
 const handleChoiceClick =(event)=>
  {
 
@@ -54,9 +64,7 @@ return<>
     :150)
   }px)`}}>
   
-<MessageTemplate
-    serverSide={true}
-    message="مساء الخير يا فندم اخبارك ايه اتشرف بالاسم" />
+
 {props.bodyContainer.map(item => { 
  if (item.elementType ==='MessageTemplate'){
  console.log(item);

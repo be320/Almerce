@@ -163,7 +163,14 @@
 // </div>
 
 // //Final version
-{/* <script>
+{/*<style>
+ @media (hover: hover) {
+    #miniMaxButtonn:hover {
+        background-color:  rgba(224,224,224,0.25);
+    }
+}
+</style>
+<script>
 	var state = 0;
 	function minimizeMaximize(){	
 		if(state===0){
@@ -177,14 +184,13 @@
 			state=state-1;
 		}
 	}
-	function mouseOver() {document.getElementById("miniMaxButtonn").style.backgroundColor = "rgba(224,224,224,0.25)";}
-	function mouseOut() {document.getElementById("miniMaxButtonn").style.backgroundColor = "transparent";}
 </script>
+
 <div style="
 			position: fixed;
-			right:70px;
+			right:15px;
 			bottom:0;
-			width:320px;
+			width:300px;
 			z-index: 5;
 			box-shadow: rgba(0, 0, 0, 0.15) 0px 12px 24px 0px;" >
 	<div id="header" style="background-color: rgb(104, 76, 165); border-radius: 10px 10px 0px 0px; ">
@@ -197,7 +203,7 @@
 		<div  style="  display: inline-block; color: white; padding-top: 15pt;  vertical-align: top">    	
 				Almerce
 		</div>
-		<div id="miniMaxButtonn" style="background-color: transparent;
+		<div id="miniMaxButtonn" style="
   							border: none;
  							color: white;
   							float: right;
@@ -212,15 +218,14 @@
     						behavior: url(PIE.htc);
 							width: 30px;
     						height: 30px"
-			 onclick='minimizeMaximize()'
-			onmouseover="mouseOver()" onmouseout="mouseOut()"> +
+			 onclick='minimizeMaximize()'> +
 		</div>
 	</div>
 <div>
 		<iframe id="iframe"  style="
 					height: 55vh;
-						display:none;"
-				    src="http://localhost:3000/"
+					display:none;"
+				src="https://40cc5afd1e12.ngrok.io"
 				allow="microphone"
 				frameborder="0" >
 		</iframe>

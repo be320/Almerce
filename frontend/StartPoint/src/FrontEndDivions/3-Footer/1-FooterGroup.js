@@ -11,6 +11,7 @@ import { bindActionCreators } from "redux";
 import UploadImageTab from './UploadImageTab'
 import {imageProcessor} from './ImageProcessing'
 import {audioProcessor} from './AudioProcessing'
+var flag;
 
 
 const FooterContainer = (props) => {
@@ -77,9 +78,29 @@ const FooterContainer = (props) => {
 
   //---------------------------------Audio--------------------------------------
   const start = () => {
-       Mp3Recorder.start().then(() => {
-       setAudioState({isRecording : true , blobURL : ''});
-      }).catch((e) => console.error(e)); 
+    Mp3Recorder.start().then(() => {
+      setAudioState({isRecording : true , blobURL : ''});
+     }).catch((e) => console.error(e)); 
+   flag = setTimeout(() => {
+    Mp3Recorder
+    .stop()
+    .getMp3()
+    .then(async([buffer, blob]) => {
+      const bu = await audioProcessor(blob);
+      console.log("Timeout stop")
+        props.actions.clientSideActions.sendAudioMessage(
+          {
+            elementType: 'AudioTemplate', 
+            audio: { isRecording: false, blobURL :bu},
+            index:props.refIndex.current.index+=1
+          }
+        );  
+      setAudioState(InitialAudioState);
+    }).catch((e) => { 
+      console.log(e)
+    });  
+    }, 60000);
+    debugger
   };
   
   const DeleteVN = () => //user clicked X button
@@ -91,6 +112,9 @@ const FooterContainer = (props) => {
 
   const handleAudioSubmit =  (event) => {
     event.preventDefault();
+    console.log("Submit stop")
+    debugger
+    clearTimeout(flag);
     Mp3Recorder
     .stop()
     .getMp3()
@@ -116,7 +140,7 @@ const FooterContainer = (props) => {
   const onHeightChange = (height) => {
     props.actions.clientSideActions.sendWindowHeight(
       {
-        height: height
+        height: height+8
       }
     );
   }
@@ -129,26 +153,6 @@ const FooterContainer = (props) => {
 
   const handleTextSubmit = (event) => {
     event.preventDefault();
-
-    // props.actions.clientSideActions.sendTemplate(
-    //   {
-    //     elementType:"ProductCardTemplate",
-    //     cards:[{ imgSrc :"https://safwatoys.com/image/cache/catalog/W50-2/x122c5919-e115-43fc-a6c8-d283ce0ffb72-230x230.jpg.pagespeed.ic.ZrBiS-lubg.webp",ProductUrl:"https://safwatoys.com/index.php?route=product/product&product_id=1049",productHeader:"لوحة تلوين بالرمل W50-2",productParagraph:"لوحة معها رمل ملون يقوم الطفل بلصقها ف مكانها المناسب حسب الصورة الملونة لتتحول الي صوره ملونه بشكل مميز ينمي العضلات الدقيقة واصابع اليد ومهارات التحكم تزيد ثقة الطفل بنفسه متاح عدة اشكال تساعد في تمييز الطفل للالوان وتنميه مهاره المطابقة مناسبه للاطفال فرط الحركه مناسب لسن 4 سنين"
-    // ,id:"78"},{ imgSrc :"https://safwatoys.com/image/cache/catalog/W50-2/x122c5919-e115-43fc-a6c8-d283ce0ffb72-230x230.jpg.pagespeed.ic.ZrBiS-lubg.webp",ProductUrl:"https://safwatoys.com/index.php?route=product/product&product_id=1049",productHeader:"لوحة تلوين بالرمل W50-2",productParagraph:"لوحة معها رمل ملون يقوم الطفل بلصقها ف مكانها المناسب حسب الصورة الملونة لتتحول الي صوره ملونه بشكل مميز ينمي العضلات الدقيقة واصابع اليد ومهارات التحكم تزيد ثقة الطفل بنفسه متاح عدة اشكال تساعد في تمييز الطفل للالوان وتنميه مهاره المطابقة مناسبه للاطفال فرط الحركه مناسب لسن 4 سنين"
-    // ,id:"78"},{ imgSrc :"https://safwatoys.com/image/cache/catalog/W50-2/x122c5919-e115-43fc-a6c8-d283ce0ffb72-230x230.jpg.pagespeed.ic.ZrBiS-lubg.webp",ProductUrl:"https://safwatoys.com/index.php?route=product/product&product_id=1049",productHeader:"لوحة تلوين بالرمل W50-2",productParagraph:"لوحة معها رمل ملون يقوم الطفل بلصقها ف مكانها المناسب حسب الصورة الملونة لتتحول الي صوره ملونه بشكل مميز ينمي العضلات الدقيقة واصابع اليد ومهارات التحكم تزيد ثقة الطفل بنفسه متاح عدة اشكال تساعد في تمييز الطفل للالوان وتنميه مهاره المطابقة مناسبه للاطفال فرط الحركه مناسب لسن 4 سنين"
-    // ,id:"78"},{ imgSrc :"https://safwatoys.com/image/cache/catalog/W50-2/x122c5919-e115-43fc-a6c8-d283ce0ffb72-230x230.jpg.pagespeed.ic.ZrBiS-lubg.webp",ProductUrl:"https://safwatoys.com/index.php?route=product/product&product_id=1049",productHeader:"لوحة تلوين بالرمل W50-2",productParagraph:"لوحة معها رمل ملون يقوم الطفل بلصقها ف مكانها المناسب حسب الصورة الملونة لتتحول الي صوره ملونه بشكل مميز ينمي العضلات الدقيقة واصابع اليد ومهارات التحكم تزيد ثقة الطفل بنفسه متاح عدة اشكال تساعد في تمييز الطفل للالوان وتنميه مهاره المطابقة مناسبه للاطفال فرط الحركه مناسب لسن 4 سنين"
-    // ,id:"78"},{ imgSrc :"https://safwatoys.com/image/cache/catalog/W50-2/x122c5919-e115-43fc-a6c8-d283ce0ffb72-230x230.jpg.pagespeed.ic.ZrBiS-lubg.webp",ProductUrl:"https://safwatoys.com/index.php?route=product/product&product_id=1049",productHeader:"لوحة تلوين بالرمل W50-2",productParagraph:"لوحة معها رمل ملون يقوم الطفل بلصقها ف مكانها المناسب حسب الصورة الملونة لتتحول الي صوره ملونه بشكل مميز ينمي العضلات الدقيقة واصابع اليد ومهارات التحكم تزيد ثقة الطفل بنفسه متاح عدة اشكال تساعد في تمييز الطفل للالوان وتنميه مهاره المطابقة مناسبه للاطفال فرط الحركه مناسب لسن 4 سنين"
-    // ,id:"78"}]		
-    // }
-    //   );
-
-    // props.actions.clientSideActions.sendTemplate(
-    //   {
-    //   message:{TextField:"اللعبة ديه لولد ولا بنت؟"},
-    //   elementType:'ChoiceTemplate',
-    //   choices:["بنت","ولد","نتالا","للااتى","gvh","بنت","ولد","نتالا","للااتى","gvh"]
-    //   }
-    // );
 
     if (TextField !== '') {
     

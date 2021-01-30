@@ -6,10 +6,36 @@ import thunk from "redux-thunk";
 const saveToLocalStorage = () => {
   try {
     const state = store.getState()
+
+    //if last item user uploaded exceeded 4 mb
+    var lastElement = state[2][state[2].length-1];
+    if(((((JSON.stringify(lastElement).length)*2)/1000)/1000)>4)
+    {
+      state[2].pop();
+      state[2].push(
+        { 
+          elementType: 'MessageTemplate',
+          serverSide: false,
+          message: {TextField : "message received"},
+        }
+      );
+      //should rarely appear
+      alert("Item is too large, It will be received but won't be shown");
+    }
+    else{
+    //After adding last item user uploaded the store state excedded 4.9 mb 
+    //keep deleting old messages to make space
+    while(((((JSON.stringify(state).length)*2)/1000)/1000)>4.9)
+    {
+      state[2].shift();
+    }
+  }
     const serializedState = JSON.stringify(state)
+
     //Done to prevent setting the local storage with reducer initial state at page refresh
-    //reducer initial state is: state = [{height:"32"},[],[]] 
-    if (serializedState !== '[{"height":32},[],[]]') {
+    //reducer initial state is: state = [{height:"35"},[],[]] 
+    if (serializedState !== '[{"height":40},[],[]]') {
+      
       localStorage.setItem('storedState', serializedState)
     }
     else 

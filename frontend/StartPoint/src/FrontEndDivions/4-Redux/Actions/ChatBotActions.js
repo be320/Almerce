@@ -164,7 +164,7 @@ export const sendSelectedImages=(Template)=>{
 export const sendAudioMessage=(Template)=>{
     return((dispatch)=>{
         console.log(Template);
-        dispatch(apiCallAction());
+       // dispatch(apiCallAction());
         return  AxiosInstance.post('/sendAudioMessage',{
             // place here your object 
             Template
@@ -197,6 +197,14 @@ export const sendchangeRating=(Template)=>{
 
     });
 }
+
+export const showFirstMessage=(Template)=>{
+    return((dispatch)=>{
+        console.log(Template);
+            dispatch(sendTemplateSuccess(Template))  
+        });
+}
+
 
 
 

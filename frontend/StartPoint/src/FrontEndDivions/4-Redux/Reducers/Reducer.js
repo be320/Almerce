@@ -6,7 +6,7 @@ const InitialAudioState = {
     isBlocked: false,
   }
 
-  const Reducer =(state = [{height:"32"},[],[]], action)=> {
+  const Reducer =(state = [{height:"35"},[],[]], action)=> {
     switch(action.type){
 
         case Constants.SUBMIT_TEXTAREA: 
