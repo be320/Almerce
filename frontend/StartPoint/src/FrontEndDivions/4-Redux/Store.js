@@ -31,11 +31,9 @@ const saveToLocalStorage = () => {
     }
   }
     const serializedState = JSON.stringify(state)
-
     //Done to prevent setting the local storage with reducer initial state at page refresh
     //reducer initial state is: state = [{height:"35"},[],[]] 
-    if (serializedState !== '[{"height":40},[],[]]') {
-      
+    if (serializedState !== '[{"height":40},[],[{"elementType":"MessageTemplate","serverSide":true,"message":{"TextField":"مساء الخير يا فندم اخبارك ايه اتشرف بالاسم"}}],{"isSending":false}]') {
       localStorage.setItem('storedState', serializedState)
     }
     else 

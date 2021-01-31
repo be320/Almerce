@@ -20,41 +20,48 @@ const BodyContainer=(props)=>{
  }, [props.bodyContainer]);
 
  useEffect(() => {
-  props.actions.clientSideActions.showFirstMessage(
-    { 
-      elementType: 'MessageTemplate',
-      serverSide: true,
-      message: {TextField : "مساء الخير يا فندم اخبارك ايه اتشرف بالاسم"},
-    }
-  );
+  var temp = localStorage.getItem('index'); 
+  if(temp===null)
+  {
+    props.actions.clientSideActions.showFirstMessage(
+      { 
+        elementType: 'MessageTemplate',
+        serverSide: true,
+        message: {TextField : "مساء الخير يا فندم اخبارك ايه اتشرف بالاسم"},
+      }
+    );
+  }
+  
 }, []);
 
 const handleChoiceClick =(event)=>
  {
-
+  var temp = parseInt(localStorage.getItem('index'), 10); 
   props.actions.clientSideActions.sendOneWayTemplate(
  
     {
       elementType: 'MessageTemplate',
       serverSide: false,
       message: {TextField :event.target.innerText},
-      index:props.refIndex.current.index+=1
-      
+      index:temp+1
     }
   );
+  localStorage.setItem('index',  JSON.stringify(temp+1))
  }
 
  function changeRating (event , ratingVal){
-
+  var temp = parseInt(localStorage.getItem('index'), 10); 
   props.actions.clientSideActions.sendchangeRating(
     {
       elementType: 'StarRatingTemplate',
       serverSide: false,
       rating: ratingVal,
-      index:props.refIndex.current.index+=1
+      index:temp+1
 
     }
-  );  
+  );
+  localStorage.setItem('index',  JSON.stringify(temp+1))
+  
  }
 return<>
 <div className="body" style={{height: `calc(100vh - ${
@@ -103,7 +110,7 @@ return<>
  {return<>
  </>} 
 })}
-{props.sendingState.isSending&&<LoaderTemplate/>}
+{props.sendingState.isSending && <LoaderTemplate/>}
  <div ref={messagesEndRef} />
 </div>
 

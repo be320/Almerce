@@ -42,16 +42,19 @@ const FooterContainer = (props) => {
 
 //---------------------------------Image--------------------------------------
   const handleImageSubmit = (event) => {
+    var temp = parseInt(localStorage.getItem('index'), 10); 
        props.actions.clientSideActions.sendSelectedImages(
       {
         
           elementType: 'ImageTemplate',
           serverSide: false,
           imageList: props.selectedImages,
-          index:props.refIndex.current.index+=1
+          index:temp+1
         
       }
-      )
+      );
+      localStorage.setItem('index',  JSON.stringify(temp+1))
+
   }
   
 
@@ -88,13 +91,15 @@ const FooterContainer = (props) => {
     .then(async([buffer, blob]) => {
       const bu = await audioProcessor(blob);
       console.log("Timeout stop")
+      var temp = parseInt(localStorage.getItem('index'), 10); 
         props.actions.clientSideActions.sendAudioMessage(
           {
             elementType: 'AudioTemplate', 
             audio: { isRecording: false, blobURL :bu},
-            index:props.refIndex.current.index+=1
+            index:temp+1
           }
         );  
+        localStorage.setItem('index',  JSON.stringify(temp+1))
       setAudioState(InitialAudioState);
     }).catch((e) => { 
       console.log(e)
@@ -120,13 +125,15 @@ const FooterContainer = (props) => {
     .getMp3()
     .then(async([buffer, blob]) => {
       const bu = await audioProcessor(blob);
+      var temp = parseInt(localStorage.getItem('index'), 10); 
         props.actions.clientSideActions.sendAudioMessage(
           {
             elementType: 'AudioTemplate', 
             audio: { isRecording: false, blobURL :bu},
-            index:props.refIndex.current.index+=1
+            index:temp+1
           }
         );  
+        localStorage.setItem('index',  JSON.stringify(temp+1))
       setAudioState(InitialAudioState);
     }).catch((e) => { 
       console.log(e)
@@ -156,15 +163,17 @@ const FooterContainer = (props) => {
 
     if (TextField !== '') {
     
+      var temp = parseInt(localStorage.getItem('index'), 10); 
       props.actions.clientSideActions.sendTemplate(
         {
           elementType: 'MessageTemplate',
           serverSide: false,
           message: { TextField },
-          index:props.refIndex.current.index+=1
+          index:temp+1
 
         }
       );
+      localStorage.setItem('index',  JSON.stringify(temp+1))
     }
     else {
       //focus type area 
