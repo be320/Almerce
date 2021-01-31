@@ -49,6 +49,10 @@
   word-wrap: break-word;
   font-size: 15px;
 }
+.spinnerOrientationRight {
+  float: right;
+  word-wrap: break-word;
+}
 
 .fixingSizeOrientationRight {
   overflow: auto;
@@ -75,8 +79,8 @@
   margin: 10px;
   flex-shrink: 0;
 }
-a.productCardItemContainer:hover{
-  color:black
+a.productCardItemContainer:hover {
+  color: black;
 }
 
 .productCardImage {
@@ -86,4 +90,3 @@ a.productCardItemContainer:hover{
   max-width: 100%;
   height: auto;
 }
-

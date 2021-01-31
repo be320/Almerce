@@ -9,6 +9,7 @@ const MessageTemplate = (props) => {
                 <div className={props.serverSide ? ' messageOrientationLeft ' : ' messageOrientationRight '} 
                 style ={props.serverSide ? {backgroundColor : "rgb(110, 72, 170)", color:"white"}:{}} >{props.message}</div>
             </div>
+ 
         </div>
     </>
 }

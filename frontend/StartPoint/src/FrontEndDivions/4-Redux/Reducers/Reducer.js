@@ -6,7 +6,7 @@ const InitialAudioState = {
     isBlocked: false,
   }
 
-  const Reducer =(state = [{height:"35"},[],[]], action)=> {
+  const Reducer =(state = [{height:"35"},[],[],{isSending:false}], action)=> {
     switch(action.type){
 
         case Constants.SUBMIT_TEXTAREA: 
@@ -15,6 +15,16 @@ const InitialAudioState = {
         state=JSON.parse(JSON.stringify(state));
         return state
 
+        case Constants.BEGIN_API_CALL:
+          state[3]={isSending:true}
+          state=JSON.parse(JSON.stringify(state));
+          return state
+
+        case Constants.END_API_CALL:
+          state[3]={isSending:false}
+          state=JSON.parse(JSON.stringify(state));
+          return state
+  
         case Constants.SUBMIT_VOICENOTE: 
         if (state === [] )
         {state = InitialAudioState}

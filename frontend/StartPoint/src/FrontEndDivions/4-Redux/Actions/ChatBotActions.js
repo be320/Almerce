@@ -5,12 +5,17 @@ import AxiosInstance from '../../5-Axios/AxiosConfiguration'
 
 // use this format in case you will use bindActionCreators
 
-const apiCallAction=()=> {
+const apiCallBeginAction=()=> {
     return {
       type: Constants.BEGIN_API_CALL,
     };
   }
 
+const apiCallEndAction=()=> {
+    return {
+      type: Constants.END_API_CALL,
+    };
+  }
 const sendTemplateSuccess = (Template)=>{
     if(Template.elementType === "MessageTemplate")
     {
@@ -62,8 +67,6 @@ const sendTemplateSuccess = (Template)=>{
             TemplateToDelete: Template,
         }
     }
-    
-    
 }
 
 const loadOldMessageSuccess =(Templates)=>{
@@ -94,7 +97,7 @@ export const removeImages=(idValue)=>{
 
 export const loadOldMessage=()=> {
     return (dispatch) => {
-      dispatch(apiCallAction());
+      dispatch(apiCallBeginAction());
       return  AxiosInstance.post('/v1/301df99f')
       .then((Templates)=>{
         dispatch(loadOldMessageSuccess(Templates.data));
@@ -107,14 +110,13 @@ export const loadOldMessage=()=> {
 //ai Template gaia mn FooterGroup (will show on body)
 export const sendTemplate=(Template)=>{
     return((dispatch)=>{
-        console.log(Template);
-        dispatch(apiCallAction());
+        dispatch(sendTemplateSuccess(Template))
+        dispatch(apiCallBeginAction());
         return  AxiosInstance.post('/sendText',{
             // place here your object 
             Template
         }).then((response)=>{ 
-            console.log(response.data);
-            dispatch(sendTemplateSuccess(Template))
+            dispatch(apiCallEndAction());
             dispatch(sendTemplateSuccess(response.data))  
         }).catch((errorMessage)=>{
             console.log(errorMessage);
@@ -125,18 +127,17 @@ export const sendTemplate=(Template)=>{
 //ai Template gaia mn bodyGroup (won't show on body)
 export const sendOneWayTemplate=(Template)=>{
     return((dispatch)=>{
-        console.log(Template);
-        dispatch(apiCallAction());
+        var TemplateToDelete ={elementType:"TemplateToDelete",
+        elementName:"choices"}
+        dispatch(sendTemplateSuccess(TemplateToDelete))  
+        dispatch(sendTemplateSuccess(Template))
+        dispatch(apiCallBeginAction());
         return  AxiosInstance.post('/sendText',{
             // place here your object 
             Template
         }).then((response)=>{ 
-                console.log(response.data);
-                var TemplateToDelete ={elementType:"TemplateToDelete",
-                elementName:"choices"}
-                dispatch(sendTemplateSuccess(TemplateToDelete))  
-                dispatch(sendTemplateSuccess(Template))
-                dispatch(sendTemplateSuccess(response.data))  
+            dispatch(apiCallEndAction());
+            dispatch(sendTemplateSuccess(response.data))  
         }).catch((errorMessage)=>{
             console.log(errorMessage);
         });
@@ -146,13 +147,13 @@ export const sendOneWayTemplate=(Template)=>{
 
 export const sendSelectedImages=(Template)=>{
     return((dispatch)=>{
-        console.log(Template);
-        dispatch(apiCallAction());
+        dispatch(sendTemplateSuccess(Template))
+        dispatch(apiCallBeginAction());
         return  AxiosInstance.post('/sendImagesList',{
             // place here your object 
             Template
         }).then((response)=>{ 
-            dispatch(sendTemplateSuccess(Template))
+            dispatch(apiCallEndAction());
             dispatch(sendTemplateSuccess(response.data))  
         }).catch((errorMessage)=>{
             console.log(errorMessage);
@@ -163,13 +164,13 @@ export const sendSelectedImages=(Template)=>{
 
 export const sendAudioMessage=(Template)=>{
     return((dispatch)=>{
-        console.log(Template);
-       // dispatch(apiCallAction());
+        dispatch(sendTemplateSuccess(Template))
+        dispatch(apiCallBeginAction());
         return  AxiosInstance.post('/sendAudioMessage',{
             // place here your object 
             Template
         }).then((response)=>{ 
-            dispatch(sendTemplateSuccess(Template))
+            dispatch(apiCallEndAction());
             dispatch(sendTemplateSuccess(response.data))  
         }).catch((errorMessage)=>{
             console.log(errorMessage);
@@ -180,16 +181,17 @@ export const sendAudioMessage=(Template)=>{
 
 export const sendchangeRating=(Template)=>{
     return((dispatch)=>{
-        console.log(Template);
-        dispatch(apiCallAction());
+        var TemplateToDelete=JSON.parse(JSON.stringify(Template))
+            TemplateToDelete ={elementType:"TemplateToDelete",
+            elementName:"starRating",rating:Template.message.TextField}
+        dispatch(sendTemplateSuccess(TemplateToDelete))  
+        dispatch(sendTemplateSuccess(Template))
+        dispatch(apiCallBeginAction());
         return  AxiosInstance.post('/sendchangeRating',{
             // place here your object 
             Template
         }).then((response)=>{ 
-            var TemplateToDelete=JSON.parse(JSON.stringify(Template))
-            TemplateToDelete ={elementType:"TemplateToDelete",
-            elementName:"starRating",rating:Template.message.TextField}
-            dispatch(sendTemplateSuccess(TemplateToDelete))  
+            dispatch(apiCallEndAction());
             dispatch(sendTemplateSuccess(response.data))  
         }).catch((errorMessage)=>{
             console.log(errorMessage);
@@ -200,7 +202,6 @@ export const sendchangeRating=(Template)=>{
 
 export const showFirstMessage=(Template)=>{
     return((dispatch)=>{
-        console.log(Template);
             dispatch(sendTemplateSuccess(Template))  
         });
 }

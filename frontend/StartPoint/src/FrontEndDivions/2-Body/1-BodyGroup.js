@@ -9,6 +9,7 @@ import { useEffect, useRef } from 'react'
 import * as ChatBotActions from '../4-Redux/Actions/ChatBotActions'
 import { bindActionCreators } from "redux";
 import StarRatingTemplate from './StarRatingTemplate';
+import LoaderTemplate from './LoaderTemplate'
 
 const BodyContainer=(props)=>{
  
@@ -104,9 +105,11 @@ return<>
  {return<>
  </>} 
 })}
+{props.sendingState.isSending&&
+<LoaderTemplate/>}
  <div ref={messagesEndRef} />
 </div>
- 
+
 </>
 }
 
@@ -127,6 +130,7 @@ const mapStateToProps =(state)=>{
  bodyContainer: state[2],
  footerSize: state[0],
  selectedImages: state[1],
+ sendingState: state[3]
  };
  }
  export default connect(mapStateToProps,mapDispatchToProps)(BodyContainer);
