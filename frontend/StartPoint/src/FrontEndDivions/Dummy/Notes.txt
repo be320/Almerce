@@ -32,6 +32,9 @@ npm install
     npm install browser-image-compression
     npm install  image-to-base64
 
+10- Loader
+    npm install react-loader-spinner --save
+
 
 //Git Ignore problem solution
 WARNING: First commit or stash your current changes, or you will lose them.
