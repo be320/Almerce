@@ -48,15 +48,13 @@ const handleChoiceClick =(event)=>
 
   props.actions.clientSideActions.sendchangeRating(
     {
-      elementType: 'MessageTemplate',
+      elementType: 'StarRatingTemplate',
       serverSide: false,
-      message: {TextField :ratingVal},
+      rating: ratingVal,
       index:props.refIndex.current.index+=1
 
     }
-  );
-  //event.currentTarget.parentNode.parentNode.parentNode.parentNode.style.display = "none";
-  
+  );  
  }
 return<>
 <div className="body" style={{height: `calc(100vh - ${
@@ -105,8 +103,7 @@ return<>
  {return<>
  </>} 
 })}
-{props.sendingState.isSending&&
-<LoaderTemplate/>}
+{props.sendingState.isSending&&<LoaderTemplate/>}
  <div ref={messagesEndRef} />
 </div>
 

@@ -181,11 +181,9 @@ export const sendAudioMessage=(Template)=>{
 
 export const sendchangeRating=(Template)=>{
     return((dispatch)=>{
-        var TemplateToDelete=JSON.parse(JSON.stringify(Template))
-            TemplateToDelete ={elementType:"TemplateToDelete",
-            elementName:"starRating",rating:Template.message.TextField}
+        var TemplateToDelete ={...Template,elementType:"TemplateToDelete",
+        elementName:"starRating"}
         dispatch(sendTemplateSuccess(TemplateToDelete))  
-        dispatch(sendTemplateSuccess(Template))
         dispatch(apiCallBeginAction());
         return  AxiosInstance.post('/sendchangeRating',{
             // place here your object 

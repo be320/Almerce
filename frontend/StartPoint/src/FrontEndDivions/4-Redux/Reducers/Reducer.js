@@ -68,10 +68,9 @@ const InitialAudioState = {
           lastItem={...lastItem,choices:[], elementType: "MessageTemplate" }
         }
         else{
-          lastItem={...lastItem,choices:[], 
-            elementType: "MessageTemplate" ,
+          lastItem={...lastItem,
             serverSide: false,
-            message: {TextField:action.TemplateToDelete.rating}
+            rating:action.TemplateToDelete.rating
           }
         }
        

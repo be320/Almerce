@@ -2,7 +2,7 @@ import { Rating } from '@material-ui/lab';
 import React, { useState ,useRef, useEffect } from "react"
 
  const  SimpleRating = (props) => {
-  const [value, setValue] = useState(props.val);
+ const [value, setValue] = useState(props.val);
 
   // //Run only on update, doesn't runs on mount
   //   const didMount = useRef(false);
