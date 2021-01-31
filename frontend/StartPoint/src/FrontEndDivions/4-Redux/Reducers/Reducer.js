@@ -6,7 +6,7 @@ const InitialAudioState = {
     isBlocked: false,
   }
 
-  const Reducer =(state = [{height:"35"},[],[],{isSending:false}], action)=> {
+  const Reducer =(state = [{height:"32"},[],[],{isSending:false}], action)=> {
     switch(action.type){
 
         case Constants.SUBMIT_TEXTAREA: 
@@ -81,7 +81,7 @@ const InitialAudioState = {
         
         case Constants.CHANGE_WINDOW_SIZE:
         state[0]=action.height
-        state=[...state]
+        state=JSON.parse(JSON.stringify(state));
         return state
 
         case Constants.SUBMIT_RATING:

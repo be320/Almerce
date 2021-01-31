@@ -54,7 +54,6 @@ const FooterContainer = (props) => {
       }
       );
       localStorage.setItem('index',  JSON.stringify(temp+1))
-
   }
   
 
@@ -105,7 +104,7 @@ const FooterContainer = (props) => {
       console.log(e)
     });  
     }, 60000);
-    debugger
+    
   };
   
   const DeleteVN = () => //user clicked X button
@@ -144,10 +143,10 @@ const FooterContainer = (props) => {
     setTextField(event.target.value);
   }
 
-  const onHeightChange = (height) => {
+  const onHeightChange = (h) => {
     props.actions.clientSideActions.sendWindowHeight(
       {
-        height: height+8
+        height: h+8
       }
     );
   }

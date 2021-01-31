@@ -16,8 +16,9 @@ const BodyContainer=(props)=>{
  const messagesEndRef = useRef(null)
  
  useEffect(() => {
+   
  messagesEndRef.current.scrollIntoView({ behavior: "smooth" })
- }, [props.bodyContainer]);
+ }, [props.footerSize.height,props.bodyContainer]);
 
  useEffect(() => {
   var temp = localStorage.getItem('index'); 
@@ -70,7 +71,6 @@ return<>
     :150)
   }px)`}}>
   
-
 {props.bodyContainer.map(item => { 
  if (item.elementType ==='MessageTemplate'){
  console.log(item);
@@ -110,14 +110,12 @@ return<>
  {return<>
  </>} 
 })}
+
 {props.sendingState.isSending && <LoaderTemplate/>}
- <div ref={messagesEndRef} />
-</div>
+ <div ref={messagesEndRef} /> </div>
 
 </>
 }
-
-
 const mapDispatchToProps = (dispatch) => {
   return {
     actions: {

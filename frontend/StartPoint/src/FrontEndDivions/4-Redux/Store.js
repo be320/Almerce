@@ -6,13 +6,13 @@ import thunk from "redux-thunk";
 const saveToLocalStorage = () => {
   try {
     const state = store.getState()
-
+    var state_copy = state
     //if last item user uploaded exceeded 4 mb
-    var lastElement = state[2][state[2].length-1];
+    var lastElement = state_copy[2][state_copy[2].length-1];
     if(((((JSON.stringify(lastElement).length)*2)/1000)/1000)>4)
     {
-      state[2].pop();
-      state[2].push(
+      state_copy[2].pop();
+      state_copy[2].push(
         { 
           elementType: 'MessageTemplate',
           serverSide: false,
@@ -25,16 +25,17 @@ const saveToLocalStorage = () => {
     else{
     //After adding last item user uploaded the store state excedded 4.9 mb 
     //keep deleting old messages to make space
-    while(((((JSON.stringify(state).length)*2)/1000)/1000)>4.9)
+    while(((((JSON.stringify(state_copy).length)*2)/1000)/1000)>4.9)
     {
-      state[2].shift();
+      state_copy[2].shift();
     }
   }
-    const serializedState = JSON.stringify(state)
+    const serializedState = JSON.stringify(state_copy)
     //Done to prevent setting the local storage with reducer initial state at page refresh
-    //reducer initial state is: state = [{height:"35"},[],[]] 
+    //reducer initial state is: state = [{height:"32"},[],[]] 
     if (serializedState !== '[{"height":40},[],[{"elementType":"MessageTemplate","serverSide":true,"message":{"TextField":"مساء الخير يا فندم اخبارك ايه اتشرف بالاسم"}}],{"isSending":false}]') {
       localStorage.setItem('storedState', serializedState)
+      
     }
     else 
     {

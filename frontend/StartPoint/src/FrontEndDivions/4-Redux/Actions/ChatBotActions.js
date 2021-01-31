@@ -76,10 +76,11 @@ const loadOldMessageSuccess =(Templates)=>{
 }
 
 }
-export const sendWindowHeight=(height)=>{
+export const sendWindowHeight=(h)=>{
+
     return{
         type: Constants.CHANGE_WINDOW_SIZE,
-        height: height,
+        height: h,
     }
 }
 export const updateImagesList=(selectedImages)=>{
