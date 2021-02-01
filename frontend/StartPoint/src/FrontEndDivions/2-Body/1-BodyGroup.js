@@ -20,21 +20,6 @@ const BodyContainer=(props)=>{
  messagesEndRef.current.scrollIntoView({ behavior: "smooth" })
  }, [props.footerSize.height,props.bodyContainer]);
 
- useEffect(() => {
-  var temp = localStorage.getItem('index'); 
-  if(temp===null)
-  {
-    props.actions.clientSideActions.showFirstMessage(
-      { 
-        elementType: 'MessageTemplate',
-        serverSide: true,
-        message: {TextField : "مساء الخير يا فندم اخبارك ايه اتشرف بالاسم"},
-      }
-    );
-  }
-  
-}, []);
-
 const handleChoiceClick =(event)=>
  {
   var temp = parseInt(localStorage.getItem('index'), 10); 
@@ -73,36 +58,29 @@ return<>
   
 {props.bodyContainer.map(item => { 
  if (item.elementType ==='MessageTemplate'){
- console.log(item);
  return <MessageTemplate
  serverSide={item.serverSide}
  message={item.message.TextField}
  />}
  else if (item.elementType ==='AudioTemplate'){
- console.log('Audio Received');
  return <VoiceNoteTemplate
  Audio={item.audio}/>
  }
  else if (item.elementType ==='ImageTemplate'){
- console.log('Image Received');
  return  item.imageList.map(subitem =>
  <ImageTemplate
   image={subitem.imageURL}/>)
  }
  else if (item.elementType ==='ChoiceTemplate'){
-  console.log('Choices Received');
   return<>
    <MessageTemplate serverSide={true} message={item.message.TextField}/>
    <ChoiceTemplate serverSide={false} choices={item.choices} handleChoiceClick={handleChoiceClick}/>
   </>}
    else if (item.elementType ==='ProductCardTemplate'){
-    console.log('Product card Received');
     return<>
      <ProductCardTemplate cards={item.cards}/>
     </>}
      else if (item.elementType ==='StarRatingTemplate'){
-      console.log('Star Rating Received');
-      console.log(item);
       return<>
        <StarRatingTemplate val={(item.rating)?item.rating:0} serverSide={item.serverSide} changeRating={changeRating} />
       </>}

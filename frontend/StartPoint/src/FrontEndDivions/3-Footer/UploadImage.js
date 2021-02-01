@@ -14,7 +14,6 @@ const UploadImage =(props,state)=>{
         accept="image/png, image/jpeg"
         style={{ display: "none" }}
         onChange={props.handleImageInput}
-        multiple
       />
       </>
     }

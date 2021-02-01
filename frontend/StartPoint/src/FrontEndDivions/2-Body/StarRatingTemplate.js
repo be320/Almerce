@@ -1,19 +1,8 @@
 import { Rating } from '@material-ui/lab';
-import React, { useState ,useRef, useEffect } from "react"
+import React, { useState } from "react"
 
  const  SimpleRating = (props) => {
  const [value, setValue] = useState(props.val);
-
-  // //Run only on update, doesn't runs on mount
-  //   const didMount = useRef(false);
-  //   useEffect(() => {
-  //     if (didMount.current) {
-  //       props.changeRating(value)
-  //      // localStorage.setItem('value', value)
-  //     } else {
-  //       didMount.current = true;
-  //     }
-  //   }, [value]);
 
   return<>
     <div className=" messageTemplateContainer ">

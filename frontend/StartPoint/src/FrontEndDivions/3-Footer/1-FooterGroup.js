@@ -35,10 +35,8 @@ const FooterContainer = (props) => {
       {
         listOfImages: ImgTest,
       }
-)
+);
   },[ImgTest]);
-  
- 
 
 //---------------------------------Image--------------------------------------
   const handleImageSubmit = (event) => {
@@ -116,8 +114,6 @@ const FooterContainer = (props) => {
 
   const handleAudioSubmit =  (event) => {
     event.preventDefault();
-    console.log("Submit stop")
-    debugger
     clearTimeout(flag);
     Mp3Recorder
     .stop()
@@ -146,7 +142,7 @@ const FooterContainer = (props) => {
   const onHeightChange = (h) => {
     props.actions.clientSideActions.sendWindowHeight(
       {
-        height: h+8
+        height: h
       }
     );
   }
