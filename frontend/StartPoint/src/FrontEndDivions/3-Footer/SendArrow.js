@@ -6,8 +6,8 @@ const SendArrow = (props, state) => {
   return <>
       <div>
         <IconButton  type="submit" className="iconBtn mb-1" size="small">
-        {props.TextField === '' && (<SendIcon className="iconBtn ml-1 mr-1" fontSize="small" style={{ color:" rgb(157, 128, 202)"}} />)}
-        {props.TextField !== '' && (<SendIcon className="iconBtn ml-1 mr-1" fontSize="small" style={{color:"rgb(110, 72, 170)"}} alt="Send"/>)}
+        {props.TextField === '' && (<SendIcon className="iconBtn  mr-1" fontSize="small" style={{ color:" rgb(157, 128, 202)"}} />)}
+        {props.TextField !== '' && (<SendIcon className="iconBtn  mr-1" fontSize="small" style={{color:"rgb(110, 72, 170)"}} alt="Send"/>)}
         </IconButton>
       </div>  
   </>

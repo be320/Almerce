@@ -10,7 +10,6 @@ const InitialAudioState = {
     switch(action.type){
 
         case Constants.SUBMIT_TEXTAREA: 
-        console.log(action)
         state[2].push(action.messageTemplate);
         state=JSON.parse(JSON.stringify(state));
         return state

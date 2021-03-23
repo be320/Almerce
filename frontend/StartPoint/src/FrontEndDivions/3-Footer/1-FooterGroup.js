@@ -11,8 +11,7 @@ import { bindActionCreators } from "redux";
 import UploadImageTab from './UploadImageTab'
 import {imageProcessor} from './ImageProcessing'
 import {audioProcessor} from './AudioProcessing'
-var flag;
-
+var flag; 
 
 const FooterContainer = (props) => {
   const inputRef = useRef();
@@ -82,12 +81,12 @@ const FooterContainer = (props) => {
       setAudioState({isRecording : true , blobURL : ''});
      }).catch((e) => console.error(e)); 
    flag = setTimeout(() => {
+     debugger
     Mp3Recorder
     .stop()
     .getMp3()
     .then(async([buffer, blob]) => {
       const bu = await audioProcessor(blob);
-      console.log("Timeout stop")
       var temp = parseInt(localStorage.getItem('index'), 10); 
         props.actions.clientSideActions.sendAudioMessage(
           {
@@ -101,7 +100,7 @@ const FooterContainer = (props) => {
     }).catch((e) => { 
       console.log(e)
     });  
-    }, 60000);
+    }, 62000);
     
   };
   

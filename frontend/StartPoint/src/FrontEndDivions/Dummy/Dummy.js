@@ -163,8 +163,8 @@
 // </div>
 
 // //Final version
-{/*<style>
- @media (hover: hover) {
+{/* <style>
+@media (hover: hover) {
     #miniMaxButtonn:hover {
         background-color:  rgba(224,224,224,0.25);
     }
@@ -225,7 +225,7 @@
 		<iframe id="iframe"  style="
 					height: 55vh;
 					display:none;"
-				src="https://40cc5afd1e12.ngrok.io"
+				src= "https://60219484ed3c.ngrok.io"
 				allow="microphone"
 				frameborder="0" >
 		</iframe>
