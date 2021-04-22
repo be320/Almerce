@@ -182,21 +182,13 @@ const FooterContainer = (props) => {
     handleImageSubmit={handleImageSubmit} 
     removeSelectedImage={removeSelectedImage}/>:''
   }
-  <div className="footer d-flex flex-row justify-content-between align-items-end">
+  
+  <div className="footer d-flex flex-row justify-content-center align-items-end">
       <form>
         <UploadImage imagesLength={props.selectedImages.length} handleImageInput={handleImageInput} />
       </form>
 
-      <form onSubmit={handleAudioSubmit} >
-        <VoiceNote AudioState={AudioState} start={start} DeleteVN={DeleteVN}/>
-      </form>
-
-      <form onKeyDown={onEnterPress} className="d-flex flex-row flex-grow-1 flex-shrink-0 align-items-end" onSubmit={handleTextSubmit}>
-        <TypeArea inputRef={inputRef} TextField={TextField} handleTextChange={handleTextChange}
-          onHeightChange={onHeightChange} />
-        {/* <Emoji TextField={TextField} setTextField={setTextField}/> */}
-        <SendArrow TextField={TextField} />
-      </form>
+      
     </div>
  
   </>
@@ -221,3 +213,18 @@ const mapStateToProps =(state)=>{
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(FooterContainer);
+
+/*
+<form onSubmit={handleAudioSubmit} >
+        <VoiceNote AudioState={AudioState} start={start} DeleteVN={DeleteVN}/>
+      </form>
+
+      <form onKeyDown={onEnterPress} className="d-flex flex-row flex-grow-1 flex-shrink-0 align-items-end" onSubmit={handleTextSubmit}>
+        <TypeArea inputRef={inputRef} TextField={TextField} handleTextChange={handleTextChange}
+          onHeightChange={onHeightChange} />
+        //{ <Emoji TextField={TextField} setTextField={setTextField}/> }
+        <SendArrow TextField={TextField} />
+      </form>
+      */
+
+      // note in the image, make it justify-content-between
