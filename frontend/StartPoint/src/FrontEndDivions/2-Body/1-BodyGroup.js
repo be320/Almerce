@@ -10,6 +10,7 @@ import * as ChatBotActions from '../4-Redux/Actions/ChatBotActions'
 import { bindActionCreators } from "redux";
 import StarRatingTemplate from './StarRatingTemplate';
 import LoaderTemplate from './LoaderTemplate'
+import PriceSliderTemplate from './PriceSliderTemplate';
 
 const BodyContainer=(props)=>{
  
@@ -59,7 +60,21 @@ const handleChoiceClick =(event)=>
     }
   );
   localStorage.setItem('index',  JSON.stringify(temp+1))
+ }
   
+  function priceRange (event , priceval){
+    var temp = parseInt(localStorage.getItem('index'), 10); 
+    props.actions.clientSideActions.sendpriceRange(
+      {
+        elementType: 'PriceSliderTemplate',
+        serverSide: false,
+        price: priceval,
+        index:temp+1
+  
+      }
+    );
+    localStorage.setItem('index',  JSON.stringify(temp+1))
+
  }
 return<>
 <div className="body" style={{height: `calc(100vh - ${
@@ -68,6 +83,7 @@ return<>
     :150)
   }px)`}}>
   
+
 {props.bodyContainer.map(item => { 
  if (item.elementType ==='MessageTemplate'){
  return <MessageTemplate
@@ -96,7 +112,13 @@ return<>
       return<>
        <StarRatingTemplate val={(item.rating)?item.rating:0} serverSide={item.serverSide} changeRating={changeRating} />
       </>}
- else 
+     else if (item.elementType ==='PriceSliderTemplate'){
+<PriceSliderTemplate priceRange={priceRange} />
+     }
+     else
+ return<>
+ 
+ </>
  {return<>
  </>} 
 })}

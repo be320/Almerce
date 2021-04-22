@@ -67,6 +67,14 @@ const sendTemplateSuccess = (Template)=>{
             TemplateToDelete: Template,
         }
     }
+    else if (Template.elementType === "PriceSliderTemplate")
+    {
+        return{
+            type: Constants.SUBMIT_PRICE_RANGE,
+            price: Template,
+        }
+    }
+   
 }
 
 const loadOldMessageSuccess =(Templates)=>{
@@ -189,6 +197,22 @@ export const sendchangeRating=(Template)=>{
         dispatch(sendTemplateSuccess(TemplateToDelete))  
         dispatch(apiCallBeginAction());
         return  AxiosInstance.post('/sendchangeRating',{
+            // place here your object 
+            Template
+        }).then((response)=>{ 
+            dispatch(apiCallEndAction());
+            dispatch(sendTemplateSuccess(response.data))  
+        }).catch((errorMessage)=>{
+            console.log(errorMessage);
+        });
+
+    });
+}
+
+export const sendpriceRange=(Template)=>{
+    return((dispatch)=>{
+        dispatch(apiCallBeginAction());
+        return  AxiosInstance.post('/sendpriceRange',{
             // place here your object 
             Template
         }).then((response)=>{ 
