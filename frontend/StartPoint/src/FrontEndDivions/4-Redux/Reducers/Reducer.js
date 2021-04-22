@@ -88,6 +88,11 @@ const InitialAudioState = {
           state=JSON.parse(JSON.stringify(state));
         return state
 
+        case Constants.SUBMIT_PRICE_RANGE:
+          state[2].push(action.price);
+          state=JSON.parse(JSON.stringify(state));
+        return state
+
         default:
           return state 
     }

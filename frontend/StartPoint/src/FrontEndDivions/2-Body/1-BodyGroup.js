@@ -64,6 +64,7 @@ const handleChoiceClick =(event)=>
   
   function priceRange (event , priceval){
     var temp = parseInt(localStorage.getItem('index'), 10); 
+    debugger
     props.actions.clientSideActions.sendpriceRange(
       {
         elementType: 'PriceSliderTemplate',
@@ -113,7 +114,10 @@ return<>
        <StarRatingTemplate val={(item.rating)?item.rating:0} serverSide={item.serverSide} changeRating={changeRating} />
       </>}
      else if (item.elementType ==='PriceSliderTemplate'){
-<PriceSliderTemplate priceRange={priceRange} />
+      return<>
+       <MessageTemplate serverSide={true} message={item.message.TextField}/>
+      <PriceSliderTemplate priceRange={priceRange} />
+      </>
      }
      else
  return<>
@@ -121,7 +125,9 @@ return<>
  </>
  {return<>
  </>} 
-})}
+})
+
+}
 
 {props.sendingState.isSending && <LoaderTemplate/>}
  <div ref={messagesEndRef} /> </div>

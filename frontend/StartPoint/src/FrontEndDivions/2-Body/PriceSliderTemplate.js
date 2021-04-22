@@ -8,11 +8,11 @@ function valuetext(value) {
 }
 
 const PriceSliderTemplate = (props) => {
-    const [value, setValue] = React.useState([20, 37]);
+    const [valueSelected, setvalueSelected] = React.useState([20, 37]);
     const [clicked, setClicked] = React.useState(false);
 
     const handleChange = (event, newValue) => {
-        setValue(newValue);
+        setvalueSelected(newValue);
         console.log(newValue);
     };
 
@@ -26,7 +26,7 @@ const PriceSliderTemplate = (props) => {
                             min={0}
                             max={500}
                                 className="mt-3"
-                                value={value}
+                                value={valueSelected}
                                 onChange={handleChange}
                                 valueLabelDisplay="auto"
                                 aria-labelledby="range-slider"
@@ -39,7 +39,7 @@ const PriceSliderTemplate = (props) => {
                             max={500}
                                 disabled
                                 className="mt-3"
-                                value={value}
+                                value={valueSelected}
                                 onChange={handleChange}
                                 valueLabelDisplay="auto"
                                 aria-labelledby="range-slider"
@@ -59,7 +59,7 @@ const PriceSliderTemplate = (props) => {
                     <Button
         variant="contained"
         color="primary"
-        onClick={(event,value) => {props.priceRange(event,value)
+        onClick={(event) => {props.priceRange(event,valueSelected)
             setClicked(true);
         }}
       >
