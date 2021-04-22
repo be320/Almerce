@@ -52,7 +52,8 @@ function loadFromLocalStorage() {
   try {
     const ss = localStorage.getItem('storedState')
     if (ss === null) {
-      const serializedState = '[{"height":32},[],[{"elementType":"MessageTemplate","serverSide":true,"message":{"TextField":"مساء الخير يا فندم اخبارك ايه اتشرف بالاسم"}}],{"isSending":false}]'
+      const serializedState = '[{"height":32},[],[],{"isSending":false}]'
+      //const serializedState = '[{"height":32},[],[]]'
       localStorage.setItem('storedState',serializedState)
       localStorage.setItem('index', -1)
       return JSON.parse(serializedState)

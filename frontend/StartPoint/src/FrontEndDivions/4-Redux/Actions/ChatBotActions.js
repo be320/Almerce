@@ -111,7 +111,9 @@ export const loadOldMessage=()=> {
 //ai Template gaia mn FooterGroup (will show on body)
 export const sendTemplate=(Template)=>{
     return((dispatch)=>{
-        dispatch(sendTemplateSuccess(Template))
+        if(Template.elementType!=='welcomeTemplate'){
+            dispatch(sendTemplateSuccess(Template))
+        }
         dispatch(apiCallBeginAction());
         return  AxiosInstance.post('/sendText',{
             // place here your object 

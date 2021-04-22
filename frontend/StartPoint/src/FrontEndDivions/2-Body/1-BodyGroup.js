@@ -16,7 +16,19 @@ const BodyContainer=(props)=>{
  const messagesEndRef = useRef(null)
  
  useEffect(() => {
-   
+  if (localStorage.getItem("index") === "-1") {
+    var temp = parseInt(localStorage.getItem('index'), 10); 
+    props.actions.clientSideActions.sendTemplate(
+      {
+        elementType: 'welcomeTemplate',
+        serverSide: false,
+        message:{TextField :"hi"},
+        index:temp+1
+
+      }
+    );
+    localStorage.setItem('index',  JSON.stringify(temp+1))
+  }
  messagesEndRef.current.scrollIntoView({ behavior: "smooth" })
  }, [props.footerSize.height,props.bodyContainer]);
 
