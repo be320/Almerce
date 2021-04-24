@@ -108,11 +108,8 @@ return<>
    else if (item.elementType ==='ProductCardTemplate'){
     return<>
      <ProductCardTemplate cards={item.cards}/>
+     <StarRatingTemplate val={(item.rating)?item.rating:0} serverSide={item.serverSide} changeRating={changeRating} />
     </>}
-     else if (item.elementType ==='StarRatingTemplate'){
-      return<>
-       <StarRatingTemplate val={(item.rating)?item.rating:0} serverSide={item.serverSide} changeRating={changeRating} />
-      </>}
      else if (item.elementType ==='PriceSliderTemplate'){
       return<>
        <MessageTemplate serverSide={true} message={item.message.TextField}/>
