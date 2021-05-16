@@ -24,7 +24,8 @@ const BodyContainer=(props)=>{
         elementType: 'welcomeTemplate',
         serverSide: false,
         message:{TextField :"hi"},
-        index:temp+1
+        index:temp+1,
+        choiceType:''
 
       }
     );
@@ -33,16 +34,18 @@ const BodyContainer=(props)=>{
  messagesEndRef.current.scrollIntoView({ behavior: "smooth" })
  }, [props.footerSize.height,props.bodyContainer]);
 
-const handleChoiceClick =(event)=>
+const handleChoiceClick =(event,choiceType)=>
  {
   var temp = parseInt(localStorage.getItem('index'), 10); 
+  debugger
   props.actions.clientSideActions.sendOneWayTemplate(
  
     {
       elementType: 'MessageTemplate',
       serverSide: false,
       message: {TextField :event.target.innerText},
-      index:temp+1
+      index:temp+1,
+      choiceType:choiceType
     }
   );
   localStorage.setItem('index',  JSON.stringify(temp+1))
@@ -55,7 +58,8 @@ const handleChoiceClick =(event)=>
       elementType: 'StarRatingTemplate',
       serverSide: false,
       rating: ratingVal,
-      index:temp+1
+      index:temp+1,
+      choiceType:''
 
     }
   );
@@ -64,13 +68,13 @@ const handleChoiceClick =(event)=>
   
   function priceRange (event , priceval){
     var temp = parseInt(localStorage.getItem('index'), 10); 
-    debugger
     props.actions.clientSideActions.sendpriceRange(
       {
         elementType: 'PriceSliderTemplate',
         serverSide: false,
         price: priceval,
-        index:temp+1
+        index:temp+1,
+        choiceType:''
   
       }
     );
@@ -103,7 +107,7 @@ return<>
  else if (item.elementType ==='ChoiceTemplate'){
   return<>
    <MessageTemplate serverSide={true} message={item.message.TextField}/>
-   <ChoiceTemplate serverSide={false} choices={item.choices} handleChoiceClick={handleChoiceClick}/>
+   <ChoiceTemplate serverSide={false} choices={item.choices} handleChoiceClick={handleChoiceClick} choiceType={item.choiceType}/>
   </>}
    else if (item.elementType ==='ProductCardTemplate'){
     return<>
