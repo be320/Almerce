@@ -75,6 +75,7 @@ const handleChoiceClick =(event,choiceType)=>
         price: priceval,
         index:temp+1,
         choiceType:''
+        
   
       }
     );
