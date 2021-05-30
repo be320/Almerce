@@ -46,7 +46,7 @@ const handleChoiceClick =(event,choiceType)=>
         elementType: 'MessageTemplate',
         serverSide: false,
         message: {TextField :event.target.innerText},
-        index:temp+1,
+        index:0,
         choiceType:choiceType
         
       }
