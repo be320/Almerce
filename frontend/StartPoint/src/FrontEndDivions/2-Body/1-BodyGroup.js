@@ -37,20 +37,35 @@ const BodyContainer=(props)=>{
 const handleChoiceClick =(event,choiceType)=>
  {
   var temp = parseInt(localStorage.getItem('index'), 10); 
-  debugger
-  props.actions.clientSideActions.sendOneWayTemplate(
- 
-    {
-      elementType: 'MessageTemplate',
-      serverSide: false,
-      message: {TextField :event.target.innerText},
-      index:temp+1,
-      choiceType:choiceType
-    }
-  );
-  localStorage.setItem('index',  JSON.stringify(temp+1))
+  //reset index to 0 if user wants to restart sequence
+  if (event.target.innerText=="نعم" & choiceType=="restart")
+    {debugger
+      props.actions.clientSideActions.sendOneWayTemplate(
+    
+      {
+        elementType: 'MessageTemplate',
+        serverSide: false,
+        message: {TextField :event.target.innerText},
+        index:temp+1,
+        choiceType:choiceType
+        
+      }
+    );
+    localStorage.setItem('index',  JSON.stringify(0))}
+  else{
+    props.actions.clientSideActions.sendOneWayTemplate(
+  
+      {
+        elementType: 'MessageTemplate',
+        serverSide: false,
+        message: {TextField :event.target.innerText},
+        index:temp+1,
+        choiceType:choiceType
+        
+      }
+    );
+    localStorage.setItem('index',  JSON.stringify(temp+1))}
  }
-
  function changeRating (event , ratingVal){
   var temp = parseInt(localStorage.getItem('index'), 10); 
   props.actions.clientSideActions.sendchangeRating(
