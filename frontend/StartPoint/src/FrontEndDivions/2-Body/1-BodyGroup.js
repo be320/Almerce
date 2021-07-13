@@ -39,7 +39,7 @@ const handleChoiceClick =(event,choiceType)=>
   var temp = parseInt(localStorage.getItem('index'), 10); 
   //reset index to 0 if user wants to restart sequence
   if (event.target.innerText=="نعم" & choiceType=="restart")
-    {debugger
+    {
       props.actions.clientSideActions.sendOneWayTemplate(
     
       {
@@ -51,7 +51,24 @@ const handleChoiceClick =(event,choiceType)=>
         
       }
     );
-    localStorage.setItem('index',  JSON.stringify(0))}
+    localStorage.setItem('index',  JSON.stringify(0))
+  }
+
+  else if(event.target.innerText=="اعرض الاقتراحات" & choiceType=="ClicksRecommendation")
+  {
+    props.actions.clientSideActions.sendClicksRecommendationTemplate(
+    
+      {
+        elementType: 'MessageTemplate',
+        serverSide: false,
+        message: {TextField :event.target.innerText},
+        index:temp+1,
+        choiceType:choiceType
+        
+      }
+    );
+    localStorage.setItem('index',  JSON.stringify(temp+1))
+  }
   else{
     props.actions.clientSideActions.sendOneWayTemplate(
   

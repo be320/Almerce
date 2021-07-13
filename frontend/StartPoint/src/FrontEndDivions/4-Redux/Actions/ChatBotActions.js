@@ -156,6 +156,26 @@ export const sendOneWayTemplate=(Template)=>{
     });
 }
 
+export const sendClicksRecommendationTemplate=(Template)=>{
+    return((dispatch)=>{
+        var TemplateToDelete ={elementType:"TemplateToDelete",
+        elementName:"choices"}
+        dispatch(sendTemplateSuccess(TemplateToDelete))  
+        dispatch(sendTemplateSuccess(Template))
+        dispatch(apiCallBeginAction());
+        return  AxiosInstance.post('/recommendFromClicks',{
+            // place here your object 
+            Template
+        }).then((response)=>{ 
+            dispatch(apiCallEndAction());
+            dispatch(sendTemplateSuccess(response.data))  
+        }).catch((errorMessage)=>{
+            console.log(errorMessage);
+        });
+
+    });
+}
+
 export const sendSelectedImages=(Template)=>{
     return((dispatch)=>{
         dispatch(sendTemplateSuccess(Template))
