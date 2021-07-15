@@ -69,6 +69,22 @@ const handleChoiceClick =(event,choiceType)=>
     );
     localStorage.setItem('index',  JSON.stringify(temp+1))
   }
+
+  else if(choiceType=="Communication_method")
+  {
+    props.actions.clientSideActions.sendNlpTemplate(
+
+      {
+        elementType: 'MessageTemplate',
+        serverSide: false,
+        message: {TextField :event.target.innerText},
+        index:temp+1,
+        choiceType:choiceType,
+        queries : 'انا كنت بدور علي لعبة بازل لبنتي لصور حيوانات تساعدها علي التدقيق و التركيز و تشغيل العقل و تكون مناسبة لطفل عندة 4 سنين',
+      }
+    );
+    localStorage.setItem('index',  JSON.stringify(temp+1))
+  }
   else{
     props.actions.clientSideActions.sendOneWayTemplate(
   

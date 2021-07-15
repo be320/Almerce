@@ -157,16 +157,16 @@ const FooterContainer = (props) => {
 
     if (TextField !== '') {
     
-      var temp = parseInt(localStorage.getItem('index'), 10); 
-      props.actions.clientSideActions.sendTemplate(
+      var temp = parseInt(localStorage.getItem('index'), 10);
+        props.actions.clientSideActions.sendText(
         {
           elementType: 'MessageTemplate',
           serverSide: false,
           message: { TextField },
           index:temp+1
-
         }
       );
+        
       localStorage.setItem('index',  JSON.stringify(temp+1))
     }
     else {
@@ -187,7 +187,15 @@ const FooterContainer = (props) => {
       <form>
         <UploadImage imagesLength={props.selectedImages.length} handleImageInput={handleImageInput} />
       </form>
+      <form onSubmit={handleAudioSubmit} >
+        <VoiceNote AudioState={AudioState} start={start} DeleteVN={DeleteVN}/>
+      </form>
 
+      <form onKeyDown={onEnterPress} className="d-flex flex-row flex-grow-1 flex-shrink-0 align-items-end" onSubmit={handleTextSubmit}>
+        <TypeArea inputRef={inputRef} TextField={TextField} handleTextChange={handleTextChange}
+          onHeightChange={onHeightChange} /> 
+        <SendArrow TextField={TextField} />
+      </form>
       
     </div>
  

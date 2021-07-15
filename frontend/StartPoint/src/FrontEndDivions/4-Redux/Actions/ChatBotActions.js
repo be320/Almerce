@@ -135,6 +135,25 @@ export const sendTemplate=(Template)=>{
     });
 }
 
+//ai Template gaia mn FooterGroup (will show on body)
+export const sendText=(Template)=>{
+    return((dispatch)=>{
+        if(Template.elementType!=='welcomeTemplate'){
+            dispatch(sendTemplateSuccess(Template))
+        }
+        dispatch(apiCallBeginAction());
+        return  AxiosInstance.post('https://a2500c4080b0.ngrok.io/sendProductText',{
+            // place here your object 
+            Template
+        }).then((response)=>{ 
+            dispatch(apiCallEndAction());
+            dispatch(sendTemplateSuccess(response.data))  
+        }).catch((errorMessage)=>{
+            console.log(errorMessage);
+        });
+    });
+}
+
 //ai Template gaia mn bodyGroup (won't show on body)
 export const sendOneWayTemplate=(Template)=>{
     return((dispatch)=>{
@@ -144,6 +163,27 @@ export const sendOneWayTemplate=(Template)=>{
         dispatch(sendTemplateSuccess(Template))
         dispatch(apiCallBeginAction());
         return  AxiosInstance.post('/sendText',{
+            // place here your object 
+            Template
+        }).then((response)=>{ 
+            dispatch(apiCallEndAction());
+            dispatch(sendTemplateSuccess(response.data))  
+        }).catch((errorMessage)=>{
+            console.log(errorMessage);
+        });
+
+    });
+}
+
+
+export const sendNlpTemplate=(Template)=>{
+    return((dispatch)=>{
+        var TemplateToDelete ={elementType:"TemplateToDelete",
+        elementName:"choices"}
+        dispatch(sendTemplateSuccess(TemplateToDelete))  
+        dispatch(sendTemplateSuccess(Template))
+        dispatch(apiCallBeginAction());
+        return  AxiosInstance.post('https://a2500c4080b0.ngrok.io/sendCommunicationType',{
             // place here your object 
             Template
         }).then((response)=>{ 
