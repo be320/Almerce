@@ -81,11 +81,11 @@ const FooterContainer = (props) => {
       setAudioState({isRecording : true , blobURL : ''});
      }).catch((e) => console.error(e)); 
    flag = setTimeout(() => {
-     debugger
     Mp3Recorder
     .stop()
     .getMp3()
     .then(async([buffer, blob]) => {
+      console.log(buffer)
       const bu = await audioProcessor(blob);
       var temp = parseInt(localStorage.getItem('index'), 10); 
         props.actions.clientSideActions.sendAudioMessage(
@@ -118,9 +118,10 @@ const FooterContainer = (props) => {
     .stop()
     .getMp3()
     .then(async([buffer, blob]) => {
+      console.log(buffer)
       const bu = await audioProcessor(blob);
       var temp = parseInt(localStorage.getItem('index'), 10); 
-        props.actions.clientSideActions.sendAudioMessage(
+        props.actions.clientSideActions.sendProductText(
           {
             elementType: 'AudioTemplate', 
             audio: { isRecording: false, blobURL :bu},
@@ -158,7 +159,7 @@ const FooterContainer = (props) => {
     if (TextField !== '') {
     
       var temp = parseInt(localStorage.getItem('index'), 10);
-        props.actions.clientSideActions.sendText(
+        props.actions.clientSideActions.sendProductText(
         {
           elementType: 'MessageTemplate',
           serverSide: false,
@@ -190,7 +191,6 @@ const FooterContainer = (props) => {
       <form onSubmit={handleAudioSubmit} >
         <VoiceNote AudioState={AudioState} start={start} DeleteVN={DeleteVN}/>
       </form>
-
       <form onKeyDown={onEnterPress} className="d-flex flex-row flex-grow-1 flex-shrink-0 align-items-end" onSubmit={handleTextSubmit}>
         <TypeArea inputRef={inputRef} TextField={TextField} handleTextChange={handleTextChange}
           onHeightChange={onHeightChange} /> 

@@ -4,10 +4,9 @@ import axios from "axios";
 const AxiosInstance = axios.create({
     // This is the base URL for Almerce API that we will send our data to
     // for now this is dummy 
-   // baseURL: 'https://almerce-server.herokuapp.com',
-
-   baseURL: 'http://127.0.0.1:5000',
-  
+    // baseURL: 'https://almerce-server.herokuapp.com',
+    // baseURL: 'https://a2123be6a31e.ngrok.io',
+   baseURL: 'https://9dde157e6fea.ngrok.io',
 
 })
 

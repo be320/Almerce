@@ -72,7 +72,7 @@ const handleChoiceClick =(event,choiceType)=>
 
   else if(choiceType=="Communication_method")
   {
-    props.actions.clientSideActions.sendNlpTemplate(
+    props.actions.clientSideActions.sendCommunicationType(
 
       {
         elementType: 'MessageTemplate',
