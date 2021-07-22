@@ -48,7 +48,6 @@ const saveToLocalStorage = () => {
 }
 
 function loadFromLocalStorage() {
-
   try {
     const ss = localStorage.getItem('storedState')
     if (ss === null) {
