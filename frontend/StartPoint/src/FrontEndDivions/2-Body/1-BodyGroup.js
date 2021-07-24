@@ -25,24 +25,30 @@ const BodyContainer = (props) => {
         index: temp + 1,
         choiceType: "",
       });
+      console.log(temp, "inital");
       localStorage.setItem("index", JSON.stringify(temp + 1));
     }
     messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
-  }, [props.footerSize.height, props.bodyContainer]);
+  }, [
+    props.footerSize.height,
+    props.bodyContainer,
+    props.actions.clientSideActions,
+  ]);
 
   const handleChoiceClick = (event, choiceType) => {
     var temp = parseInt(localStorage.getItem("index"), 10);
     //reset index to 0 if user wants to restart sequence
-    if ((event.target.innerText == "عودة")) {
+    if (event.target.innerText === "عودة") {
       props.actions.clientSideActions.sendOneWayTemplate({
         elementType: "MessageTemplate",
         serverSide: false,
         message: { TextField: event.target.innerText },
-        index: temp>0 ? --temp: 0,
+        index: --temp,
         choiceType: choiceType,
       });
-      localStorage.setItem("index", JSON.stringify(0));
-    }else if ((event.target.innerText == "اختيار طريقة ترشيح اخرى")) {
+      console.log(temp, "عودة");
+      localStorage.setItem("index", JSON.stringify(temp));
+    } else if (event.target.innerText === "اختيار طريقة ترشيح اخرى") {
       props.actions.clientSideActions.sendOneWayTemplate({
         elementType: "MessageTemplate",
         serverSide: false,
@@ -50,8 +56,12 @@ const BodyContainer = (props) => {
         index: 0,
         choiceType: choiceType,
       });
+      console.log(temp, "اختيار طريقة ترشيح اخرى");
       localStorage.setItem("index", JSON.stringify(0));
-    } else if ((event.target.innerText == "نعم") & (choiceType == "restart")) {
+    } else if (
+      (event.target.innerText === "نعم") &
+      (choiceType === "restart")
+    ) {
       props.actions.clientSideActions.sendOneWayTemplate({
         elementType: "MessageTemplate",
         serverSide: false,
@@ -61,8 +71,8 @@ const BodyContainer = (props) => {
       });
       localStorage.setItem("index", JSON.stringify(0));
     } else if (
-      (event.target.innerText == "اعرض الاقتراحات") &
-      (choiceType == "ClicksRecommendation")
+      (event.target.innerText === "اعرض الاقتراحات") &
+      (choiceType === "ClicksRecommendation")
     ) {
       props.actions.clientSideActions.sendClicksRecommendationTemplate({
         elementType: "MessageTemplate",
@@ -72,7 +82,7 @@ const BodyContainer = (props) => {
         choiceType: choiceType,
       });
       localStorage.setItem("index", JSON.stringify(temp + 1));
-    } else if (choiceType == "Communication_method") {
+    } else if (choiceType === "Communication_method") {
       props.actions.clientSideActions.sendNlpTemplate({
         elementType: "MessageTemplate",
         serverSide: false,
@@ -91,9 +101,11 @@ const BodyContainer = (props) => {
         index: temp + 1,
         choiceType: choiceType,
       });
+      console.log(temp, "handled choice");
       localStorage.setItem("index", JSON.stringify(temp + 1));
     }
   };
+
   function changeRating(event, ratingVal) {
     var temp = parseInt(localStorage.getItem("index"), 10);
     props.actions.clientSideActions.sendchangeRating({
@@ -179,9 +191,6 @@ const BodyContainer = (props) => {
               </>
             );
           } else return <></>;
-          {
-            return <></>;
-          }
         })}
         {props.sendingState.isSending && <LoaderTemplate />}
         <div ref={messagesEndRef} />{" "}
